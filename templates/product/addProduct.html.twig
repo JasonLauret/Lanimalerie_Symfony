@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.price) }}
+        {{ form_row(form.brand, {"label": "Marque"}) }}
+        {{ form_row(form.category, {"label": "Catégorie"}) }}
+        {{ form_row(form.valider, {"attr": {'class':'m-auto btn_envoyer'}}) }}
+    {{ form_end(form, {'render_rest': true}) }}
+{% endblock %}

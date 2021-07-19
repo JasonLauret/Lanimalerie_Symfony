@@ -1,0 +1,42 @@
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <!--___________réseaux sociaux___________-->
+            <div class="d-flex justify-content-between pt-2">
+                <div class="col-4 col-md-3 d-none d-md-block pt-1">
+                    <a href="https://www.facebook.com"><img class="facebook" src="{{ asset('img/logo/logo_facebook.png') }}" alt="logo facebook"></a>
+                    <a href="https://www.instagram.com"><img class="instagram" src="{{ asset('img/logo/logo_instagram.jpg') }}" alt="logo instagram"></a>
+                    <a href="https://www.twitter.com"><img class="twitter" src="{{ asset('img/logo/logo_twitter.png') }}" alt="logo twitter"></a>
+                </div>
+
+                {% if app.user %}
+                <div class="ms-sm-5">
+                    <div class="login d-lg-flex">
+                        <div class="text-end">
+                            Vous ètes connecter à {{ app.user.username }}
+                        </div>
+                        <div class="text-end">
+                            <a class="" href=""><button class="fs-5 ms-5 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button></a>
+                            <a class="" href=""><button class="fs-5 ms-2 m-0"><i class="bi bi-gear"></i>Paramètre</button></a>
+                            <a class="" href="{{ path('app_logout') }}"><button class="fs-5 ms-2 m-0"><i class="bi bi-door-open"></i>Deconnecter</button></a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <!--______Mon compte, mon panier______-->
+                    <div class="login col-12 col-md-6 d-flex justify-content-between justify-content-md-end">
+                        <a href="{{ path('app_login') }}"><button class="fs-5 m-0"><i class="pe-2 bi bi-person-fill"></i>Me connecter</button></a>
+                        <a {% if app.user %}href=""{% else %}href="{{ path('app_login') }}"{% endif %}>
+                            <button class="fs-5 ms-2 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+            <!--_____________Logo________________-->
+    </div>
+    <div id="retour_accueil" class="logo col-12 d-flex justify-content-center w-100">
+        <a href="{{ path('app_home') }}"><img class="w-75" src="{{ asset('img/logo/logo-chatChien.png') }}"></a>
+        <a class="logo d-flex flex-column justify-content-center" href="{{ path('app_home') }}"><h2 class="m-0 fs-sm-3 fs-md-1">La Nîme'alerie</h2></a>
+    </div>
+</header>

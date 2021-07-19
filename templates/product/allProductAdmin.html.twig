@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produit{% endblock %}
+
+{% block body %}
+    <a href="{{ path('add_productAdmin') }}"><button class="bouton">Ajouter un produit</button></a>
+    
+    <section class="container pt-3">
+        <div class="row">
+        {% for product in products %}
+        <div class="col-12 col-md-4 col-lg-3 g-1">
+            <a href="{{ path('display_product', {'id':product.id}) }}" class="text-decoration-none ">
+                <div class="border border-dark rounded-3 text-center">
+                    <div>
+                        <img class="rounded-pill w-75 h-75" src="{{ product.picture }}" alt="">
+                    </div>
+                    <div>
+                        <h1 class="fs-2 fw-bold">{{ product.name }}</h1>
+                        <p>{{ product.price }}</p>
+                    </div>
+                    <div>
+                        <a href="{{ path('delete_product', {'id':product.id}) }}"><button class="bouton">Supprimer</button></a>
+                        <a href="{{ path('update_product', {'id':product.id}) }}) }}"><button class="bouton">Modifier</button></a>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        </div>
+    </section>
+{% endblock body %}

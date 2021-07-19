@@ -1,0 +1,12 @@
+11/07/2021
+-Réparer la navbar (fait)
+-Modifier couleur d'écriture du formulaire inscription et login (fait)
+
+-Modifier la redirection lors de la connexion après confirmation du mail
+-Faire le menu deroulant pour bouton mon compte et me deconnecter
+-Faire affichage des produits phares
+-Echanger le formulaire de contact page d'accueil
+
+16/07/2021
+-CRUD pour gerer les users dans la partie Admin (fait)
+-Organiser les redirections des routes coté Admin (Pas terminer)

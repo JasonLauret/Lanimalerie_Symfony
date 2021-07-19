@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!--_______________________________Barre de suivis________________________________-->
+
+    <section class="container my-2">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="btn_suivi" href="{{ path('app_home') }}">Accueil</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Niches</li>
+            </ol>
+        </nav>
+    </section>
+
+<!--_________________________________Nos Niches___________________________________-->
+
+    <section class="container mt-4 mb-5">
+        <div class="cards-product row justify-content-evenly g-5">
+            <?php foreach ($aProducts as $value) { ?>
+                <div class="card-product text-center" style="width: 18rem;">
+                    <img class="card-img-top img-fluid" src="<?php echo $value["idPicture"];?>">
+                    <div class="card-body">
+                        <h5 class=""><?php echo $value["name"]; ?></h5>
+                        <p class=""><?php echo $value["description"]; ?></p>
+                        <p><?php echo $value["price"]; ?></p>
+                        <a href="produit/<?php echo $value["idProduct"]; ?>" class="btn_produit">Voir le produit</a>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </section>
+
+<!--________Back to top_______-->
+
+    <div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script src="js/backToTop.js"></script>
+        <div id="scrollUp">
+            <a href="#top"><i class="bi bi-arrow-up-short"></i>Haut de page<i class="bi bi-arrow-up-short"></i></a>
+        </div>
+    </div>
+    
+{% endblock %}

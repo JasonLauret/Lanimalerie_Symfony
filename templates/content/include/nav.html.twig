@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light m-0 mt-5">
+    <div class="container-fluid">
+        <a class="nav_haut me-5" id="#retour_accueil" href="{{ path('app_home') }}">Accueil</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav_haut me-5 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Chien</a>
+                    <ul class="dropdown-menu p-2">
+                        <li><a class="sous_categorie" href="{{ path('all_product') }}">Alimentation</a></li>
+                        <li><a class="sous_categorie" href="{{ path('all_product') }}">Niche</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav_haut me-5 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Chat</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="sous_categorie" href="{{ path('all_product') }}">Alimentation</a></li>
+                        <li><a class="sous_categorie" href="{{ path('all_product') }}">Arbre a chat</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav_haut me-5 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rongeur</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="sous_categorie" href="{{ path('all_product') }}">Alimentation</a></li>
+                        <li><a class="sous_categorie" href="{{ path('all_product') }}">Cage</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav_haut me-5 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Oiseaux</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="sous_categorie" href="{{ path('all_product') }}">Alimentation</a></li>
+                        <li><a class="sous_categorie" href="{{ path('all_product') }}">Cage</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav_haut me-5 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Poisson</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="sous_categorie" href="{{ path('all_product') }}">Alimentation</a></li>
+                        <li><a class="sous_categorie" href="{{ path('all_product') }}">Aquarium</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav_haut me-5 active" aria-current="page" href="#service3.0">Programmes spatiaux</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav_haut me-5 " href="#apropos">A propos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav_haut me-5 " href="#contact">Contact</a>
+                </li>
+            </ul>
+            <!--
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Que recherchez vous ?" aria-label="Search">
+                <button class="btn-recherche btn"  type="submit">Recherche</button>
+            </form>-->
+        </div>
+    </div>
+</nav>

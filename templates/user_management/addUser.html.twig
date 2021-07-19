@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add User{% endblock %}
+
+{% block body %}
+    
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+    <section class="bg_section">
+        <div class="container py-5">
+            <h4 class="labelColor text-center">Ajout d'utilisateur</h4>
+            {{ form_start(form) }}
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-6">
+                        <div class="pb-3 labelColor">
+                            {{ form_row(form.lastName, {"label": "Nom", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3 labelColor">
+                            {{ form_row(form.firstName, {"label": "Prénom", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3 labelColor">
+                            {{ form_row(form.roles, {"label": "Role"}) }}
+                        </div>
+                        <div class="pb-3 labelColor">
+                            {{ form_row(form.email, {"label": "Email", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3 labelColor">
+                            {{ form_row(form.plainPassword, {"label": "Mot de passe", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3 labelColor">
+                            <label class="col-form-label">Confimation du mot de passe</label>
+                            <input type="password" name="passwordConfirmation" class="form-control">
+                        </div>
+                        <div class="pb-3 labelColor">
+                            {{ form_row(form.birthDate, {"label": "Date de naissance", "attr": {'class':'form-control'}}) }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn_envoyer">Ajouter</button>
+                </div>
+            {{ form_end(form, {'render_rest': true}) }}
+        </div>
+    </section>
+{% endblock %}

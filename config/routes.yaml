@@ -1,0 +1,38 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+# config/routes.yaml
+app_cgv:
+  path: /cgv/
+  controller: App\Controller\ContentController::cgv
+  defaults:
+    title: "CGV"
+
+app_mentionLegal:
+  path: /mentionLegal/
+  controller: App\Controller\ContentController::mentionLegal
+  defaults:
+    title: "Mentions Légales"
+
+app_politique:
+  path: /politique/
+  controller: App\Controller\ContentController::politique
+  defaults:
+    title: "Politique de confidentialité"
+
+app_home:
+  path: /
+  controller: App\Controller\ContentController::home
+
+app_pageLogin:
+  path: /pageLogin/
+  controller: App\Controller\ContentController::pageLogin
+
+app_registration:
+  path: /registration/
+  controller: App\Controller\ContentController::registration
+
+app_setting:
+  path: /setting/
+  controller: App\Controller\ContentController::setting

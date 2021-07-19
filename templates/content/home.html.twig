@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!--___________________________________________Grand carrousel__________________________________________-->
+    
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+                <img src="{{ asset('img/grand_carousel/chat_medium1.jpg') }}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+                <img src="{{ asset('img/grand_carousel/chien_chat_medium1.jpg') }}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+                <img src="{{ asset('img/grand_carousel/chien_medium1.jpg') }}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+<!--__________________________________________Nos produit phare_________________________________________-->
+
+    <section class="container-fluid">
+        <div class="container">
+            <h2 class="ms-5 mt-5">Nos produits phares</h2>
+            <div class="row row-cols-1 g-2 row-cols-md-3 g-md-2 row-cols-lg-5 div_conteneur container d-flex justify-content-evenly mx-auto my-4 p-4">
+                {#<?php foreach($arrayProduitPhare as $value) {?>
+                <div class="div_produit m-md-1 text-center py-3">
+                    <img class="div_img img-fluid border mb-2" src="<?php echo $value["image"]; ?>" alt="Photo produit">
+                    <h4><?php echo $value["Nom"];?></h4>
+                    <p><?php echo $value["Description"];?></p>
+                    <p><?php echo $value["PrixTTC"];?></p>
+                    <a href="produit/<?php echo $value["id"] ?>" class="btn_produit">Voir le produit</a>-->
+                    <!-- Recuperer le numero "id" dans la barre de recherche et le traiter (voir cour dispatcher)--> 
+                </div>
+                <?php } ?>#}
+            </div>
+        </div>
+    </section>
+
+<!--__________________________________Présentation programme spatiaux____________________________________-->
+
+    <section id="service3.0" class="container-fluid bg_section">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center me-2 order-1 order-lg-0 pt-4">
+                    <div class="text-start text-lg-end">
+                        <h2>Animaux à la conquête de l'espace !</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora ad veniam quidem ex, corporis odio tenetur consequuntur deleniti et iste odit adipisci, officiis voluptas quasi error repellat. Recusandae, ex quidem!</p>
+                    </div>
+                    <div class="text-start text-lg-end">
+                        <a href="" class="plus_dinfo">+ d'info</a>
+                    </div>
+                </div>
+                
+                <div class="petit_carrousel col-lg-5">
+                    <div class="petit_carousel container">
+                        <input type="radio" name="slider" id="item-1" checked>
+                        <input type="radio" name="slider" id="item-2">
+                        <input type="radio" name="slider" id="item-3">
+                        <div class="cards">
+                            <label class="card" for="item-1" id="song-1">
+                                <img class="img" src="{{ asset('img/petit_carousel/systeme_solaire.jpg') }}" alt="song">
+                            </label>
+                            <label class="card" for="item-2" id="song-2">
+                                <img class="img" src="{{ asset('img/petit_carousel/navette_exterieur.jpg') }}" alt="song">
+                            </label>
+                            <label class="card" for="item-3" id="song-3">
+                                <img class="img" src="{{ asset('img/petit_carousel/navette_interieur.jpg') }}" alt="song">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<!--____________________________________________Présentation_____________________________________________-->
+
+    <section id="apropos" class="presentation container-fluid">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6 d-flex justify-content-center justify-content-lg-end">
+                     <img class="rounded-3 w-75" src="{{ asset('img/photo_proprio.jpg') }}">
+                </div>
+                <div class="col-lg-5 d-flex flex-column justify-content-center ms-3 pt-4">
+                    <h2>Qui sommes nous:</h2>
+                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident iste repudiandae saepe eveniet id odit corporis earum, libero beatae, non nobis accusamus labore, dicta rerum quos molestiae recusandae ab fugit.</p>
+                    <div>
+                        <a href="" class="plus_dinfo">+ d'info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+<!--______________________________________________Contact________________________________________________-->
+    
+    <section id="contact" class="bg_section">
+        <div class="container py-5">
+            <h2 class="text-center pb-3">Nous contacter</h2>
+            <form class="d-flex flex-column justify-content-center align-items-center">
+                <div class="col-lg-6 py-3">
+                    <label for="exampleInputEmail1" class="champ_form fs-5 form-label">Nom</label>
+                    <input type="text" class="form-control" placeholder="Laurine" aria-label="First name">
+                </div>
+                <div class="col-lg-6 pb-3">
+                    <label for="exampleInputEmail1" class="champ_form fs-5 form-label">Prénom</label>
+                    <input type="text" class="form-control" placeholder="Foster" aria-label="Last name">
+                </div>
+                <div class="col-lg-6 pb-3">
+                    <label for="exampleInputEmail1" class="champ_form fs-5 form-label">Adresse Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Laurine.foster@gmail.com" aria-describedby="emailHelp">
+                </div>
+                <div class="col-lg-6 pb-3">
+                    <label for="exampleFormControlTextarea1" class="champ_form fs-5 form-label">Votre message</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </form>
+            <div class="text-center mt-2">
+                <button type="submit" class="m-auto btn_envoyer btn">Annuler</button>
+                <button type="submit" class="m-auto btn_envoyer btn ">Envoyer</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-lg-3 justify-content-md-evenly">
+
+                <div class="col d-flex justify-content-center">
+                    <div class="pe-4">
+                        <i class="fs-2 bi bi-geo-alt-fill"></i>
+                    </div>
+                    <div>
+                        <p>Adresse <br/>N°73 Route des lilas 30000 Nîmes</p>
+                    </div>
+                </div>
+
+                <div class="col d-flex justify-content-center">
+                    <div class="pe-4">
+                        <i class="fs-2 bi bi-telephone-fill"></i>
+                    </div>
+                    <div>
+                        <p>Téléphone <br/>04.66.73.49.74 ou 06.95.65.48.37</p>
+                    </div>
+                </div>
+
+                <div class="col d-flex justify-content-center">
+                    <div class="pe-4">
+                        <i class="fs-2 bi bi-envelope-fill"></i>
+                    </div>
+                    <div>
+                        <p>Email <br/>contact.a-nimealerie@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--________Back to top_______-->
+    <div>
+
+        <div id="scrollUp">
+            <a href="#top"><i class="bi bi-arrow-up-short"></i>Haut de page<i class="bi bi-arrow-up-short"></i></a>
+        </div>
+    </div>
+
+
+{% endblock %}

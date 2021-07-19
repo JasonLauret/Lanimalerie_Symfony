@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!--____________________________________Formulaire______________________________________-->
+    <section class="bg_section">
+        <div class="container">
+            <h4 class="labelColor text-center pt-4">Inscription</h4>
+            <form class="row ms-5" action="traitementForm.php" method="POST">
+                <div class="d-flex justify-content-center pt-4">
+                    <div class="form-check form-check-inline pb-3">
+                        <input type="radio" name="sexe" value="h">
+                        <label for="sexe">Homme</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" name="sexe" value="f">
+                        <label for="sexe">Femme</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                <div class="pb-3">
+                        <label class="labelColor form-label">Nom</label>
+                        <input type="text" name="lastName" class="form-control" placeholder="Pontain">
+                    </div>
+                    <div class="pb-3">
+                        <label class="labelColor form-label">Prénom</label>
+                        <input type="text" name="firstName" class="form-control" placeholder="Marie">
+                    </div>
+                    <div class="pb-3">
+                        <label class="labelColor form-label">Adresse email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Arsène.lupin@gmail.com">
+                    </div>
+                    <div class="pb-2">
+                        <label class="labelColor col-form-label">Mot de passe</label>
+                        <input type="password" name="password" class="form-control" id="inputPassword3">
+                    </div>
+                    <div class="pb-2">
+                        <label class="labelColor col-form-label">Confimation du mot de passe</label>
+                        <input type="password" name="passwordConfirmation" class="form-control">
+                    </div>
+                    <div>
+                        <label class="labelColor form-label">Date de naissance</label>
+                        <input type="date" name="birthDate" value="2021-05-02">
+                    </div>
+                </div>
+
+                <!--______________________Adress_______________________-->
+
+                <div class="col-6">
+                    <div class="pb-3">
+                        <label class="labelColor form-label">Pays</label>
+                        <input type="text" name="country" class="form-control" placeholder="France">
+                    </div>
+                    <div class="pb-3">
+                        <label class="labelColor form-label">Ville</label>
+                        <input type="text" name="city" class="form-control" placeholder="Lyon">
+                    </div>
+                    <div class="pb-3">
+                        <label class="labelColor form-label">Code Postal</label>
+                        <input type="text" name="postalCode" class="form-control" placeholder="69000">
+                    </div>
+                    <div class="pb-3">
+                        <label class="labelColor form-label">Adress 1</label>
+                        <input type="text" name="adress1" class="form-control">
+                    </div>
+                    <div class="pb-3">
+                        <label class="labelColor form-label">Adress 2</label>
+                        <input type="text" name="adress2" class="form-control">
+                    </div>
+                </div>
+                <div class="my-3 text-center">
+                    <input type="submit" class="btn_login_form btn" value="M'inscrire"></input>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <!--________Back to top_______-->
+    
+        <div id="scrollUp">
+            <a href="#top"><i class="bi bi-arrow-up-short"></i>Haut de page<i class="bi bi-arrow-up-short"></i></a>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+{% endblock %}

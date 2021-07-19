@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserManagementController!{% endblock %}
+
+{% block body %}
+    <a href=" {{ path('add_user') }} "><button class="bouton">Ajouter un utilisateur</button></a>
+    
+    {% for user in users %}
+    
+        <a href="{{ path('display_user', {'id':user.id}) }}" class="text-decoration-none ">
+            <div class="d-flex border border-dark mt-2">
+                <p>{{ user.lastName }}</p>
+                <p>{{ user.firstName }}</p>
+                <div>
+                    <a href="{{ path('update_user', {'id':user.id}) }}) }}"><button class="bouton">Modifier</button></a>
+                    <a href="{{ path('delete_user', {'id':user.id}) }}"><button class="bouton">Supprimer</button></a>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+{% endblock %}

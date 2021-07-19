@@ -1,0 +1,40 @@
+<footer>
+    <section class="container-fluid">
+        <div class="row pt-3">
+            <div class="col-12 text-center col-md-6 text-start col-lg-4 text-lg-start">
+                <p class="m-0">Paiement securisé</p>
+                <div class="">
+                    <img class="logo_paypal" src="{{ asset('img/logo/logo_paypal.png') }}" alt="">
+                    <i class="fs-1 bi bi-credit-card"></i>
+                </div>
+            </div>
+
+            <div class="col-12 text-center col-md-6 text-md-center col-lg-4 text-lg-center">
+                <p class="m-0">Livraison offerte</p>
+                <div class="">
+                    <img class="logo_laposte" src="{{ asset('img/logo/logo_laposte.png') }}" alt="">
+                    <i class="fs-1 pt-5 bi bi-truck"></i>
+                </div>
+            </div>
+            
+            <div class="col-12 mt-3 text-center d-md-none">
+                <p>Retrouvez nous sur :</p>
+                <div class="d-flex justify-content-center">
+                    <a href="https://www.facebook.com"><img class="facebook" src="{{ asset('img/logo/logo_facebook.png') }}" alt="logo facebook"></a>
+                    <a href="https://www.instagram.com"><img class="instagram" src="{{ asset('img/logo/logo_instagram.jpg') }}" alt="logo instagram"></a>
+                    <a href="https://www.twitter.com"><img class="twitter" src="{{ asset('img/logo/logo_twitter.png') }}" alt="logo twitter"></a>
+                </div>
+            </div>
+
+            <div class="col-12 text-center col-md-12 text-md-center col-lg-4 text-lg-end">
+                <p><a class="mention" href="{{ path('app_cgv') }}">CGV</a>/<a class="mention" href="{{ path('app_cgv') }}">CGU</a></p>
+                <p><a class="mention" href="{{ path('app_mentionLegal') }}">Mention légal</a></p>
+                <p><a class="mention" href="{{ path('app_politique') }}">Politique de confidentialité</a></p>
+            </div>
+            
+        </div>
+    </section>
+    <div>
+        <p class="text-center">&copy copyright Human Booster</p>
+    </div>
+</footer>

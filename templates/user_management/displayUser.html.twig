@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserManagementController!{% endblock %}
+
+{% block body %}
+    <div class="border border-dark mt-2">
+        <div class="d-flex">
+            <p>{{ user.lastName }}</p>
+            <p>{{ user.firstName }}</p>
+        </div>
+    </div>
+    <a href=" {{ path('user') }} ">Retour</a>
+{% endblock %}

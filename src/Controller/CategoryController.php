@@ -1,0 +1,145 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Category;
+use App\Form\AddCateroryType;
+use App\Form\UpdateCateroryType;
+use App\Repository\CategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class CategoryController extends AbstractController
+{
+    /**
+     * @Route("/category", name="all_category")
+     */
+    public function allCategory()
+    {
+        $category = $this->getDoctrine()
+                    ->getRepository(Category::class)
+                    ->findAll();
+
+        return $this->render('category/allCategory.html.twig', [
+            'categorys' => $category,
+        ]);
+    }
+
+    /**
+     * @Route("/admin/categoryAdmin", name="all_categoryAdmin")
+     */
+    public function allCategoryAdmin()
+    {
+        $category = $this->getDoctrine()
+                    ->getRepository(Category::class)
+                    ->findAll();
+
+        return $this->render('category/allCategoryAdmin.html.twig', [
+            'categorys' => $category,
+        ]);
+    }
+
+    /**
+     * @Route("/category/{id}", name="display_category")
+     */
+    public function displayCategory($id)
+    {
+        $category = $this->getDoctrine()
+                    ->getRepository(Category::class)
+                    ->find($id);
+
+        if (!$category){
+            //throw $this->createNotFoundException("La catégorie demandée n'existe pas");
+            return $this->render('category/error.html.twig', ['category' => $category,]);
+        }
+
+        return $this->render('category/category.html.twig', ['category' => $category,]);
+    }
+
+    /**
+     * @Route("/admin/addCategory", name="add_Category")
+     */
+    public function addCategory(Request $request): Response {
+
+        $form = $this->createForm(AddCateroryType::class);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $data = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $category = new Category();
+            $category->setName($data['name']);
+
+            $entityManager->persist($category);
+            $entityManager->flush();
+
+            return new Response('La catégorie '.$category->getName() .' a été ajoutée');
+        }
+
+        /*$errors = $validator->validate($category);
+        if (count($errors) > 0) {
+            return new Response((string) $errors, 400);
+        }*/
+
+        return $this->render('category/addCategory.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/updateCategory/{id}", name="update_Category")
+     */
+    public function updateCategory(Request $request, $id): Response {
+
+        $category = $this->getDoctrine()
+                    ->getRepository(Category::class)
+                    ->find($id);
+
+        if(!$category){
+            return $this->render('category/error.html.twig',['error' => 'La categorie n\'existe pas'] );
+        }
+
+        $form = $this->createForm(AddCateroryType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+
+            return $this->redirectToRoute("display_category", [
+                "id" => $category->getId()]);
+        }
+
+        return $this->render('category/addCategory.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+
+    /**
+     * @Route("/admin/deleteCategory/{id}", name="delete_Category")
+     */
+    public function deleteCategory($id): Response {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $category = $entityManager
+                    ->getRepository(Category::class)
+                    ->find($id);
+        
+        if(!$category){
+            return $this->render('category/error.html.twig',['error' => 'La categorie n\'existe pas'] );
+        }
+
+        $entityManager->remove($category);
+        $entityManager->flush();
+
+        return $this->redirectToRoute("all_category");
+    }
+}

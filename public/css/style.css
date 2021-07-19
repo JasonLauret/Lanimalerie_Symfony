@@ -1,0 +1,450 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.bouton {
+    border: none;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    color: rgb(174, 142, 0);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.bouton:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(174, 142, 0);
+}
+/*______________Header_______________*/
+
+.header {
+    height: 23vh;
+}
+
+.login button {
+    margin-right: 2rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    background: rgba(248, 232, 215, 0.37);;
+    border: white;
+    color: rgb(174, 142, 0);
+}
+
+.login button:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(174, 142, 0);
+}
+
+.logo {
+    font-family: 'Allura', cursive;
+    text-decoration: none; 
+    color: rgb(174, 142, 0);
+}
+
+.logo:hover {
+    color: rgb(99, 81, 0);
+}
+
+.facebook {
+    height: 25px;
+    border-radius: 5px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.instagram {
+    height: 25px;
+    margin-right: 1rem;
+}
+
+.twitter {
+    height: 25px;
+    border-radius: 5px;
+}
+
+.facebook:hover, .instagram:hover, .twitter:hover {
+    box-shadow: 5px 5px 5px rgba(174, 142, 0, 0.37);
+}
+
+/*_______________Navigation__________________*/
+
+nav div .nav_haut {
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(174, 142, 0);
+    background: linear-gradient(to top, rgba(174, 142, 0, 0.37) 0%, rgba(174, 142, 0, 0.37) 10%, 
+    transparent 10.01%) no-repeat left bottom / 0 100%;
+    transition: background-size .5s;
+}
+
+.nav_haut:hover {
+    color: rgb(165, 121, 0);
+    background-size: 100% 100%;
+}
+
+.sous_categorie {
+    text-decoration: none;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.sous_categorie:hover {
+    color: rgb(165, 121, 0);
+}
+/*
+.btn-recherche {
+    text-decoration: none;
+    border-radius: 5px;
+    color: rgb(78, 47, 0);
+}
+.btn-recherche:hover {
+    color: rgb(165, 121, 0);
+    background-color: rgba(136, 72, 0, 0.37);
+}
+*/
+/*_____________Produit phares_______________*/
+
+h2 {
+    color: rgb(174, 142, 0);
+}
+
+.div_conteneur {
+    border: solid rgb(218, 178, 0);
+    border-radius: 2rem;
+    
+}
+
+.div_produit {
+    border: solid 1px rgb(174, 142, 0);
+    background: rgb(255, 255, 255);
+    border-radius: 2rem;
+    box-shadow: 5px 5px 5px rgba(174, 142, 0, 0.37);
+    transition: transform 1s;
+}
+
+.div_produit:hover {
+    transform: scale(1.1);
+}
+
+.div_img {
+    border-radius: 2rem;
+}
+
+.btn_produit {
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(174, 142, 0);
+    background: rgb(255, 255, 255);
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.btn_produit:hover {
+    color: white;
+    background: rgb(174, 142, 0);
+}
+
+
+/*________________________Annimaux espace_______________________*/
+
+.bg_section {
+    background-color: rgba(248, 232, 215, 0.37);
+}
+
+.plus_dinfo {
+    text-decoration: none;
+    color: rgb(174, 142, 0);
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.plus_dinfo:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(174, 142, 0);
+}
+
+/*----petit carousel----*/
+
+.card {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: transform .7s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.petit_carousel {
+    width: 100%;
+    max-width: 800px;
+    max-height: 600px;
+    height: 300px;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.37);
+}
+
+#item-1, #item-2, #item-3 {
+  display: none;
+}
+
+#item-1:checked ~ .cards #song-3, #item-2:checked ~ .cards #song-1, #item-3:checked ~ .cards #song-2 {
+    transform: translatex(-40%) scale(.8);
+    opacity: .4;
+    z-index: 0;
+}
+
+#item-1:checked ~ .cards #song-2, #item-2:checked ~ .cards #song-3, #item-3:checked ~ .cards #song-1 {
+    transform: translatex(40%) scale(.8);
+    opacity: .4;
+    z-index: 0;
+}
+
+#item-1:checked ~ .cards #song-1, #item-2:checked ~ .cards #song-2, #item-3:checked ~ .cards #song-3 {
+    transform: translatex(0) scale(1);
+    opacity: 1;
+    z-index: 1;
+}
+
+/*___________________________Conact_______________________________*/
+
+.champ_form {
+    color: rgb(174, 142, 0);
+}
+
+.btn_envoyer {
+    border: none;
+    text-decoration: none;
+    color: rgb(174, 142, 0);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.btn_envoyer:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(174, 142, 0);
+}
+
+/*__________________________Footer_________________________________*/
+
+footer {
+    background-color: rgb(255, 255, 255);
+}
+
+.logo_paypal {
+    width: 10%;
+}
+
+.logo_laposte {
+    width: 15%;
+}
+.mention {
+    text-decoration: none;
+    color: black;
+}
+.mention:hover {
+    color: black;
+}
+
+
+/*_____________Bouton Haut de page_______________*/
+
+#scrollUp {
+    position: fixed;
+    bottom : 10px;
+    right: -200px;
+    opacity: 0.5;
+}
+
+#scrollUp a {
+    text-decoration: none;
+    color: black;
+}
+#scrollUp a:hover {
+    color: rgb(255, 0, 0);
+}
+
+/*____________Page produit___________*/
+
+.card-product {
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    box-shadow: 5px 5px 5px rgba(174, 142, 0, 0.37);
+}
+
+.btn_suivi {
+    text-decoration: none;
+    color: black;
+}
+.btn_suivi:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.cards {
+    text-decoration: none;
+}
+/*____________Page login___________*/
+
+.labelColor {
+    color: rgb(110, 90, 2);
+}
+
+.btn_login_form {
+    text-decoration: none;
+    color: rgb(174, 142, 0);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.btn_login_form:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(174, 142, 0);
+}
+
+.blockInscription {
+    background-color: rgb(240, 239, 239);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+/*Mettre div au centre*/
+.inscrit{
+    min-height: 100%;
+}
+
+/*____________CGV___________*/
+.cgv {
+    text-align: justify;
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.bg_color {
+    background-color: rgb(255, 250, 239);
+}
+
+/*_______Mention légale______*/
+.mentionLegal {
+    font-size: 1em;
+    line-height : 15px;
+}
+
+/*_________Politique_________*/
+.politique {
+    text-align: justify;
+    padding: 10px;
+}
+
+/*________Formulaire contact_______*/
+
+/*---Contour des input---*/
+.form-control:focus {
+    border-color: rgb(110, 90, 2) !important;
+    box-shadow: 0 0 5px rgba(110, 90, 2, 1) !important;
+}
+/*---Point bouton radio---*/
+input[type='radio']:before {
+    content:'';
+    display:block;
+    width:60%;
+    height:60%;
+    margin: 20% auto;
+    border-radius:50%;    
+}
+input[type='radio']:checked:before {
+    background:rgb(110, 90, 2);
+}
+
+/*________Formulaire SAV_______*/
+.formSav {
+    background-color: rgb(255, 0, 0);
+    margin-left: 10px;
+}
+
+/*________Menu déroulant_________*/
+/*
+a {
+    text-decoration: none;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+
+.header li{
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    z-index: 1;
+}
+
+.header li a{
+    display: block;
+    padding: 20px;
+    color: tomato;
+}
+
+.header li:hover a{
+    background-color: cadetblue;
+    color: rgb(255, 2, 2);
+}
+
+.header li:hover .sub_menu{
+    display: block;
+}
+
+.sub_menu {
+    display: none;
+    position: absolute;
+    background-color: cadetblue;
+    width: 200px;
+}
+
+.sub_menu li {
+    display: block;
+}
+
+.sub_menu li a{
+    color: white;
+}
+
+.sub_menu li:hover a {
+    background-color: white;
+    color: cadetblue;
+}
+*/
+/*________Menu déroulant2_________*/
+
+.menuDeroulant {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+header{
+    background-color: rgb(35, 35, 35);
+    width: 100px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+header > a {
+    color: white;
+}

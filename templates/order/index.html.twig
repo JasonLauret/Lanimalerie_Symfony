@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order index{% endblock %}
+
+{% block body %}
+    <h1>Order index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Référence</th>
+                <th>Date</th>
+                <th>Prix HT</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.reference }}</td>
+                <td>{{ order.date ? order.date|date('d/m/Y') : '' }}</td>
+                <td>{{ order.priceHt }} €</td>
+                <td>
+                    <a href="{{ path('order_show', {'id': order.id}) }}">Detail</a>
+                    <a href="{{ path('order_edit', {'id': order.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Nombre de commande: {{ count }} commande{% if count > 1 %}s{% endif %}</h1>
+    {# <h1>Somme de toutes les commandes: {{ sum }} €</h1> #}
+    <a href="{{ path('order_new') }}">Créer une nouvelle commande</a>
+
+{% endblock %}
+
+
+{#  , {"label": "Civilité"}) #}
