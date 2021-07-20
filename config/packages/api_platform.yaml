@@ -1,6 +1,6 @@
 api_platform:
-    title: 'Lanimalerie2'
-    description: 'API du buisiness case animalerie'
+    title: 'Lanimalerie'
+    description: 'API du buisiness Case Lanimalerie'
     version: '1.0.0'
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']

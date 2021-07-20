@@ -6,13 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body class="menuDeroulant">
-<header class="nav" id="navbar">
-    <a href="" title="Alimentation">Alimentation</a>
-    <a href="" title="Niche">Niche</a>
-    <a href="" title="Jouet">Jouet</a>
-    <a href="" title="Soin">Soin</a>
-</header>
+<body>
+<nav class="header" id="navbar">
+    <a class="a" href="" title="Alimentation">Alimentation</a>
+    <a class="a" href="" title="Niche">Niche</a>
+    <div class="dropdown-1">
+        <button class="boutonDropdown">Jouet</button>
+        <div class="content fs-5">
+            <a class="a" href="">Corde</a>
+            <a class="a" href="">Freezbe</a>
+            <a class="a" href="">Balle</a>
+        </div>
+    </div>
+    <a class="a" href="" title="Soin">Soin</a>
+
+    <a class="a icon" onclick="menuBurger()">&#9776</a>
+
+    <script>
+        function menuBurger() {
+            var x = document.getElementById("navbar");
+            if (x.className === "nav") {
+                x.className += " responsive";
+            } else {
+                x.className = "nav";
+            }
+        }
+    </script>
+</nav>
 </body>
 </html>
 

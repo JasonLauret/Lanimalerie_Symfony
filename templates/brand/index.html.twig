@@ -5,12 +5,15 @@
 {% block body %}
     <h1>Brand index</h1>
 
+    
+
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th>Logo</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +21,7 @@
             <tr>
                 <td>{{ brand.id }}</td>
                 <td>{{ brand.name }}</td>
+                <td><img src="{{ asset('upload/' ~ brand.logo) }}" alt="{{ brand.name }}" style="height:100px; width:auto"></td> {# dossier correspond à public/upload #}
                 <td>
                     <a href="{{ path('brand_show', {'id': brand.id}) }}">show</a>
                     <a href="{{ path('brand_edit', {'id': brand.id}) }}">edit</a>
@@ -25,11 +29,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('brand_new') }}">Create new</a>
+    <a href="{{ path('brand_new') }}">Ajouter une marque</a>
 {% endblock %}

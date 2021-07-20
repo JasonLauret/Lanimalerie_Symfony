@@ -1,0 +1,136 @@
+/*_________NavBar________*/
+
+a {
+    list-style: none;
+    text-decoration: none;
+}
+.boutonDropdown{
+    background-color: white;
+    color: rgb(174, 142, 0);
+}
+
+.boutonDropdown:hover{
+    background-color: white;
+}
+
+nav {
+    width: 100%;
+    height: 70px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: row;
+}
+
+nav > a,
+nav button{
+    color: rgb(174, 142, 0);
+    margin: 0 15px;
+    font-size: 1.3em;
+}
+
+nav > a:hover,
+nav button:hover{
+    color: rgb(0, 0, 0);
+    margin: 0 15px;
+    font-size: 1.3em;
+}
+
+nav button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+nav .dropdown-1 {
+    position: relative;
+    height: 100%;
+    display: flex;
+}
+
+nav .dropdown-1 .content {
+    display: none;
+}
+
+nav .dropdown-1:hover .content {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: rgb(223, 223, 223);
+    top: 70px;
+    width: 200%;
+    height: 150px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    color: black;
+}
+
+nav .content a {
+    color: rgb(255, 255, 255);
+    padding: 3px;
+}
+
+nav .content a:hover {
+    color: rgb(255, 255, 255);
+    padding: 7px;
+}
+
+nav .icon {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    nav > a,
+    nav button{
+        display: none;
+    }
+
+    nav .icon {
+        display: block;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        width: 5% !important;
+        top: 20px;
+        padding: 0 !important;
+    }
+
+    nav .responsive > a {
+        padding: 10px 0;
+    }
+
+    nav .responsive > a,
+    nav .responsive .dropdown-1{
+        display: block;
+        width: 100%;
+    }
+
+    nav .responsive > a,
+    nav .responsive button{
+        display: block;
+        padding: 10px 0;
+    }
+
+    nav {
+        flex-direction: column;
+        min-height: 70px;
+        height: 100%;
+        align-items: flex-start;
+    }
+
+    nav .dropdown-1:hover .content {
+        position: relative;
+        width: 100%;
+        top: 0;
+        padding-left: 40px;
+        padding-top: 10px;
+    }
+
+    nav .dropdown-1 .content a:hover{
+        color: white;
+        padding: 5px;
+    }
+}

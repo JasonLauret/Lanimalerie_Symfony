@@ -20,13 +20,11 @@
             {% include 'content/include/nav.html.twig' %}
         {% endblock %}
 
-        {% block body %}
-            
-        {% endblock %}
+        {% block body %}{% endblock %}
 
-        {% block footer %}
-            {% include 'content/include/footer.html.twig' %}
-        {% endblock %}
+        {% include 'content/include/backToTop.html.twig' %}
+        {% include 'content/include/footer.html.twig' %}
+        
 
         {% block javascript %}
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
