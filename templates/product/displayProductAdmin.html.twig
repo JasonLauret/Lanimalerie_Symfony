@@ -5,7 +5,7 @@
 {% block body %}
 <section class="container">
 
-    <h1 class="ms-2">Product</h1>
+    <h1 class="mb-5">Product</h1>
     
     <table class="table">
         <tbody class="structure">
@@ -22,7 +22,7 @@
                 <td>
                     {% if product.category %}
                         {% for category in product.category %}
-                            {{ category.name  }}{% if category.name > 1 %},{% endif %}
+                            {{ category.name }}
                         {% endfor %}
                     {% endif %}
                 </td>

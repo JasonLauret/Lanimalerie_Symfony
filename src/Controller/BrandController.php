@@ -12,11 +12,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-#[Route('/brand')]
+
 class BrandController extends AbstractController
 {
-    #[Route('/', name: 'brand_index', methods: ['GET'])]
+    #[Route('/admin/brand', name: 'brand_index', methods: ['GET'])]
     public function index(BrandRepository $brandRepository): Response
     {
         return $this->render('brand/index.html.twig', [
@@ -24,7 +25,7 @@ class BrandController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'brand_new', methods: ['GET', 'POST'])]
+    #[Route('/admin/new', name: 'brand_new', methods: ['GET', 'POST'])]
     public function new(Request $request, SluggerInterface $slugger): Response
     {
         $brand = new Brand();
@@ -75,8 +76,8 @@ class BrandController extends AbstractController
         ]);
     }
 
-
-    #[Route('/{id}', name: 'brand_show', methods: ['GET'])]
+    #[IsGranted("ROLE_ADMIN")]
+    #[Route('/admin/brand/{id}', name: 'brand_show', methods: ['GET'])]
     public function show(Brand $brand): Response
     {
         return $this->render('brand/show.html.twig', [
@@ -84,7 +85,7 @@ class BrandController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'brand_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/brand/{id}/edit', name: 'brand_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Brand $brand, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(BrandType::class, $brand);
@@ -123,7 +124,7 @@ class BrandController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'brand_delete', methods: ['POST'])]
+    #[Route('/admin/brand/{id}', name: 'brand_delete', methods: ['POST'])]
     public function delete(Request $request, Brand $brand): Response
     {
         if ($this->isCsrfTokenValid('delete'.$brand->getId(), $request->request->get('_token'))) {

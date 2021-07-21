@@ -3,17 +3,10 @@
 {% block title %}Modifier la marque{% endblock %}
 
 {% block body %}
-    <h1>Modification de la marque</h1>
-
+    <h1 class="text-center mb-4 mt-3">Modifier la marque</h1>
     {{ include('brand/_form.html.twig', {'button_label': 'Modifier'}) }}
-    
-    
-
-    <div class="d-flex">
-
-        <a class="lien ms-2" href="{{ path('brand_index') }}">Revenir à la liste</a>
-
+    <div class="d-flex justify-content-center">
+        <a class="lien" href="{{ path('brand_index') }}">Revenir à la liste</a>
         {{ include('brand/_delete_form.html.twig') }}
-
     </div>
 {% endblock %}

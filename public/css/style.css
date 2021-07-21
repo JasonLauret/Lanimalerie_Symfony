@@ -431,34 +431,26 @@ input[type='radio']:checked:before {
     margin-right: 2rem;
     padding: 5px;
     border-radius: 5px;
-    background-color: rgb(162, 162, 162);
-    color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    color: rgb(174, 142, 0);
 }
 
 .lien:hover {
-    color: rgb(162, 162, 162);
-    background-color: rgb(255, 255, 255);
+    color: rgb(255, 253, 243);
+    background-color: rgb(174, 142, 0);
 }
 
-.structure {
-    border: 1px solid rgb(56, 56, 56);
-    padding: 5px;
-}
 
 .lien_2 {
-    margin: 10px;
     border: none;
+    margin-right: 2rem;
     padding: 5px;
     border-radius: 5px;
-    background-color: rgb(162, 162, 162);
-    color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    color: rgb(174, 142, 0);
 }
 
 .lien_2:hover {
-    color: rgb(162, 162, 162);
-    background-color: rgb(255, 255, 255);
-}
-
-.table {
-    border: 1px solid black;
+    color: rgb(255, 253, 243);
+    background-color: rgb(174, 142, 0);
 }

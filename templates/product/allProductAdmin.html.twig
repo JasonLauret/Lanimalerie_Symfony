@@ -3,10 +3,9 @@
 {% block title %}Liste des produit{% endblock %}
 
 {% block body %}
-    
     <section class="container">
         <h1>Liste des produits</h1>
-        <a  class="lien" href="{{ path('add_productAdmin') }}">Ajouter un produit</a>
+        <a class="lien" href="{{ path('add_productAdmin') }}">Ajouter un produit</a>
         <table class="table mt-3">
             <thead>
                 <tr>
@@ -22,21 +21,17 @@
                 <tr class="structure">
                     <td>{{ product.id }}</td>
                     <td>{{ product.name }}</td>
-                    
                     <td>
                         {% if product.brand.name %}
                             {{ product.brand.name }}
                         {% endif %}
                     </td>
-
                     <td><img src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}" style="height:100px; width:auto"></td>
                     <td>
                         <a class="lien" href="{{ path('display_productAdmin', {'id':product.id}) }}">Détail</a>
                         <a class="lien" href="{{ path('update_product', {'id':product.id}) }}) }}">Modifier</a>
-                        <a class="lien" href="{{ path('delete_product', {'id':product.id}) }}">Supprimer</a> 
                     </td>
                 </tr>
-            
             {% else %}
                 <tr>
                     <td colspan="6">Aucun produit trouvé</td>

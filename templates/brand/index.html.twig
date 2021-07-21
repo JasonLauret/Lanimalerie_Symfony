@@ -1,35 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Brand index{% endblock %}
+{% block title %}Marques{% endblock %}
 
 {% block body %}
-    <h1 class="ms-3">Marque</h1>
-    <a class="lien ms-3" href="{{ path('brand_new') }}">Ajouter une marque</a>
-    <table class="table mt-3">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Logo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for brand in brands %}
-            <tr class="structure">
-                <td>{{ brand.id }}</td>
-                <td>{{ brand.name }}</td>
-                <td><img src="{{ asset('upload/' ~ brand.logo) }}" alt="{{ brand.name }}" style="height:100px; width:auto"></td>
-                <td>
-                    <a class="lien" href="{{ path('brand_show', {'id': brand.id}) }}">Detail</a>
-                    <a class="lien" href="{{ path('brand_edit', {'id': brand.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Aucune marque trouvé</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-{% endblock %}
+    
+    <section class="container">
+        <h1>Marque</h1>
+        <a class="lien" href="{{ path('brand_new') }}">Ajouter une marque</a>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Logo</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for brand in brands %}
+                <tr class="structure">
+                    <td>{{ brand.id }}</td>
+                    <td>{{ brand.name }}</td>
+                    <td><img src="{{ asset('upload/' ~ brand.logo) }}" alt="{{ brand.name }}" style="height:100px; width:auto"></td>
+                    <td>
+                        <a class="lien" href="{{ path('brand_show', {'id': brand.id}) }}">Détail</a>
+                        <a class="lien" href="{{ path('brand_edit', {'id': brand.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucune marque trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% endblock body %}
