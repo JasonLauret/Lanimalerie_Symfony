@@ -425,59 +425,40 @@ input[type='radio']:checked:before {
     margin-left: 10px;
 }
 
-/*________Menu déroulant_________*/
-/*
-a {
-    text-decoration: none;
+/*____Autre page____*/
+
+.lien {
+    margin-right: 2rem;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(162, 162, 162);
+    color: rgb(255, 255, 255);
 }
 
-.wrapper {
-    margin: 0 auto;
-    width: 1000px;
+.lien:hover {
+    color: rgb(162, 162, 162);
+    background-color: rgb(255, 255, 255);
 }
 
-
-.header li{
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
-    z-index: 1;
+.structure {
+    border: 1px solid rgb(56, 56, 56);
+    padding: 5px;
 }
 
-.header li a{
-    display: block;
-    padding: 20px;
-    color: tomato;
+.lien_2 {
+    margin: 10px;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(162, 162, 162);
+    color: rgb(255, 255, 255);
 }
 
-.header li:hover a{
-    background-color: cadetblue;
-    color: rgb(255, 2, 2);
+.lien_2:hover {
+    color: rgb(162, 162, 162);
+    background-color: rgb(255, 255, 255);
 }
 
-.header li:hover .sub_menu{
-    display: block;
+.table {
+    border: 1px solid black;
 }
-
-.sub_menu {
-    display: none;
-    position: absolute;
-    background-color: cadetblue;
-    width: 200px;
-}
-
-.sub_menu li {
-    display: block;
-}
-
-.sub_menu li a{
-    color: white;
-}
-
-.sub_menu li:hover a {
-    background-color: white;
-    color: cadetblue;
-}
-*/
-/*________Menu déroulant2_________*/
-

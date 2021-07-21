@@ -3,29 +3,46 @@
 {% block title %}Liste des produit{% endblock %}
 
 {% block body %}
-    <a href="{{ path('add_productAdmin') }}"><button class="bouton">Ajouter un produit</button></a>
     
-    <section class="container pt-3">
-        <div class="row">
-        {% for product in products %}
-        <div class="col-12 col-md-4 col-lg-3 g-1">
-            <a href="{{ path('display_product', {'id':product.id}) }}" class="text-decoration-none ">
-                <div class="border border-dark rounded-3 text-center">
-                    <div>
-                        <img class="rounded-pill w-75 h-75" src="{{ product.picture }}" alt="">
-                    </div>
-                    <div>
-                        <h1 class="fs-2 fw-bold">{{ product.name }}</h1>
-                        <p>{{ product.price }}</p>
-                    </div>
-                    <div>
-                        <a href="{{ path('delete_product', {'id':product.id}) }}"><button class="bouton">Supprimer</button></a>
-                        <a href="{{ path('update_product', {'id':product.id}) }}) }}"><button class="bouton">Modifier</button></a>
-                    </div>
-                </div>
-            </a>
-        </div>
-        {% endfor %}
-        </div>
+    <section class="container">
+        <h1>Liste des produits</h1>
+        <a  class="lien" href="{{ path('add_productAdmin') }}">Ajouter un produit</a>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Marque</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr class="structure">
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    
+                    <td>
+                        {% if product.brand.name %}
+                            {{ product.brand.name }}
+                        {% endif %}
+                    </td>
+
+                    <td><img src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}" style="height:100px; width:auto"></td>
+                    <td>
+                        <a class="lien" href="{{ path('display_productAdmin', {'id':product.id}) }}">Détail</a>
+                        <a class="lien" href="{{ path('update_product', {'id':product.id}) }}) }}">Modifier</a>
+                        <a class="lien" href="{{ path('delete_product', {'id':product.id}) }}">Supprimer</a> 
+                    </td>
+                </tr>
+            
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucun produit trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </section>
 {% endblock body %}

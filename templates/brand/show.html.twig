@@ -3,10 +3,11 @@
 {% block title %}Brand{% endblock %}
 
 {% block body %}
-    <h1>Brand</h1>
 
+    <h1 class="ms-2">Brand</h1>
+    
     <table class="table">
-        <tbody>
+        <tbody class="structure">
             <tr>
                 <th>Id</th>
                 <td>{{ brand.id }}</td>
@@ -18,15 +19,18 @@
             {% if brand.logo %}
             <tr>
                 <th>Logo</th>
-                <td><img src="{{ asset('upload/' ~ brand.logo) }}" alt="{{ brand.name }}"></td>
+                <td><img src="{{ asset('upload/' ~ brand.logo) }}" alt="{{ brand.name }}" style="height:150px; width:auto"></td>
             </tr>
             {% endif %}
         </tbody>
     </table>
 
-    <a href="{{ path('brand_index') }}">Revenir à la liste</a>
+    <div class="d-flex mb-4">
+        <a class="lien ms-2" href="{{ path('brand_index') }}">Revenir à la liste</a>
+        
+        <a class="lien" href="{{ path('brand_edit', {'id': brand.id}) }}">Modifier</a>
+        
+        {{ include('brand/_delete_form.html.twig') }}
+    </div>
 
-    <a href="{{ path('brand_edit', {'id': brand.id}) }}">Modifier</a>
-
-    {{ include('brand/_delete_form.html.twig') }}
 {% endblock %}

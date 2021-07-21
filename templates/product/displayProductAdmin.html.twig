@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail produit{% endblock %}
+
+{% block body %}
+<section class="container">
+
+    <h1 class="ms-2">Product</h1>
+    
+    <table class="table">
+        <tbody class="structure">
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>
+                    {% if product.category %}
+                        {% for category in product.category %}
+                            {{ category.name  }}{% if category.name > 1 %},{% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ product.price }}</td>
+            </tr>
+            {% if product.picture %}
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}" style="height:150px; width:auto"></td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center mb-4 border-none">
+        <a class="lien ms-2" href="{{ path('all_productAdmin') }}">Revenir à la liste</a>
+        <a class="lien" href="{{ path('update_product', {'id':product.id}) }}) }}">Modifier</a>
+        <a class="lien" href="{{ path('delete_product', {'id':product.id}) }}">Supprimer</a>
+    </div>
+</section>
+{% endblock %}

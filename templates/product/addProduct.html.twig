@@ -8,7 +8,13 @@
         {{ form_row(form.description) }}
         {{ form_row(form.price) }}
         {{ form_row(form.brand, {"label": "Marque"}) }}
-        {{ form_row(form.category, {"label": "Catégorie"}) }}
-        {{ form_row(form.valider, {"attr": {'class':'m-auto btn_envoyer'}}) }}
+        {{ form_row(form.category, {"label": "Catégorie:"}) }}
+        {{ form_row(form.picture, {"label": "Image"}) }}
+        <div class="d-flex">
+            {{ form_row(form.valider, {"attr": {'class':'m-auto lien_2'}}) }}
+            <a class="lien ms-2" href="{{ path('all_productAdmin') }}">Revenir à la liste</a>
+        </div>
     {{ form_end(form, {'render_rest': true}) }}
+
+    
 {% endblock %}

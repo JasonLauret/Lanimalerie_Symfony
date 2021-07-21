@@ -10,6 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
+
 
 class AddProductType extends AbstractType
 {
@@ -35,6 +38,24 @@ class AddProductType extends AbstractType
                 'multiple' => true
                 )
             )
+            ->add('picture', FileType::class, [
+                'label' => 'Picture',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/png', 
+                            'image/jpeg', 
+                            'image/webp',
+                        ],
+                        'mimeTypesMessage' => 'Merci de charger une image valide',
+                    ])
+                ]
+
+            ])
+            
             ->add("valider", SubmitType::class)
         ;
     }

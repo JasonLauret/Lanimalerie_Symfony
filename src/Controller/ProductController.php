@@ -12,7 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
+
 
 class ProductController extends AbstractController
 {
@@ -31,7 +34,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/admin/productAdmin", name="all_productAdmin")
+     * @Route("/admin/product", name="all_productAdmin")
      */
     public function allProductAdmin()
     {
@@ -42,6 +45,23 @@ class ProductController extends AbstractController
         return $this->render('product/allProductAdmin.html.twig', [
             'products' => $product,
         ]);
+    }
+
+    /**
+     * @Route("/admin/product/{id}", name="display_productAdmin")
+     */
+    public function displayProductAdmin($id)
+    {
+        $product = $this->getDoctrine()
+                    ->getRepository(Product::class)
+                    ->find($id);
+
+        if (!$product){
+            //throw $this->createNotFoundException("Le produit demandée n'existe pas");
+            return $this->render('product/error.html.twig', ['product' => $product,]);
+        }
+
+        return $this->render('product/displayProductAdmin.html.twig', ['product' => $product,]);
     }
 
     /**
@@ -79,18 +99,40 @@ class ProductController extends AbstractController
     /**
      * @Route("/admin/addProduct", name="add_productAdmin")
      */
-    public function addProduct(Request $request): Response { //La function est bien pour les produit et non pas pour les categorie
+    public function addProduct(Request $request, SluggerInterface $slugger): Response { //La function est bien pour les produit et non pas pour les categorie
         
         $form = $this->createForm(AddProductType::class);
         $form->handleRequest($request);
+        $product = new Product();
         
         if ($form->isSubmitted() && $form->isValid()){
+
+            $pictureFile = $form->get('picture')->getData();
+
+            if($pictureFile) {
+                $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                $safeFilename = $slugger->slug($originalFilename);
+
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
+
+                try{
+                    $pictureFile->move($this->getParameter('upload_directory'), $newFilename);
+                }
+                catch (FileException $e) {
+                    var_dump($e);
+                    die('Erreur' );
+                }
+
+                $product->setPicture($newFilename);
+
+            }
 
             $data = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
 
-            $product = new Product();
+            
             $product->setName($data['name']);
             $product->setDescription($data['description']);
             $product->setPrice($data['price']);
@@ -103,7 +145,7 @@ class ProductController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-            return $this->redirectToRoute("all_product");
+            return $this->redirectToRoute("all_productAdmin");
             //return new Response('Le produit a été ajoutée '.$product->getName());
         }
         
@@ -115,7 +157,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/admin/updateProduct/{id}", name="update_product")
      */
-    public function updateProduct(Request $request, $id): Response {
+    public function updateProduct(Request $request, $id, SluggerInterface $slugger): Response {
 
         $product = $this->getDoctrine()
                 ->getRepository(Product::class)
@@ -129,11 +171,30 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
+            $pictureFile = $form->get('picture')->getData();
 
+            if($pictureFile) {
+                $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                $safeFilename = $slugger->slug($originalFilename);
+
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
+
+                try{
+                    $pictureFile->move($this->getParameter('upload_directory'), $newFilename);
+                }
+                catch (FileException $e) {
+                    var_dump($e);
+                    die('Erreur' );
+                }
+
+                $product->setPicture($newFilename);
+
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
             
-            return $this->redirectToRoute("display_product", [
+            return $this->redirectToRoute("display_productAdmin", [
                 "id" => $product->getId()]);
         }
 
@@ -159,6 +220,6 @@ class ProductController extends AbstractController
         $entityManager->remove($product);
         $entityManager->flush();
 
-        return $this->redirectToRoute("all_product");
+        return $this->redirectToRoute("all_productAdmin");
     }
 }
