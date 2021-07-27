@@ -1,11 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Brand{% endblock %}
+{% block title %}Nouvelle marque{% endblock %}
 
 {% block body %}
-    <h1>Create new Brand</h1>
-
-    {{ include('brand/_form.html.twig') }}
-
-    <a href="{{ path('brand_index') }}">back to list</a>
+<section>
+    <div class="container mt-3">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="col-6">
+                <h1>Créer une nouvelle marque</h1>
+                    {{ form_start(form) }}
+                        <div>
+                            {{ form_row(form.name, {"attr": {'class':'form-control mb-4'}}) }}
+                        </div>
+                        <div>
+                            {{ form_row(form.logo, {"attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="mt-2 text-center">
+                            <a class="lien p-2 me-2" href="{{ path('brand_index') }}">Revenir à la liste</a>
+                            <button class="lien_2">{{ button_label|default('Sauvegarder') }}</button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

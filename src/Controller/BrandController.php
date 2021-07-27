@@ -62,7 +62,6 @@ class BrandController extends AbstractController
                 $brand->setLogo($newFilename);
 
             }
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($brand);
             $entityManager->flush();

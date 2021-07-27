@@ -1,9 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    
+<section class="container mt-3">
     <h1>Liste des catégories</h1>
-    {% for category in categorys %}
-        <li>{{ category.name }}</li>
-    {% endfor %}
+    <a class="lien" href="{{ path('add_category') }}">Ajouter une catégorie</a>
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categorys %}
+            <tr class="structure">
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.description }}</td>
+                <td>
+                    <a class="lien" href="{{ path('display_category', {'id':category.id}) }}">Détail</a>
+                    <a class="lien" href="{{ path('update_category', {'id':category.id}) }}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune marque trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
 
 {% endblock body %}

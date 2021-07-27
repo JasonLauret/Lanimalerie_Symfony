@@ -72,7 +72,13 @@ a {
     box-shadow: 5px 5px 5px rgba(174, 142, 0, 0.37);
 }
 
-/*____Bouton dropdown____*/
+.bordure {
+    background-color: rgb(255, 249, 240);
+    border-top: 1px solid rgb(175, 138, 59, 0.2);
+    border-bottom: 1px solid rgb(175, 138, 59, 0.2);
+}
+
+/*----Bouton dropdown----*/
 
 .right-menu {
     position: relative;
@@ -118,6 +124,7 @@ a {
 
 /*_______________Navigation__________________*/
 
+
 nav div .nav_haut {
     text-decoration: none;
     font-size: 20px;
@@ -141,6 +148,7 @@ nav div .nav_haut {
 .sous_categorie:hover {
     color: rgb(165, 121, 0);
 }
+
 /*
 .btn-recherche {
     text-decoration: none;
@@ -428,7 +436,6 @@ input[type='radio']:checked:before {
 /*____Autre page____*/
 
 .lien {
-    margin-right: 2rem;
     padding: 5px;
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
@@ -442,9 +449,8 @@ input[type='radio']:checked:before {
 
 
 .lien_2 {
-    border: none;
-    margin-right: 2rem;
     padding: 5px;
+    border: none;
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
     color: rgb(174, 142, 0);

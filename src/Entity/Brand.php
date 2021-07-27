@@ -25,15 +25,16 @@ class Brand
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="brand")
-     */
-    private $products;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $logo;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="brand")
+     */
+    private $products;
+
+    
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -52,6 +53,18 @@ class Brand
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?string $logo): self
+    {
+        $this->logo = $logo;
 
         return $this;
     }
@@ -82,18 +95,6 @@ class Brand
                 $product->setBrand(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getLogo(): ?string
-    {
-        return $this->logo;
-    }
-
-    public function setLogo(?string $logo): self
-    {
-        $this->logo = $logo;
 
         return $this;
     }

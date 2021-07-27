@@ -3,18 +3,39 @@
 {% block title %}Nous contacter{% endblock %}
 
 {% block body %}
-    {{ form_start(form) }}
-        {{ form_row(form.name) }}
-        {{ form_row(form.description) }}
-        {{ form_row(form.price) }}
-        {{ form_row(form.brand, {"label": "Marque"}) }}
-        {{ form_row(form.category, {"label": "Catégorie:"}) }}
-        {{ form_row(form.picture, {"label": "Image"}) }}
-        <div class="d-flex">
-            {{ form_row(form.valider, {"attr": {'class':'m-auto lien_2'}}) }}
-            <a class="lien ms-2" href="{{ path('all_productAdmin') }}">Revenir à la liste</a>
-        </div>
-    {{ form_end(form, {'render_rest': true}) }}
 
-    
+<section>
+    <div class="container mt-3">
+        {{ form_start(form) }}
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="col-6">
+                    <h1 class="pb-2">Ajouter un produit</h1>
+                    <div class="pb-3">
+                        {{ form_row(form.name, {"label": "Nom", "attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="pb-3">
+                        {{ form_row(form.description, {"label": "Description", "attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="pb-3">
+                        {{ form_row(form.price, {"label": "Prix", "attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="pb-3">
+                        {{ form_row(form.brand, {"label": "Marque", "attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="pb-3">
+                        {{ form_row(form.category, {"label": "Catégorie"}) }}
+                    </div>
+                    <div class="pb-3">
+                        {{ form_row(form.picture, {"label": "Image", "attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a class="lien me-2" href="{{ path('all_productAdmin') }}">Revenir à la liste</a>
+                        {{ form_row(form.valider, {"attr": {'class':'lien_2'}}) }}
+                    </div>
+                </div>
+            </div>
+        {{ form_end(form, {'render_rest': true}) }}
+    </div>
+</section>
+
 {% endblock %}

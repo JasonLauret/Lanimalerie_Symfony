@@ -1,11 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nous contacter{% endblock %}
+{% block title %}Ajouter un produit{% endblock %}
 
 {% block body %}
+
+<div class="container">
     {{ form_start(form) }}
-        {{ form_row(form.name) }}
-        {{ form_row(form.description) }}
-        {{ form_row(form.valider, {"attr": {'class':'m-auto btn_envoyer'}}) }}
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="col-6">
+                <h1 class="py-3">Ajouter une categorie</h1>
+                <div>
+                    {{ form_row(form.name, {"label": "Nom", "attr": {'class':'form-control'}}) }}
+                </div>
+                <div class="pt-3">
+                    {{ form_row(form.description, {"label": "Description", "attr": {'class':'form-control'}}) }}
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <a class="lien me-2" href="{{ path('all_category') }}">Retour</a>
+                    {{ form_row(form.valider, {"attr": {'class':'lien_2'}}) }}
+                </div>
+            </div>
+        </div>
     {{ form_end(form, {'render_rest': true}) }}
+</div>
+
 {% endblock %}

@@ -52,12 +52,6 @@ class Product
     private $picture;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="products")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $brand;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="products")
      */
     private $category;
@@ -66,6 +60,11 @@ class Product
      * @ORM\OneToMany(targetEntity=OrderProduct::class, mappedBy="product", orphanRemoval=true)
      */
     private $orderProducts;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="products")
+     */
+    private $brand;
 
 
     public function __construct()
@@ -151,18 +150,6 @@ class Product
         return $this;
     }
 
-    public function getBrand(): ?brand
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(?brand $brand): self
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Category[]
      */
@@ -216,4 +203,17 @@ class Product
 
         return $this;
     }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brand $brand): self
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
 }

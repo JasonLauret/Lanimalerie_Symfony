@@ -15,9 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/category", name="all_category")
+     * @Route("/admin/categoryAdmin", name="all_category")
      */
-    public function allCategory()
+    public function allCategoryAdmin()
     {
         $category = $this->getDoctrine()
                     ->getRepository(Category::class)
@@ -29,21 +29,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/admin/categoryAdmin", name="all_categoryAdmin")
-     */
-    public function allCategoryAdmin()
-    {
-        $category = $this->getDoctrine()
-                    ->getRepository(Category::class)
-                    ->findAll();
-
-        return $this->render('category/allCategoryAdmin.html.twig', [
-            'categorys' => $category,
-        ]);
-    }
-
-    /**
-     * @Route("/category/{id}", name="display_category")
+     * @Route("/admin/category/{id}", name="display_category")
      */
     public function displayCategory($id)
     {
@@ -56,11 +42,11 @@ class CategoryController extends AbstractController
             return $this->render('category/error.html.twig', ['category' => $category,]);
         }
 
-        return $this->render('category/category.html.twig', ['category' => $category,]);
+        return $this->render('category/dislplayCategory.html.twig', ['category' => $category,]);
     }
 
     /**
-     * @Route("/admin/addCategory", name="add_Category")
+     * @Route("/admin/addCategory", name="add_category")
      */
     public function addCategory(Request $request): Response {
 
@@ -79,7 +65,7 @@ class CategoryController extends AbstractController
             $entityManager->persist($category);
             $entityManager->flush();
 
-            return new Response('La catégorie '.$category->getName() .' a été ajoutée');
+            return $this->redirectToRoute("all_category");
         }
 
         /*$errors = $validator->validate($category);
@@ -93,7 +79,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/admin/updateCategory/{id}", name="update_Category")
+     * @Route("/admin/updateCategory/{id}", name="update_category")
      */
     public function updateCategory(Request $request, $id): Response {
 
@@ -124,7 +110,7 @@ class CategoryController extends AbstractController
 
 
     /**
-     * @Route("/admin/deleteCategory/{id}", name="delete_Category")
+     * @Route("/admin/deleteCategory/{id}", name="delete_category")
      */
     public function deleteCategory($id): Response {
 

@@ -12,4 +12,7 @@
 -Organiser les redirections des routes coté Admin (Pas terminer)
 
 21/07/2021
--Dans le header organiser bouton mon compte et panier quand on est connecter
+-Dans le header organiser bouton panier et mon compte quand on est connecter en tant que user
+
+27/07/2021
+-La description quand on ajoute une catégorie ne marche pas

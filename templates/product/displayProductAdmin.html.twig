@@ -3,10 +3,8 @@
 {% block title %}Détail produit{% endblock %}
 
 {% block body %}
-<section class="container">
-
-    <h1 class="mb-5">Product</h1>
-    
+<section class="container mt-3">
+    <h1 class="mb-2">Product</h1>
     <table class="table">
         <tbody class="structure">
             <tr>
@@ -16,6 +14,14 @@
             <tr>
                 <th>Name</th>
                 <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>
+                    {% if product.brand.name %}
+                        {{ product.brand.name }}
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <th>Catégorie</th>
@@ -45,8 +51,8 @@
     </table>
 
     <div class="d-flex justify-content-center mb-4 border-none">
-        <a class="lien ms-2" href="{{ path('all_productAdmin') }}">Revenir à la liste</a>
-        <a class="lien" href="{{ path('update_product', {'id':product.id}) }}) }}">Modifier</a>
+        <a class="lien" href="{{ path('all_productAdmin') }}">Revenir à la liste</a>
+        <a class="lien mx-3" href="{{ path('update_product', {'id':product.id}) }}) }}">Modifier</a>
         <a class="lien" href="{{ path('delete_product', {'id':product.id}) }}">Supprimer</a>
     </div>
 </section>

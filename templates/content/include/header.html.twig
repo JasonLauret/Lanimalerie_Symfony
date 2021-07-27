@@ -1,24 +1,27 @@
 <section class="header">
-    <div class="container-fluid">
+    <div class="container-fluid pb-3 pt-3">
         <div class="row">
             <!--___________réseaux sociaux___________-->
-            <div class="d-flex justify-content-between pt-2">
-                <div class="col-4 col-md-3 d-none d-md-block pt-1">
-                    <a href="https://www.facebook.com"><img class="facebook" src="{{ asset('img/logo/logo_facebook.png') }}" alt="logo facebook"></a>
-                    <a href="https://www.instagram.com"><img class="instagram" src="{{ asset('img/logo/logo_instagram.jpg') }}" alt="logo instagram"></a>
-                    <a href="https://www.twitter.com"><img class="twitter" src="{{ asset('img/logo/logo_twitter.png') }}" alt="logo twitter"></a>
-                </div>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <div class="col-12 d-flex justify-content-between col-md-6 justify-content-md-end">
-                        <div class="d-flex text-end mt-2 d-none d-md-block">
-                            <p class="m-0"><span class="fw-bold">Bonjour {{ app.user.firstName }}</span>. Vous ètes connecter en tant qu'Admin.</p>
-                        </div>
-                        <div class="right-menu ms-5">
-                            <button class="menu-button fs-5 ms-2 m-0"><i class="bi bi-gear"></i>Gestion</button>
+            <div class="col-md-4 d-none d-md-block">
+                <a href="https://www.facebook.com"><img class="facebook" src="{{ asset('img/logo/logo_facebook.png') }}" alt="logo facebook"></a>
+                <a href="https://www.instagram.com"><img class="instagram" src="{{ asset('img/logo/logo_instagram.jpg') }}" alt="logo instagram"></a>
+                <a href="https://www.twitter.com"><img class="twitter" src="{{ asset('img/logo/logo_twitter.png') }}" alt="logo twitter"></a>
+            </div>
+            
+            <!--______Mon compte, mon panier, gestion______-->
+            {% if is_granted('ROLE_ADMIN') %}
+            <div class="pt-1 col-12 col-md-8">
+                <div class="d-flex flex-column align-items-center align-items-md-end">
+                    <div>
+                        <p class="m-0"><span class="fw-bold">Bonjour {{ app.user.firstName }}</span>. Vous ètes connecter en tant qu'Admin.</p>
+                    </div>
+                    <div class="d-flex">
+                        <div class="right-menu">
+                            <button class="menu-button fs-5 ms-2 m-0"><i class="pe-2 bi bi-gear"></i>Gestion</button>
                             <div class="dropdown-menu">
                                 <a class="" href="{{ path('brand_index') }}">Marques</a>
                                 <a class="" href="{{ path('all_productAdmin') }}">Produits</a>
-                                <a class="" href="{{ path('all_categoryAdmin') }}">Categories</a>
+                                <a class="" href="{{ path('all_category') }}">Catégories</a>
                                 <a class="" href="">Sous-catégorie</a>
                             </div>
                         </div>
@@ -27,7 +30,7 @@
                                 <a href=""><button class="menu fs-5 ms-2 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button></a>
                             </div>
                             <div class="right-menu">
-                                <button class="menu-button fs-5 ms-2 m-0"><i class="bi bi-gear"></i>Mon compte</button>
+                                <button class="menu-button fs-5 ms-2 m-0"><i class="pe-2 bi bi-gear"></i>Mon compte</button>
                                 <div class="dropdown-menu">
                                     <a class="" href="{{ path('app_setting') }}"><i class="bi bi-gear"></i>Paramètre</a>
                                     <a class="" href="{{ path('app_logout') }}"><i class="bi bi-door-open"></i>Deconnecter</a>
@@ -35,102 +38,40 @@
                             </div> 
                         </div>
                     </div>
-                {% elseif app.user %}
-                    <div class="col-12 d-flex justify-content-between col-md-6 justify-content-md-end">
-                        <div class="text-end mt-2 d-none d-md-block">
-                            Bonjour {{ app.user.firstName }}
-                        </div>
-                        <div class="d-flex">
-                            <div>
-                                <a href=""><button class="menu fs-5 ms-5 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button></a>
-                            </div>
-                            <div class="right-menu">
-                                <button class="menu-button fs-5 ms-2 m-0"><i class="bi bi-gear"></i>Mon compte</button>
-                                <div class="dropdown-menu">
-                                    <a class="" href="{{ path('app_setting') }}"><i class="bi bi-gear"></i>Paramètre</a>
-                                    <a class="" href="{{ path('app_logout') }}"><i class="bi bi-door-open"></i>Deconnecter</a>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="col-12 d-block d-md-none">
-                        Bonjour {{ app.user.firstName }}
-                    </div>
-                {% else %}
-                    <div class="login col-12 col-md-6 d-flex justify-content-between justify-content-md-end">
-                        <a href="{{ path('app_login') }}"><button class="fs-5 m-0"><i class="pe-2 bi bi-person-fill"></i>Me connecter</button></a>
-                        <a {% if app.user %}href=""{% else %}href="{{ path('app_login') }}"{% endif %}>
-                            <button class="fs-5 ms-2 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button>
-                        </a>
-                    </div>
-                {% endif %}
+                </div>
             </div>
+            {% elseif app.user %}
+            <div class="col-12 col-md-8 d-flex justify-content-between justify-content-md-end">
+                <div class="d-none d-md-block">
+                    <p class="m-0 mt-2"><span class="fw-bold">Bonjour {{ app.user.firstName }}</span></p>
+                </div>
+                <div class="d-flex">
+                    <div>
+                        <a href=""><button class="menu fs-5 ms-3 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button></a>
+                    </div>
+                    <div class="right-menu">
+                        <button class="menu-button fs-5 ms-2 m-0"><i class="pe-2 bi bi-gear"></i>Mon compte</button>
+                        <div class="dropdown-menu">
+                            <a href="{{ path('app_setting') }}"><i class="bi bi-gear"></i>Paramètre</a>
+                            <a href="{{ path('app_logout') }}"><i class="bi bi-door-open"></i>Deconnecter</a>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12 col-md-8 d-flex justify-content-between justify-content-md-end">
+                <a {% if app.user %}href=""{% else %}href="{{ path('app_login') }}"{% endif %}>
+                    <button class="menu fs-5 ms-md-3 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button>
+                </a>
+                <a href="{{ path('app_login') }}"><button class="menu fs-5 m-0 ms-2"><i class="pe-2 bi bi-person-fill"></i>Me connecter</button></a>
+                
+            </div>
+            {% endif %}
         </div>
-            <!--_____________Logo________________-->
     </div>
-    <div id="retour_accueil" class="logo col-12 d-flex justify-content-center w-100">
+    <!--_____________Logo________________-->
+    <div id="retour_accueil" class="bordure logo col-12 d-flex justify-content-center w-100">
         <a href="{{ path('app_home') }}"><img class="w-75" src="{{ asset('img/logo/logo-chatChien.png') }}"></a>
         <a class="logo d-flex flex-column justify-content-center" href="{{ path('app_home') }}"><h2 class="m-0 fs-sm-3 fs-md-1">La Nîme'alerie</h2></a>
     </div>
 </section>
-{#
-            <!--______Mon compte, mon panier______-->
-                {% if is_granted('ROLE_ADMIN') %}
-                    <div class="col-12 d-flex justify-content-between col-md-6 justify-content-md-end">
-                        <div class="text-end mt-2 d-none d-md-block">
-                            <h5>Bonjour {{ app.user.firstName }}</h5>
-                        </div>
-                        <div class="right-menu ms-5">
-                            <button class="menu-button fs-5 ms-2 m-0"><i class="bi bi-gear"></i>Gestion</button>
-                            <div class="dropdown-menu">
-                                <a class="" href="{{ path('app_logout') }}">Gestion des marques</a>
-                                <a class="" href="{{ path('app_setting') }}">Gestion des produits</a>
-                                <a class="" href="{{ path('app_logout') }}">Gestion des categories</a>
-                                <a class="" href="{{ path('app_logout') }}">Gestion des sous-catégorie</a>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <div>
-                                <a href=""><button class="menu fs-5 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button></a>
-                            </div>
-                            <div class="right-menu">
-                                <button class="menu-button fs-5 ms-2 m-0"><i class="bi bi-gear"></i>Mon compte</button>
-                                <div class="dropdown-menu">
-                                    <a class="" href="{{ path('app_setting') }}"><i class="bi bi-gear"></i>Paramètre</a>
-                                    <a class="" href="{{ path('app_logout') }}"><i class="bi bi-door-open"></i>Deconnecter</a>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="col-12 d-block d-md-none">
-                        Bonjour {{ app.user.firstName }}
-                    </div>
-                {% elseif app.user %}
-                    <div class="col-12 d-flex justify-content-between col-md-6 justify-content-md-end">
-                        <div class="text-end mt-2 d-none d-md-block">
-                            Bonjour {{ app.user.firstName }}
-                        </div>
-                        <div class="d-flex">
-                            <div>
-                                <a href=""><button class="menu fs-5 ms-5 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button></a>
-                            </div>
-                            <div class="right-menu">
-                                <button class="menu-button fs-5 ms-2 m-0"><i class="bi bi-gear"></i>Mon compte</button>
-                                <div class="dropdown-menu">
-                                    <a class="" href="{{ path('app_setting') }}"><i class="bi bi-gear"></i>Paramètre</a>
-                                    <a class="" href="{{ path('app_logout') }}"><i class="bi bi-door-open"></i>Deconnecter</a>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="col-12 d-block d-md-none">
-                        Bonjour {{ app.user.firstName }}
-                    </div>
-                {% else %}
-                    <div class="login col-12 col-md-6 d-flex justify-content-between justify-content-md-end">
-                        <a href="{{ path('app_login') }}"><button class="fs-5 m-0"><i class="pe-2 bi bi-person-fill"></i>Me connecter</button></a>
-                        <a {% if app.user %}href=""{% else %}href="{{ path('app_login') }}"{% endif %}>
-                            <button class="fs-5 ms-2 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button>
-                        </a>
-                    </div>
-                {% endif %}#}
