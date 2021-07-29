@@ -21,10 +21,6 @@ app_politique:
   defaults:
     title: "Politique de confidentialité"
 
-app_home:
-  path: /
-  controller: App\Controller\ContentController::home
-
 app_pageLogin:
   path: /pageLogin/
   controller: App\Controller\ContentController::pageLogin

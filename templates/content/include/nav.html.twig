@@ -1,13 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-light m-0 mt-5">
+<nav class="navbar navbar-expand-lg navbar-light m-0">
     <div class="container-fluid">
-        <a class="nav_haut me-5" id="#retour_accueil" href="{{ path('app_home') }}">Accueil</a>
+        <a class="nav_haut me-5" id="#retour_accueil" href="{{ path('home') }}">Accueil</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {#{% for category in categorys %}
+                    {{ category.name }}
+                {% endfor %}#}
                 <li class="nav-item">
-                    <a class="nav_haut me-5 active" aria-current="page" href="#service3.0">Programmes spatiaux</a>
+                    <a class="nav_haut me-5 active" aria-current="page" href="{{ path('home') }}#service3.0">Programmes spatiaux</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav_haut me-5 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Chien</a>
@@ -46,10 +49,10 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav_haut me-5 " href="#apropos">A propos</a>
+                    <a class="nav_haut me-5 " href="{{ path('home') }}#apropos">A propos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav_haut me-5 " href="#contact">Contact</a>
+                    <a class="nav_haut me-5 " href="{{ path('home') }}#contact">Contact</a>
                 </li>
             </ul>
             <!--

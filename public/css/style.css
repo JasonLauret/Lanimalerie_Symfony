@@ -22,10 +22,6 @@ a {
 
 /*______________Header_______________*/
 
-.header {
-    height: 23vh;
-}
-
 .menu, .menu-button {
     margin-right: 2rem;
     margin-top: 1rem;
@@ -41,30 +37,20 @@ a {
     background-color: rgb(174, 142, 0);
 }
 
-.logo {
-    font-family: 'Allura', cursive;
-    text-decoration: none; 
-    color: rgb(174, 142, 0);
-}
-
-.logo:hover {
-    color: rgb(99, 81, 0);
-}
-
 .facebook {
-    height: 25px;
+    height: 35px;
     border-radius: 5px;
     margin-left: 1rem;
     margin-right: 1rem;
 }
 
 .instagram {
-    height: 25px;
+    height: 35px;
     margin-right: 1rem;
 }
 
 .twitter {
-    height: 25px;
+    height: 35px;
     border-radius: 5px;
 }
 
@@ -72,10 +58,9 @@ a {
     box-shadow: 5px 5px 5px rgba(174, 142, 0, 0.37);
 }
 
-.bordure {
-    background-color: rgb(255, 249, 240);
-    border-top: 1px solid rgb(175, 138, 59, 0.2);
-    border-bottom: 1px solid rgb(175, 138, 59, 0.2);
+.img_logo{
+    width: 400px;
+    height: 150px;
 }
 
 /*----Bouton dropdown----*/
@@ -297,8 +282,24 @@ h2 {
 
 /*__________________________Footer_________________________________*/
 
-footer {
-    background-color: rgb(255, 255, 255);
+footer{
+    background-color: rgb(29, 27, 27);
+    color: white;
+    height: 100%;
+}
+
+footer a{
+    color: white;
+}
+
+footer a:hover{
+    color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(174, 142, 0);
+    padding: 3px;
+}
+
+footer div {
+    max-width: 400px;
 }
 
 .logo_paypal {
@@ -308,14 +309,6 @@ footer {
 .logo_laposte {
     width: 15%;
 }
-.mention {
-    text-decoration: none;
-    color: black;
-}
-.mention:hover {
-    color: black;
-}
-
 
 /*_____________Bouton Haut de page_______________*/
 
