@@ -7,13 +7,13 @@ app_cgv:
   path: /cgv/
   controller: App\Controller\ContentController::cgv
   defaults:
-    title: "CGV"
+    title: "Conditions Générales de Vente"
 
 app_mentionLegal:
   path: /mentionLegal/
   controller: App\Controller\ContentController::mentionLegal
   defaults:
-    title: "Mentions Légales"
+    title: "Mentions légales"
 
 app_politique:
   path: /politique/
