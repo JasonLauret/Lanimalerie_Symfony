@@ -1,7 +1,77 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-<h1>Paramètre du compte</h1>
+{#<section class="container">
+    <h4>Mes informations</h4>
+    <div class="row">
+        <div class="d-flex justify-content-between rounded shadow p-3 m-4">
+            <div class="justify-content-between">
+                <div class="pb-4">
+                    <span class="pe-5">Genre:</span><span>{{ app.user.civility }}</span>
+                </div>
+                <div class="pb-4">
+                    <span class="pe-5">Prénom:</span><span>{{ app.user.firstName }}</span>
+                </div>
+                <div class="pb-4">
+                    <span class="pe-5">Nom:</span><span>{{ app.user.lastName }}</span>
+                </div>
+                <div class="pb-4">
+                    <span class="pe-5">Email:</span><span>{{ app.user.email }}</span>
+                </div>
+                <div class="pb-4">
+                    <span class="pe-5">Adresse:</span><span>{{ app.user.firstName }}</span>
+                </div>
+                <div class="pb-4">
+                    <span class="pe-5">Date de naissance:</span><span>{{ app.user.firstName }}</span>
+                </div>
+            </div>
+            <div class="d-flex flex-column">
+                <a href="">Modifier mes informations</a>
+                <a href="">Changer mon mot de passe</a>
+            </div>
+        </div>
+    </div>
+</section>#}
+
+
+
+<section class="container my-5">
+    <h4>Mes informations</h4>
+    <div class="row rounded shadow p-3 m-4">
+        <table class="col-6">
+            <tbody class="fs-5">
+                <tr class="bg-light">
+                    <th>Genre:</th>
+                    <td>{{ app.user.civility }}</td>
+                </tr>
+                <tr>
+                    <th>Prénom:</th>
+                    <td>{{ app.user.firstName }}</td>
+                </tr>
+                <tr class="bg-light">
+                    <th>Nom:</th>
+                    <td>{{ app.user.lastName }}</td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td>{{ app.user.email }}</td>
+                </tr>
+                <tr class="bg-light">
+                    <th>Adresse:</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Date de naissance:</th>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex flex-column col-6 text-end">
+            <a href="">Modifier mes informations</a>
+            <a href="">Changer mon mot de passe</a>
+        </div>
+    </div>
+</section>
 
 <!--________Back to top_______-->
 
