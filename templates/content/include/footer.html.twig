@@ -6,19 +6,28 @@
             </div>
         </section>
         <section class="row pt-5 border-bottom border-white pb-3">
-            <div class="col-12 col-md-6 mb-sm-4">
+            <div class="col-12 col-md-4 mb-sm-4">
                 <p class="fs-5">NAVIGATION</p>
                 <div class="">
-                    <p><a href="">CGV</a></p>
-                    <p><a href="">Mention légal</a></p>
-                    <p><a href="">Politique de confidentialité</a></p>
+                    <p><a href="{{ path('home') }}">Accueil</a></p>
+                    <p><a href="{{ path('home') }}#service3.0">Programme spatial</a></p>
+                    <p><a href="{{ path('home') }}#apropos">A propos</a></p>
+                    <p><a href="{{ path('home') }}#contact">Contact</a></p>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-4 mb-sm-4">
                 <p class="fs-5">COMMANDE</p>
                 <div class="">
                     <p><a href="">Livraison offerte</a></p>
                     <p><a href="">Paiement securisé</a></p>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <p class="fs-5">Conditions générales</p>
+                <div class="">
+                    <p><a href="{{ path('app_cgv') }}">CGV</a></p>
+                    <p><a href="{{ path('app_mentionLegal') }}">Mention légal</a></p>
+                    <p><a href="{{ path('app_politique') }}">Politique de confidentialité</a></p>
                 </div>
             </div>
         </section>

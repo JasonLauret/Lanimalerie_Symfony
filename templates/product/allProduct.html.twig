@@ -4,16 +4,17 @@
     <section class="container pt-3">
         <div class="row">
         {% for product in products %}
-            <div class="col-12 col-md-4 col-lg-3 g-1">
+            <div class="col-3">
                 <a href="{{ path('display_product', {'id':product.id}) }}" class="text-decoration-none ">
-                    <div class="border border-dark rounded-3 text-center">
+                    <div class="rounded-3 text-center">
                         <div>
-                            <img class="rounded-pill w-75 h-75" src="{{ product.picture }}" alt="">
+                            <img class="rounded" src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}" style="max-height:150px; width:auto">
                         </div>
                         <div class="text-dark">
-                            <h1 class="fs-3 fw-bold">{{ product.brand.name }}</h1>
                             <h1 class="fs-3 fw-bold">{{ product.name }}</h1>
-                            <p>{{ product.price }}</p>
+                            <h4 class="fs-3 fw-bold">{{ product.brand.name }}</h4>
+                            <p>{{ product.price }} €</p>
+                            <a href="{{ path('add_cart', {id: product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter</a>
                         </div>
                     </div>
                 </a>

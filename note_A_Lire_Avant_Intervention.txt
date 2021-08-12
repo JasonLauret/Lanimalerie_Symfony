@@ -16,3 +16,6 @@
 
 27/07/2021
 -La description quand on ajoute une catégorie ne marche pas
+
+07/08/21
+-Tentative de mise en place d'un panier (non fini)
