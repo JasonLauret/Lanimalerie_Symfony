@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <section class="container pt-3">
+    <section class="container py-5">
         <div class="row">
         {% for product in products %}
             <div class="col-3">
@@ -14,7 +14,31 @@
                             <h1 class="fs-3 fw-bold">{{ product.name }}</h1>
                             <h4 class="fs-3 fw-bold">{{ product.brand.name }}</h4>
                             <p>{{ product.price }} €</p>
-                            <a href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter</a>
+                            <a href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
+
+                            <!-- Button trigger modal -->
+                            <a href="{{ path('add_cart', {'id': product.id}) }}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="pe-2 bi bi-basket2"></i>Ajouter au panier
+                            </a>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Le produit a bien été ajouté au panier !</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Voulez-vous
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <a href="" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer vos achats</a>
+                                            <span>ou</span>
+                                            <a href="{{ path('cart') }}" type="button" class="btn btn-primary">Accéder au panier</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </a>
