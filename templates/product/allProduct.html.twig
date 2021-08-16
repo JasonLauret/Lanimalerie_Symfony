@@ -14,7 +14,7 @@
                             <h1 class="fs-3 fw-bold">{{ product.name }}</h1>
                             <h4 class="fs-3 fw-bold">{{ product.brand.name }}</h4>
                             <p>{{ product.price }} €</p>
-                            <a href="{{ path('add_cart', {id: product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter</a>
+                            <a href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter</a>
                         </div>
                     </div>
                 </a>
