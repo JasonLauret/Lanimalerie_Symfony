@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Repository\CategoryRepository;
+use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -52,7 +53,11 @@ class ContentController extends AbstractController
     }
 
     #[Route('/delivery', name: 'delivery')]
-    public function displayOrder(): Response {
-        return $this->render('content/delivery.html.twig');
+    public function displayOrder(CartService $cartService) {
+
+        return $this->render('content/delivery.html.twig', [
+            'items' => $cartService->getFullCart()
+        ]);
+        
     }
 }

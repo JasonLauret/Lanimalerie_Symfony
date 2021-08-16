@@ -7,8 +7,15 @@
 <section class="container py-5">
     <h3>Ma livraison</h3>
     <p>Choisissez la livraison pour vos articles: </p>
-    <div class="border border-dark bg-white p-3 rounded">
-        <p>yuio</p>
+    <div class="border border-dark bg-white p-3 rounded d-flex">
+        {% for item in items %}
+            <div class="border border-dark text-center p-2 m-2 rounded">
+                <p>
+                    <img class="rounded" src="{{ asset('upload/' ~ item.product.picture) }}" alt="{{ item.product.name }}" style="max-height:70px; width:auto">
+                </p>
+                <p>{{ item.product.name }}</p>
+            </div>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}
