@@ -5,9 +5,9 @@
 {% block body %}
 
 <section class="container py-5">
-    <h1>Mon panier</h1>
+    <h1 class="pb-4">Mon panier</h1>
     {% if items | length > 0 %}
-        <table class="table">
+        <table class="table border border-dark rounded">
             <thead>
                 <tr>
                     <th>Produit</th>
@@ -23,10 +23,14 @@
                     <tr>
                         <td>{{ item.product.name }}</td>
                         <td>
-                            <img class="rounded" src="{{ asset('upload/' ~ item.product.picture) }}" alt="{{ item.product.name }}" style="max-height:150px; width:auto">
+                            <img class="rounded" src="{{ asset('upload/' ~ item.product.picture) }}" alt="{{ item.product.name }}" style="max-height:120px; width:auto">
                         </td>
                         <td>{{ item.product.price }} €</td>
-                        <td>{{ item.quantity }}</td>
+                        <td>
+                            <a href="{{ path('removeOne_cart', {'id': item.product.id}) }}"><i class="bi bi-dash"></i></a>
+                            {{ item.quantity }} 
+                            <a href="{{ path('add_inCart', {'id': item.product.id}) }}"><i class="bi bi-plus"></i></a>
+                        </td>
                         <td>{{ item.product.price * item.quantity }} €</td>
                         <td>
                             <a href="{{ path('remove_cart', {'id': item.product.id}) }}" 
@@ -39,12 +43,13 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" class="text-end">Total:</td>
+                    <td colspan="3"></td>
+                    <td class="text-end">Total:</td>
                     <td> {{ total }} €</td>
                 </tr>
             </tfoot>
         </table>
-        <div class="text-end">
+        <div class="text-end mt-5">
             <a href=" {{ path('delivery') }} " class="menu p-3">Passer commande<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
         </div>
     {% else %}
@@ -52,3 +57,47 @@
     {% endif %}
 </section>
 {% endblock %}
+
+{#
+<section class="container">
+    <div class="row flex-column">
+        {% for item in items %}
+            <div class="rounded border border-dark p-3 g-3 col-12 col-md-6">
+                <div class="d-flex">
+                    <div class="col-6">
+                        <p class="h5">{{ item.product.name }}</p>
+                        <p>
+                            <img class="rounded" src="{{ asset('upload/' ~ item.product.picture) }}" alt="{{ item.product.name }}" style="max-height:120px; width:auto">
+                        </p>
+                    </div>
+                    <div class="col-6 d-flex text-end mt-4">
+                        {#<p><span class="me-5">Prix unitaire: </span><span>{{ item.product.price }} €</span></p>
+                        <p><span class="me-5">Quantité: </span><span>{{ item.quantity }}</span></p>
+                        <p><span class="me-5">Total: </span><span>{{ item.product.price * item.quantity }} €</span></p>--
+
+                        <div class="col-6">
+                            <p class="me-5">Prix unitaire: </p>
+                            <p class="me-5">Quantité: </p>
+                            <p class="me-5">Total: </p>
+                        </div>
+                        <div class="col-6">
+                            <p>{{ item.product.price }} €</p>
+                            <p>{{ item.quantity }}</p>
+                            <p>{{ item.product.price * item.quantity }} €</p>
+                        </div>
+                        {#<p class="ms-5">Prix: {{ item.product.price }} €</p>
+                        <p class="ms-5">Quantité: {{ item.quantity }}</p>
+                        <p class="ms-5">Total: {{ item.product.price * item.quantity }} €</p>--
+                    </div>
+                </div>
+                <p class="text-end">
+                    <a href="{{ path('remove_cart', {'id': item.product.id}) }}" 
+                        class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+#}
