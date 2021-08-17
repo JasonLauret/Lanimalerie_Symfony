@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+
+<section class="container my-5">
+    <h2>Moyen de paiement</h2>
+    <div class="border border-dark p-3 rounded">
+        <p class="h4">Choisissez votre moyen de paiement</p>
+        <div class="d-flex">
+            <input class="mt-1" type="checkbox" name="choix1" value="1" checked >
+            <label class="ms-3" for="case1">En cochant cette case, je déclare avoir pris connaissance et accepter les <a class="text-decoration-underline" href="">CGV</a> ainsi que la <a class="text-decoration-underline" href="">Politique de confidentialité</a>.</label>
+        </div>
+        <div class="border border-muted p-3 rounded">
+            <p>Carte bancaire</p>
+            <p>Paypal</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

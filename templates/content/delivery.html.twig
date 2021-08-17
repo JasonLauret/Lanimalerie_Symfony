@@ -8,7 +8,7 @@
     <h2 class="mb-4">Ma livraison</h2>
     <div class="row">
         <p>Livraison pour les articles suivant: </p>
-        <div class="border border-dark bg-white p-3 rounded d-flex text-center justify-content-center">
+        <div class="border border-dark p-3 rounded d-flex text-center justify-content-center">
             {% for item in items %}
                 <div class="border border-dark text-center p-2 m-2 rounded">
                     <p>
@@ -51,7 +51,7 @@
         
     </div>
     <div class="text-end mt-5">
-        <a href="{{ path('delivery') }}" class="menu p-3">Valider ma livraison<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
+        <a href="{{ path('payment') }}" class="menu p-3">Valider ma livraison<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
     </div>
 </section>
 {% endblock %}
