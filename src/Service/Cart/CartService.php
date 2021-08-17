@@ -15,8 +15,8 @@ class CartService {
         $this->productRepository = $productRepository;
     }
 
-
     //_______add_______
+
     public function add($id){
         $panier = $this->session->get("panier", []);
 
@@ -42,6 +42,7 @@ class CartService {
     }
 
     //_______remove_______
+
     public function remove($id){
         $panier = $this->session->get('panier', []);
         if(!empty($panier[$id])) {
@@ -87,6 +88,7 @@ class CartService {
         foreach($this->getFullCart() as $item){
             $total += $item['product']->getPrice() * $item['quantity'];
         }
+
         return $total;
     }
 }

@@ -49,9 +49,15 @@
                 </tr>
             </tfoot>
         </table>
-        <div class="text-end mt-5">
-            <a href=" {{ path('delivery') }} " class="menu p-3">Passer commande<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
-        </div>
+        {% if is_granted('ROLE_ADMIN') or app.user %}
+            <div class="text-end mt-5">
+                <a href="{{ path('delivery') }}" class="menu p-3">Passer commande<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
+            </div>
+        {% else %}
+            <div class="text-end mt-5">
+                <a href="{{ path('app_login') }}" class="menu p-3">Passer commande<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
+            </div>
+        {% endif %}
     {% else %}
         <p>Le panier est vide</p>
     {% endif %}

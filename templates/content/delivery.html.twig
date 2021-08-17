@@ -4,18 +4,54 @@
 
 {% block body %}
 
-<section class="container py-5">
-    <h3>Ma livraison</h3>
-    <p>Choisissez la livraison pour vos articles: </p>
-    <div class="border border-dark bg-white p-3 rounded d-flex">
-        {% for item in items %}
-            <div class="border border-dark text-center p-2 m-2 rounded">
-                <p>
-                    <img class="rounded" src="{{ asset('upload/' ~ item.product.picture) }}" alt="{{ item.product.name }}" style="max-height:70px; width:auto">
-                </p>
-                <p>{{ item.product.name }}</p>
+<section class="container my-5">
+    <h2 class="mb-4">Ma livraison</h2>
+    <div class="row">
+        <p>Livraison pour les articles suivant: </p>
+        <div class="border border-dark bg-white p-3 rounded d-flex text-center justify-content-center">
+            {% for item in items %}
+                <div class="border border-dark text-center p-2 m-2 rounded">
+                    <p>
+                        <img class="rounded" src="{{ asset('upload/' ~ item.product.picture) }}" alt="{{ item.product.name }}" style="max-height:70px; width:auto">
+                    </p>
+                    <p>{{ item.product.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row mt-2 justify-content-between mt-4">
+        <div class="col-12 col-md-5 border border-dark rounded p-3">
+            <p class="h4">Récapitulatif panier</p>
+            <hr>
+            {% for item in items %}
+                <div class="d-flex justify-content-between">
+                    <p>{{ item.quantity }}</p>
+                    <p>{{ item.product.name }}</p>
+                    <p>{{ item.product.price * item.quantity }} €</p>
+                </div>
+            {% endfor %}
+            <hr>
+            
+            <p>{{ nbItem }} article{% if nbItem > 1%}s{% endif %}</p>
+            
+            <hr>
+            <div class="h4 d-flex justify-content-between">
+                <p>Montant total:</p>
+                <p>{{ total }} €</p>
             </div>
-        {% endfor %}
+        </div>
+
+        <div class="col-12 col-md-5 border border-dark rounded p-3">
+            <p class="h4">Adresse de livraison</p>
+            <hr>
+            <p>Vous serez livrer à l'adresse suivante:</p>
+            <p>{{ app.user.email }}</p>
+        </div>
+        
+    </div>
+    <div class="text-end mt-5">
+        <a href="{{ path('delivery') }}" class="menu p-3">Valider ma livraison<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
     </div>
 </section>
 {% endblock %}
