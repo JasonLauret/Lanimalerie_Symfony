@@ -4,17 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\AddProductType;
-use App\Form\UpdateProductType;
-use App\Repository\ProductRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-
 
 
 class ProductController extends AbstractController
