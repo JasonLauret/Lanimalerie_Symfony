@@ -5,7 +5,7 @@
 {% block body %}
 
     <section class="container my-5">
-        <h2>Moyen de paiement</h2>
+        <h2>Mon paiement</h2>
         <div class="border border-dark p-3 rounded">
             <p class="h4">Choisissez votre moyen de paiement</p>
             {#<form action="{{ path('payment') }}" methode="post">
@@ -34,9 +34,41 @@
                 </div>
             {{ form_end(form, {'render_rest': true}) }}
 
-            {% if payment.name == 'Carte Bancaire' %}
-                
-            {% endif %}
+            {#{% if payment.name == 'Carte Bancaire' %}#}
+                <form class="needs-validation" novalidate>
+                    <div class="col-4 mt-3">
+                        <label for="validationCustom01" class="form-label">Nom du titulaire de la carte</label>
+                        <input type="text" class="form-control" id="validationCustom01" placeholder="Prénom Nom" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-4 mt-3">
+                        <label for="validationCustom02" class="form-label">Numéro de carte</label>
+                        <input type="text" class="form-control" id="validationCustom02" placeholder="1111 1111 1111 1111" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-4 mt-3">
+                        <label for="validationCustom02" class="form-label">Date d'expiration</label>
+                        <input type="text" class="form-control" id="validationCustom02" placeholder="05/24" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-4 mt-3">
+                        <label for="validationCustom02" class="form-label">Cryptogramme visuel</label>
+                        <input type="text" class="form-control" id="validationCustom02" placeholder="123" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>                    
+                    <div class="col-12 mt-3">
+                        <button class="btn btn-primary" type="submit">Payer ma commande</button>
+                    </div>
+                </form>
+            {#{% endif %}#}
         </div>
     </section>
 
