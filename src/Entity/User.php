@@ -69,6 +69,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $orders;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=CustomerAddress::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $adress;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -250,6 +256,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $order->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAdress(): ?CustomerAddress
+    {
+        return $this->adress;
+    }
+
+    public function setAdress(?CustomerAddress $adress): self
+    {
+        $this->adress = $adress;
 
         return $this;
     }
