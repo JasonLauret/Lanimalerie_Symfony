@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Register{% endblock %}
 
 {% block body %}
@@ -11,52 +12,55 @@
         <div class="container py-5">
             <h4 class="labelColor text-center">Inscrivez-vous</h4>
             {{ form_start(registrationForm) }}
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <div class="col-6">
-                        <div class="pb-3 labelColor">
-                            {{ form_row(registrationForm.civility, {"label": "Civilité", "attr": {'class':'form-control'}}) }}
+
+                <div class="pb-3 labelColor text-center">
+                    {{ form_row(registrationForm.civility, {"label": "Civilité", "attr": {'class':''}}) }}
+                </div>
+
+                <div class="row labelColor">
+                    <div class="col-12 col-md-6">
+                        
+                        <div class="pb-3">
+                            {{ form_row(registrationForm.lastName, {"label": "Nom", "attr": {'class':'form-control', 'placeholder':'Dupond'} }) }}
                         </div>
-                        <div class="pb-3 labelColor">
-                            {{ form_row(registrationForm.lastName, {"label": "Nom", "attr": {'class':'form-control'}}) }}
+                        <div class="pb-3">
+                            {{ form_row(registrationForm.firstName, {"label": "Prénom", "attr": {'class':'form-control', 'placeholder':'Aurélie'}}) }}
                         </div>
-                        <div class="pb-3 labelColor">
-                            {{ form_row(registrationForm.firstName, {"label": "Prénom", "attr": {'class':'form-control'}}) }}
+                        <div class="pb-3">
+                            {{ form_row(registrationForm.email, {"label": "Email", "attr": {'class':'form-control', 'placeholder':'exemple@exemple.com'}}) }}
                         </div>
-                        <div class="pb-3 labelColor">
-                            {{ form_row(registrationForm.email, {"label": "Email", "attr": {'class':'form-control'}}) }}
-                        </div>
-                        <div class="pb-3 labelColor">
+                        <div class="pb-3">
                             {{ form_row(registrationForm.plainPassword, {"label": "Mot de passe", "attr": {'class':'form-control'}}) }}
                         </div>
-                        <div class="pb-3 labelColor">
-                            <label class="col-form-label">Confimation du mot de passe</label>
-                            <input type="password" name="passwordConfirmation" class="form-control">
+                        <div class="pb-3">
+                            {{ form_row(registrationForm.confirm_password, {"label": "Confimation du mot de passe", "attr": {'class':'form-control'}}) }}
                         </div>
-                        <div class="pb-3 labelColor">
+                        
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="pb-3">
+                            {{ form_row(registrationForm.country, {"label": "Pays", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3">
+                            {{ form_row(registrationForm.city, {"label": "Ville", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3">
+                            {{ form_row(registrationForm.postalCode, {"label": "Code postale", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3">
+                            {{ form_row(registrationForm.address, {"label": "Adresse 1", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3 mt-1">
                             {{ form_row(registrationForm.birthDate, {"label": "Date de naissance", "attr": {'class':'motif'}}) }}
                         </div>
-                        {{ form_row(registrationForm.agreeTerms, {"label": "J'accepte les conditions générales"}) }}
                     </div>
-                    {#<div class="col-6">
-                        <div class="pb-3">
-                            {{ form_row(registrationForm.country, {"label": "Pays", "attr": {'class':'motif'}}) }}
-                        </div>
-                        <div class="pb-3">
-                            {{ form_row(registrationForm.city, {"label": "Ville", "attr": {'class':'motif'}}) }}
-                        </div>
-                        <div class="pb-3">
-                            {{ form_row(registrationForm.postalCode, {"label": "Code postale", "attr": {'class':'motif'}}) }}
-                        </div>
-                        <div class="pb-3">
-                            {{ form_row(registrationForm.adress1, {"label": "Adresse 1", "attr": {'class':'motif'}}) }}
-                        </div>
-                        <div class="pb-3">
-                            {{ form_row(registrationForm.adress2, {"label": "Adresse 2", "attr": {'class':'motif'}}) }}
-                        </div>
-                    </div>#}
-                    
-                    <button type="submit" class="btn_envoyer">M'inscrire</button>
                 </div>
+                <div class="text-center mt-3">
+                    {{ form_row(registrationForm.agreeTerms, {"label": "J'accepte les conditions générales"}) }}
+                    <button type="submit" class="btn_envoyer mt-2">M'inscrire</button>
+                </div>
+
             {{ form_end(registrationForm, {'render_rest': true}) }}
         </div>
     </section>

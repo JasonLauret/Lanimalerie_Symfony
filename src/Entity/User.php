@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM;use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -35,9 +35,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length="255")
      */
     private $password;
+
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
+     */
+    private $confirm_password;
 
     /**
      * @ORM\Column(type="boolean")
@@ -70,10 +75,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $orders;
 
     /**
-     * @ORM\ManyToOne(targetEntity=CustomerAddress::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=100)
      */
-    private $adress;
+    private $country;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $postalCode;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $address;
+
 
     public function __construct()
     {
@@ -143,9 +163,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    //__________Confirmation du password_________
+    
+    public function getConfirmPassword(): string
+    {
+        return $this->confirm_password;
+    }
+
+    public function setConfirmPassword(string $confirm_password): self
+    {
+        $this->confirm_password = $confirm_password;
 
         return $this;
     }
@@ -260,14 +294,50 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAdress(): ?CustomerAddress
+    public function getCountry(): ?string
     {
-        return $this->adress;
+        return $this->country;
     }
 
-    public function setAdress(?CustomerAddress $adress): self
+    public function setCountry(string $country): self
     {
-        $this->adress = $adress;
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getPostalCode(): ?int
+    {
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(int $postalCode): self
+    {
+        $this->postalCode = $postalCode;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
 
         return $this;
     }

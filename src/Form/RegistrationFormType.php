@@ -49,6 +49,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('confirm_password', PasswordType::class)
             ->add('birthDate', DateType::class)
             ->add('civility', ChoiceType::class,
                 [
@@ -59,11 +60,10 @@ class RegistrationFormType extends AbstractType
                     ], 
                     'expanded' => true,
                 ])
-               /* ->add('country', TextType::class)
+                ->add('country', TextType::class)
                 ->add('city', TextType::class)
                 ->add('postalCode', TextType::class)
-                ->add('adress1', TextType::class)
-                ->add('adress2', TextType::class)*/
+                ->add('address', TextType::class)
         ;
     }
 
