@@ -96,8 +96,8 @@ class UserManagementController extends AbstractController
             return $this->redirectToRoute('user', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('user_management/addUser.html.twig', [
-            'brand' => $user,
+        return $this->renderForm('user_management/editUser.html.twig', [
+            'user' => $user,
             'form' => $form,
         ]);
     }
