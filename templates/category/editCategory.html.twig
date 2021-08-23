@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un produit{% endblock %}
+{% block title %}Modifier la marque{% endblock %}
 
 {% block body %}
 
@@ -8,7 +8,7 @@
     {{ form_start(form) }}
         <div class="d-flex flex-column justify-content-center align-items-center">
             <div class="col-6">
-                <h1 class="py-3">Ajouter une categorie</h1>
+                <h1 class="py-3">Modifier une categorie</h1>
                 <div>
                     {{ form_row(form.name, {"label": "Nom", "attr": {'class':'form-control'}}) }}
                 </div>

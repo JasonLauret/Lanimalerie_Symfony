@@ -1,42 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion utilisateurs{% endblock %}
+{% block title %}Utilisateur{% endblock %}
 
 {% block body %}
 
     <section class="container mt-3">
         <h1>Liste des utilisateurs</h1>
-        <a class="lien" href="{{ path('add_user') }}">Ajouter un utilisateur</a>
+        <a class="lien" href="{{ path('user_new') }}">Ajouter un utilisateur</a>
         <table class="table mt-2">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Nom</th>
-                    <th>Prénom</th>
+                    <th>Prénon</th>
+                    <th>Roles</th>
                     <th>Civilité</th>
-                    <th>City</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
             {% for user in users %}
                 <tr class="structure">
-                    <td>{{ user.id }}</td>
                     <td>{{ user.lastName }}</td>
                     <td>{{ user.firstName }}</td>
+                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                     <td>{{ user.civility }}</td>
-                    <td>{{ user.city }}</td>
                     <td>
-                        <a class="lien" href="{{ path('display_user', {'id':user.id}) }}">Détail</a>
-                        <a class="lien" href="{{ path('update_user', {'id':user.id}) }}) }}">Modifier</a>
+                        <a class="lien" href="{{ path('user_show', {'id': user.id}) }}">Détail</a>
+                        <a class="lien" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="6">Aucun utilisateur trouvé</td>
+                    <td colspan="12">Aucun utilisateur trouvé</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </section>
-    
 {% endblock %}

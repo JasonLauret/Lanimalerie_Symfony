@@ -193,7 +193,7 @@ class ProductController extends AbstractController
                 "id" => $product->getId()]);
         }
 
-        return $this->render('product/addProduct.html.twig', [
+        return $this->render('product/editProduct.html.twig', [
             'form' => $form->createView()
         ]);
     }

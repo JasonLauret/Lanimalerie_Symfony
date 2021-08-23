@@ -50,7 +50,10 @@ class AddUserFormType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
             ])
-            ->add('birthDate', DateType::class)
+            ->add('birthDate', DateType::class, [
+                'widget' => 'choice',
+                'input'  => 'datetime_immutable'
+            ])
         ;
     }
 

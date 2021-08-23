@@ -103,7 +103,7 @@ class CategoryController extends AbstractController
                 "id" => $category->getId()]);
         }
 
-        return $this->render('category/addCategory.html.twig', [
+        return $this->render('category/editCategory.html.twig', [
             'form' => $form->createView()
         ]);
     }
