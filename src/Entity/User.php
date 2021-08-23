@@ -5,7 +5,8 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -34,13 +35,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
 
     /**
-     * @var string The hashed password
      * @ORM\Column(type="string", length="255")
+     * @Assert\Length(min="6", minMessage="Votre mot de passe doit fair minimum 6 caractères")
      */
     private $password;
 
-    
-    private $confirm_password;
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
+     */
+    private $confirmPassword;
 
     /**
      * @ORM\Column(type="boolean")
@@ -170,14 +173,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     //__________Confirmation du password_________
     
-    public function getConfirmPassword(): string
+    public function getConfirmPassword(): ?string
     {
-        return $this->confirm_password;
+        return $this->confirmPassword;
     }
 
-    public function setConfirmPassword(string $confirm_password): self
+    public function setConfirmPassword(string $confirmPassword): self
     {
-        $this->confirm_password = $confirm_password;
+        $this->confirmPassword = $confirmPassword;
 
         return $this;
     }
