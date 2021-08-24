@@ -38,9 +38,9 @@ class RegistrationFormType extends AbstractType
                 [
                     'choices'  => 
                     [
-                        'Homme' => "H",
-                        'Femme' => "F"
-                    ], 
+                        'M.' => "M.",
+                        'Mme' => "Mme"
+                    ],
                     'expanded' => true,
                 ])
                 ->add('country', TextType::class)

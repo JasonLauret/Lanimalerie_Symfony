@@ -34,8 +34,8 @@ class UserType extends AbstractType
             [
                 'choices'  => 
                 [
-                    'Mr' => "H",
-                    'Mme' => "F"
+                    'M.' => "M.", //1er: Se qui sera afficher dans le formulaire  2eme: se qui sera afficher en bdd
+                    'Mme' => "Mme"
                 ], 
                 'expanded' => true,
             ])

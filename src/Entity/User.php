@@ -66,7 +66,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $birthDate;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $civility;
 

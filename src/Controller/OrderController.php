@@ -81,4 +81,37 @@ class OrderController extends AbstractController
 
         return $this->redirectToRoute('order_index', [], Response::HTTP_SEE_OTHER);
     }
+/*
+    #[Route('/new/order', name: 'new_order', methods: ['GET', 'POST'])]
+    public function newOrder(Request $request): Response
+    {
+        $order = new Order();
+        $form = $this->createForm(OrderType::class, $order);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $data = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            
+            $order->getDate($data['date']);
+            $order->getUser($data['user']);
+            $order->getPriceHt($data['priceHt']);
+            $order->getReference($data['reference']);
+
+           // lien entre doctrine et l'objet
+            $entityManager->persist($order);
+            $entityManager->flush();
+
+            return $this->redirectToRoute("validOrder");
+            //return new Response('Le produit a été ajoutée '.$product->getName());
+        }
+
+        return $this->renderForm('order/new.html.twig', [
+            'order' => $order,
+            'form' => $form,
+        ]);
+    }*/
 }

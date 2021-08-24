@@ -20,6 +20,8 @@
         </div>
     </div>
 
+    {#-------Récapitilataif panier-------#}
+
     <div class="row mt-2 justify-content-between mt-4">
         <div class="col-12 col-md-5 border border-dark rounded p-3">
             <p class="h4">Récapitulatif panier</p>
@@ -42,11 +44,17 @@
             </div>
         </div>
 
+        {#-------Adresse de livraison-------#}
+
         <div class="col-12 col-md-5 border border-dark rounded p-3">
             <p class="h4">Adresse de livraison</p>
             <hr>
             <p>Vous serez livrer à l'adresse suivante:</p>
-            <p>{{ app.user.email }}</p>
+            <p>{{ app.user.country }}</p>
+            <p>{{ app.user.address }}</p>
+            <p>
+                <span>{{ app.user.postalCode }}</span> <span>{{ app.user.city }}</span>
+            </p>
         </div>
         
     </div>

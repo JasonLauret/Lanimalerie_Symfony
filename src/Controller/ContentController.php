@@ -60,4 +60,9 @@ class ContentController extends AbstractController
         ]);
         
     }
+
+    #[Route('/valid', name: 'valid_order')]
+    public function validOrder(): Response {
+        return $this->render('content/validOrder.html.twig');
+    }
 }
