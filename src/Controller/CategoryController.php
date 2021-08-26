@@ -61,6 +61,7 @@ class CategoryController extends AbstractController
 
             $category = new Category();
             $category->setName($data['name']);
+            $category->setDescription($data['description']);
 
             $entityManager->persist($category);
             $entityManager->flush();
