@@ -3,60 +3,59 @@
 {% block title %}New User{% endblock %}
 
 {% block body %}
-    <h1>Create new User</h1>
 
     <section class="">
-    <div class="container py-5">
-        <h4 class="labelColor text-center">Modifier un utilisateur</h4>
-        {{ form_start(form) }}
+        <div class="container py-5">
+            <h1>Créer un utilisateur</h1>
+            {{ form_start(form) }}
 
-            <div class="row labelColor">
-                <div class="col-12 col-md-6">
+                <div class="row labelColor">
+                    <div class="col-12 col-md-6">
+                        
+                        <div class="pb-3">
+                            {{ form_row(form.lastName, {"label": "Nom", "attr": {'class':'form-control', 'placeholder':'Dupond'} }) }}
+                        </div>
+                        <div class="pb-3">
+                            {{ form_row(form.firstName, {"label": "Prénom", "attr": {'class':'form-control', 'placeholder':'Aurélie'}}) }}
+                        </div>
+                        <div class="pb-3">
+                            {{ form_row(form.email, {"label": "Email", "attr": {'class':'form-control', 'placeholder':'exemple@exemple.com'}}) }}
+                        </div>
+                        <div class="pb-3">
+                            {{ form_row(form.roles, {"label": "Rôle"}) }}
+                        </div>
+                        <div class="pb-3">
+                            {{ form_row(form.civility, {"label": "Civilité", "attr": {'class':''}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="pb-3">
+                            {{ form_row(form.country, {"label": "Pays", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3">
+                            {{ form_row(form.city, {"label": "Ville", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3">
+                            {{ form_row(form.postalCode, {"label": "Code postale", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3">
+                            {{ form_row(form.address, {"label": "Adresse 1", "attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="pb-3 mt-1">
+                            {{ form_row(form.birthDate, {"label": "Date de naissance", "attr": {'class':'motif'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-3 text-center">
+
+                    <a class="lien" href="{{ path('user_index') }}">Revenir à la liste</a>
                     
-                    <div class="pb-3">
-                        {{ form_row(form.lastName, {"label": "Nom", "attr": {'class':'form-control', 'placeholder':'Dupond'} }) }}
-                    </div>
-                    <div class="pb-3">
-                        {{ form_row(form.firstName, {"label": "Prénom", "attr": {'class':'form-control', 'placeholder':'Aurélie'}}) }}
-                    </div>
-                    <div class="pb-3">
-                        {{ form_row(form.email, {"label": "Email", "attr": {'class':'form-control', 'placeholder':'exemple@exemple.com'}}) }}
-                    </div>
-                    <div class="pb-3">
-                        {{ form_row(form.roles, {"label": "Rôle"}) }}
-                    </div>
-                    <div class="pb-3">
-                        {{ form_row(form.civility, {"label": "Civilité", "attr": {'class':''}}) }}
-                    </div>
+                    <button class="lien_2">{{ button_label|default('Valider') }}</button>
                 </div>
 
-                <div class="col-12 col-md-6">
-                    <div class="pb-3">
-                        {{ form_row(form.country, {"label": "Pays", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="pb-3">
-                        {{ form_row(form.city, {"label": "Ville", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="pb-3">
-                        {{ form_row(form.postalCode, {"label": "Code postale", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="pb-3">
-                        {{ form_row(form.address, {"label": "Adresse 1", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="pb-3 mt-1">
-                        {{ form_row(form.birthDate, {"label": "Date de naissance", "attr": {'class':'motif'}}) }}
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-3 text-center">
-
-                <a class="lien" href="{{ path('user_index') }}">Revenir à la liste</a>
-                
-                <button class="lien_2">{{ button_label|default('Valider') }}</button>
-            </div>
-
-        {{ form_end(form, {'render_rest': true}) }}
-    </div>
-</section>
+            {{ form_end(form, {'render_rest': true}) }}
+        </div>
+    </section>
 {% endblock %}
