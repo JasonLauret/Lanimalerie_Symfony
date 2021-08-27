@@ -21,35 +21,35 @@
                     <td>{{ user.email }}</td>
                 </tr>
                 <tr>
-                    <th>Rôles</th>
+                    <th>Rôle</th>
                     <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 </tr>
                 <tr>
-                    <th>BirthDate</th>
+                    <th>Date de naissance</th>
                     <td>{{ user.birthDate ? user.birthDate|date('d/m/Y') : '' }}</td>
                 </tr>
                 <tr>
-                    <th>Civility</th>
+                    <th>Civilité</th>
                     <td>{{ user.civility }}</td>
                 </tr>
                 <tr>
-                    <th>Country</th>
+                    <th>Pays</th>
                     <td>{{ user.country }}</td>
                 </tr>
                 <tr>
-                    <th>City</th>
+                    <th>Vile</th>
                     <td>{{ user.city }}</td>
                 </tr>
                 <tr>
-                    <th>PostalCode</th>
+                    <th>Code postal</th>
                     <td>{{ user.postalCode }}</td>
                 </tr>
                 <tr>
-                    <th>Address</th>
+                    <th>Adresse</th>
                     <td>{{ user.address }}</td>
                 </tr>
                 <tr>
-                    <th>IsVerified</th>
+                    <th>Compte vérifier</th>
                     <td>{{ user.isVerified ? 'Oui' : 'Non' }}</td>
                 </tr>
             </tbody>

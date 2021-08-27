@@ -8,109 +8,19 @@
         <h2>Mon paiement</h2>
         <div class="border border-dark p-3 rounded">
             <p class="h4">Choisissez votre moyen de paiement</p>
-            {#
-            
-            <form action="{{ path('payment') }}" methode="post">
-                {% for payment in payments %}
-                    <div class="border border-muted p-3 rounded-pill my-3">
-                        <div class="d-flex">
-                            <input class="mt-1" type="checkbox" name="choix{{ payment.id }}" value="{{ payment.name }}">
-                            <label class="ms-3" for="case{{ payment.id }}">{{ payment.name }}</label>
-                        </div>
-                    </div>
-                {% endfor %}
-            </form>
-
-            #}
-
-            {#
-            
             {{ form_start(form) }}
                 <div class="">
                     {{ form_widget(form.name) }}
                 </div>
-
+                
                 <div class="d-flex m-4">
                     <input class="mt-1" type="checkbox" name="choix" value="1">
                     <label class="ms-3" for="case1">En cochant cette case, je déclare avoir pris connaissance et accepter les <a class="text-decoration-underline" href="{{ path('app_cgv') }}">CGV</a> ainsi que la <a class="text-decoration-underline" href="{{ path('app_politique') }}">Politique de confidentialité</a>.</label>
                 </div>
-
-                <div>
-                    {{ form_row(form.valider) }}
-                </div>
+                
             {{ form_end(form, {'render_rest': true}) }}
-
-            #}
-
-
-            <div class="row">
-                {#{% if payment.name == 'Carte Bancaire' %}#}
-                    <form class="needs-validation col border border-dark rounded p-3 m-2" id="cb" novalidate>
-                        <div class="col-8 mt-3">
-                            <label for="validationCustom01" class="form-label">Nom du titulaire de la carte</label>
-                            <input type="text" class="form-control" id="validationCustom01" placeholder="Prénom Nom" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-8 mt-3">
-                            <label for="validationCustom02" class="form-label">Numéro de carte</label>
-                            <input type="text" class="form-control" id="validationCustom02" placeholder="1111 1111 1111 1111" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-8 mt-3">
-                            <label for="validationCustom02" class="form-label">Date d'expiration</label>
-                            <input type="text" class="form-control" id="validationCustom02" placeholder="05/24" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-8 mt-3">
-                            <label for="validationCustom02" class="form-label">Cryptogramme visuel</label>
-                            <input type="text" class="form-control" id="validationCustom02" placeholder="123" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>                    
-                        <div class="col-12 mt-3">
-                            <button class="btn btn-primary" type="submit">Payer ma commande</button>
-                        </div>
-                    </form>
-                {#{% endif %}#}
-
-                <div class="col border border-dark rounded p-3 m-2" id="paypal">
-                    <h1>Paypal</h1>
-                </div>
-            </div>
-            <div class="d-flex m-4">
-                <input class="mt-1" type="checkbox" name="choix" value="1">
-                <label class="ms-3" for="case1">En cochant cette case, je déclare avoir pris connaissance et accepter les <a class="text-decoration-underline" href="{{ path('app_cgv') }}">CGV</a> ainsi que la <a class="text-decoration-underline" href="{{ path('app_politique') }}">Politique de confidentialité</a>.</label>
-            </div>
-            <button class="btn btn-primary" type="submit">Valider</button>
         </div>
     </section>
-
-    {#
-    
-    {% if payment.id == 1 is_checked %}
-        <p>Afficher le formulaire</p>
-    {% elseif payment.id == 2 is_checked %}
-        <p>Afficher paypal</p>
-    {% endif %}
-    
-    <form action="PaymentMethodType.php" methode="post">
-        {{ form_start(form) }}
-
-            <div class="">
-                {{ form_widget(form.name) }}
-            </div>
-
-        {{ form_end(form, {'render_rest': true}) }}
-    </form>
-    
-    #}
 {% endblock %}
 
 

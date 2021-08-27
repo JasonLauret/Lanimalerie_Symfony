@@ -429,13 +429,14 @@ input[type='radio']:checked:before {
 /*____Autre page____*/
 
 .lien {
-    padding: 5px;
+    padding: 8px;
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
     color: rgb(174, 142, 0);
 }
 
 .lien:hover {
+    padding: 8px;
     color: rgb(255, 253, 243);
     background-color: rgb(174, 142, 0);
 }

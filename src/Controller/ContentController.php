@@ -48,10 +48,6 @@ class ContentController extends AbstractController
     }
 
 
-    public function setting(): Response {
-        return $this->render('content/setting.html.twig');
-    }
-
     #[Route('/delivery', name: 'delivery')]
     public function displayOrder(CartService $cartService) {
 

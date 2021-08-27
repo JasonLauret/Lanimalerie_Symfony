@@ -28,7 +28,3 @@ app_pageLogin:
 app_registration:
   path: /registration/
   controller: App\Controller\ContentController::registration
-
-app_setting:
-  path: /setting/
-  controller: App\Controller\ContentController::setting

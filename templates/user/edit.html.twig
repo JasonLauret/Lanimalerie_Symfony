@@ -21,10 +21,13 @@
                         {{ form_row(form.email, {"label": "Email", "attr": {'class':'form-control', 'placeholder':'exemple@exemple.com'}}) }}
                     </div>
                     <div class="pb-3">
-                        {{ form_row(form.roles, {"label": "Rôle"}) }}
+                        {{ form_row(form.password, {"label": "Mot de passe", "attr": {'class':'form-control'}}) }}
                     </div>
                     <div class="pb-3">
-                        {{ form_row(form.civility, {"label": "Civilité", "attr": {'class':''}}) }}
+                        {{ form_row(form.confirmPassword, {"label": "Confimation du mot de passe", "attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="pb-3">
+                        {{ form_row(form.roles, {"label": "Rôle"}) }}
                     </div>
                 </div>
 
@@ -41,8 +44,11 @@
                     <div class="pb-3">
                         {{ form_row(form.address, {"label": "Adresse 1", "attr": {'class':'form-control'}}) }}
                     </div>
-                    <div class="pb-3 mt-1">
+                    <div class="pb-3 mt-3 mt-md-4">
                         {{ form_row(form.birthDate, {"label": "Date de naissance", "attr": {'class':'motif'}}) }}
+                    </div>
+                    <div class="pb-3">
+                        {{ form_row(form.civility, {"label": "Civilité", "attr": {'class':''}}) }}
                     </div>
                 </div>
             </div>
