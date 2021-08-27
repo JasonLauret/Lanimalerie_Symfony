@@ -9,6 +9,7 @@
         <div class="border border-dark p-3 rounded">
             <p class="h4">Choisissez votre moyen de paiement</p>
             {{ form_start(form) }}
+
                 <div class="">
                     {{ form_widget(form.name) }}
                 </div>
@@ -17,19 +18,13 @@
                     <input class="mt-1" type="checkbox" name="choix" value="1">
                     <label class="ms-3" for="case1">En cochant cette case, je déclare avoir pris connaissance et accepter les <a class="text-decoration-underline" href="{{ path('app_cgv') }}">CGV</a> ainsi que la <a class="text-decoration-underline" href="{{ path('app_politique') }}">Politique de confidentialité</a>.</label>
                 </div>
+
+                <div class="d-flex justify-content-between">
+                    <a class="lien" href="delivery">Retour à ma livraison</a>
+                    {{ form_widget(form.valider, {"label": "Valider ma commande", "attr": {'class':'lien_2'}}) }}
+                </div>
                 
             {{ form_end(form, {'render_rest': true}) }}
         </div>
     </section>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
- 

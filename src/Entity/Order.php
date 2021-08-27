@@ -28,7 +28,7 @@ class Order
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity=OrderProduct::class, mappedBy="commande", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=OrderProduct::class, mappedBy="commande", orphanRemoval=true, fetch="EAGER")
      */
     private $orderProducts;
 
@@ -38,15 +38,6 @@ class Order
      */
     private $user;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $priceHt;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $reference;
     
 
     public function __construct()
@@ -110,30 +101,6 @@ class Order
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getPriceHt(): ?float
-    {
-        return $this->priceHt;
-    }
-
-    public function setPriceHt(float $priceHt): self
-    {
-        $this->priceHt = $priceHt;
-
-        return $this;
-    }
-
-    public function getReference(): ?string
-    {
-        return $this->reference;
-    }
-
-    public function setReference(string $reference): self
-    {
-        $this->reference = $reference;
 
         return $this;
     }

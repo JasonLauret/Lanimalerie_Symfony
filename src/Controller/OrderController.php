@@ -81,7 +81,9 @@ class OrderController extends AbstractController
 
         return $this->redirectToRoute('order_index', [], Response::HTTP_SEE_OTHER);
     }
+
 /*
+
     #[Route('/new/order', name: 'new_order', methods: ['GET', 'POST'])]
     public function newOrder(Request $request): Response
     {

@@ -36,10 +36,7 @@ class OrderProduct
      */
     private $quantity;
 
-    /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private $priceHt;
+    
 
     public function getId(): ?int
     {
@@ -82,15 +79,4 @@ class OrderProduct
         return $this;
     }
 
-    public function getPriceHt(): ?float
-    {
-        return $this->priceHt;
-    }
-
-    public function setPriceHt(?float $priceHt): self
-    {
-        $this->priceHt = $priceHt;
-
-        return $this;
-    }
 }
