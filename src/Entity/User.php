@@ -66,7 +66,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $birthDate;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $civility;
 
@@ -260,7 +260,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setCivility(?string $civility): self
     {
-        $this->isMan = $civility;
+        $this->civility = $civility;
 
         return $this;
     }
