@@ -35,6 +35,16 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
     
+    public function findAllProduct($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.sub_category', 's')
+            ->where('p.sub_category = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     /*
     public function findOneBySomeField($value): ?Product
