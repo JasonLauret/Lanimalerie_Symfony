@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Brand;
 use App\Entity\Category;
+use App\Entity\SubCategory;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -30,9 +31,9 @@ class AddProductType extends AbstractType
                 'multiple' => false
                 )
             )
-            ->add('category', EntityType::class, 
+            ->add('subCategory', EntityType::class, 
                 array(
-                'class' => Category::class,
+                'class' => SubCategory::class,
                 'choice_label' => 'name',
                 'expanded' => true,
                 'multiple' => true

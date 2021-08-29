@@ -56,7 +56,9 @@ class ProductController extends AbstractController
             return $this->render('product/error.html.twig', ['product' => $product,]);
         }
 
-        return $this->render('product/displayProductAdmin.html.twig', ['product' => $product,]);
+        return $this->render('product/displayProductAdmin.html.twig', [
+            'product' => $product,
+        ]);
     }
 
     /**
@@ -73,7 +75,9 @@ class ProductController extends AbstractController
             return $this->render('product/error.html.twig', ['product' => $product,]);
         }
 
-        return $this->render('product/displayProduct.html.twig', ['product' => $product,]);
+        return $this->render('product/displayProduct.html.twig', [
+            'product' => $product,
+        ]);
     }
 
     //Filtrer
@@ -132,8 +136,8 @@ class ProductController extends AbstractController
             $product->setDescription($data['description']);
             $product->setPrice($data['price']);
             $product->setBrand($data['brand']);
-            foreach($data['category'] as $valeur){
-                $product->addCategory($valeur);
+            foreach($data['subCategory'] as $valeur){
+                $product->setSubCategory($valeur);
             }
 
            // var_dump($data['category']);
@@ -180,7 +184,7 @@ class ProductController extends AbstractController
                 }
                 catch (FileException $e) {
                     var_dump($e);
-                    die('Erreur' );
+                    die('Erreur');
                 }
 
                 $product->setPicture($newFilename);

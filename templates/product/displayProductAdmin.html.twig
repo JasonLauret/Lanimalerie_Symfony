@@ -20,13 +20,11 @@
                 </td>
             </tr>
             <tr>
-                <th>Catégorie</th>
+                <th>Sous-catégory</th>
                 <td>
-                    {% if product.category %}
-                        {% for category in product.category %}
-                            {{ category.name }}
-                        {% endfor %}
-                    {% endif %}
+                {% if product.subCategory %}
+                    {{ product.subCategory.name }}
+                {% endif %}
                 </td>
             </tr>
             <tr>

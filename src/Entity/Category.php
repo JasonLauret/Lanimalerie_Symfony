@@ -37,11 +37,6 @@ class Category
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Product::class, mappedBy="category")
-     */
-    private $products;
-
-    /**
      * @ORM\OneToMany(targetEntity=SubCategory::class, mappedBy="category")
      */
     private $sub_category;
@@ -89,33 +84,6 @@ class Category
     public function setImage(?string $image): self
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Product[]
-     */
-    public function getProducts(): Collection
-    {
-        return $this->products;
-    }
-
-    public function addProduct(Product $product): self
-    {
-        if (!$this->products->contains($product)) {
-            $this->products[] = $product;
-            $product->addCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): self
-    {
-        if ($this->products->removeElement($product)) {
-            $product->removeCategory($this);
-        }
 
         return $this;
     }
