@@ -21,10 +21,12 @@
 
                 <div class="d-flex justify-content-between">
                     <a class="lien" href="delivery">Retour à ma livraison</a>
-                    {{ form_widget(form.valider, {"label": "Valider ma commande", "attr": {'class':'lien_2'}}) }}
+                    {# {{ form_widget(form.valider, {"label": "Valider ma commande", "attr": {'class':'lien_2'}}) }} #}
                 </div>
                 
             {{ form_end(form, {'render_rest': true}) }}
+
+            <a href="{{ path('new_order') }}">Valider ma commande</a>
         </div>
     </section>
 {% endblock %}
