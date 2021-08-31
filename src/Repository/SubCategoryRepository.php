@@ -36,11 +36,11 @@ class SubCategoryRepository extends ServiceEntityRepository
     }
     */
 
-    public function findAllSubCategory($value)
+    public function getAllSubCategory($value)
     {
         return $this->createQueryBuilder('s')
         ->innerJoin('s.category', 'c')
-            ->where('s.category = :val')
+            ->where('s.category_id = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getResult()
