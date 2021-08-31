@@ -52,11 +52,6 @@ class Product
     private $picture;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="products")
-     */
-    private $category;
-
-    /**
      * @ORM\OneToMany(targetEntity=OrderProduct::class, mappedBy="product", orphanRemoval=true)
      */
     private $orderProducts;
@@ -65,6 +60,11 @@ class Product
      * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="products")
      */
     private $brand;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=SubCategory::class, inversedBy="products")
+     */
+    private $sub_category;
 
 
     public function __construct()
@@ -151,30 +151,6 @@ class Product
     }
 
     /**
-     * @return Collection|Category[]
-     */
-    public function getCategory(): Collection
-    {
-        return $this->category;
-    }
-
-    public function addCategory(Category $category): self// ne correspond pas a un add de bbd
-    {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        $this->category->removeElement($category);
-
-        return $this;
-    }
-
-    /**
      * @return Collection|OrderProduct[]
      */
     public function getOrderProducts(): Collection
@@ -212,6 +188,18 @@ class Product
     public function setBrand(?Brand $brand): self
     {
         $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function getSubCategory(): ?SubCategory
+    {
+        return $this->sub_category;
+    }
+
+    public function setSubCategory(?SubCategory $sub_category): self
+    {
+        $this->sub_category = $sub_category;
 
         return $this;
     }

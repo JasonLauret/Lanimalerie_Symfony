@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SubCategory{% endblock %}
+
+{% block body %}
+<div class="container my-3">
+    {{ form_start(form) }}
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="col-6">
+            <h1>Ajouter une sous-catégorie</h1>
+                <div>
+                    {{ form_row(form.name, {"label": "Nom", "attr": {'class':'form-control'}}) }}
+                </div>
+                <div class="pt-3">
+                    {{ form_row(form.description, {"label": "Description", "attr": {'class':'form-control'}}) }}
+                </div>
+                <div class="pt-3">
+                    {{ form_row(form.category, {"label": "Categorie parente", "attr": {'class':'form-control'}}) }}
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <a class="lien me-2" href="{{ path('sub_category_index') }}">Revenir à la liste</a>
+                    <button class="lien_2">{{ button_label|default('Valider') }}</button>
+                </div>
+            </div>
+        </div>
+    {{ form_end(form, {'render_rest': true}) }}
+</div>
+{% endblock %}

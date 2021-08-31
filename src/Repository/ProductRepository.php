@@ -23,7 +23,7 @@ class ProductRepository extends ServiceEntityRepository
     //  * @return Product[] Returns an array of Product objects
     //  */
     
-    public function findByName($value)
+    /*public function findByName($value)
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.name = :val')
@@ -33,8 +33,18 @@ class ProductRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
-    }
+    }*/
     
+    public function getAllProduct($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.sub_category', 's')
+            ->where('p.sub_category = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     /*
     public function findOneBySomeField($value): ?Product

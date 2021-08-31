@@ -3,16 +3,16 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\CategoryRepository;
+use App\Repository\SubCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
- * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ORM\Entity(repositoryClass=SubCategoryRepository::class)
  */
-class Category
+#[ApiResource]
+class SubCategory
 {
     /**
      * @ORM\Id
@@ -22,7 +22,7 @@ class Category
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
@@ -32,19 +32,18 @@ class Category
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="sub_category")
      */
-    private $image;
+    private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity=SubCategory::class, mappedBy="category")
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="sub_category")
      */
-    private $sub_category;
+    private $products;
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
-        $this->sub_category = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,42 +75,42 @@ class Category
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getCategory(): ?Category
     {
-        return $this->image;
+        return $this->category;
     }
 
-    public function setImage(?string $image): self
+    public function setCategory(?Category $category): self
     {
-        $this->image = $image;
+        $this->category = $category;
 
         return $this;
     }
 
     /**
-     * @return Collection|SubCategory[]
+     * @return Collection|Product[]
      */
-    public function getSubCategory(): Collection
+    public function getProducts(): Collection
     {
-        return $this->sub_category;
+        return $this->products;
     }
 
-    public function addSubCategory(SubCategory $subCategory): self
+    public function addProduct(Product $product): self
     {
-        if (!$this->sub_category->contains($subCategory)) {
-            $this->sub_category[] = $subCategory;
-            $subCategory->setCategory($this);
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setSubCategory($this);
         }
 
         return $this;
     }
 
-    public function removeSubCategory(SubCategory $subCategory): self
+    public function removeProduct(Product $product): self
     {
-        if ($this->sub_category->removeElement($subCategory)) {
+        if ($this->products->removeElement($product)) {
             // set the owning side to null (unless already changed)
-            if ($subCategory->getCategory() === $this) {
-                $subCategory->setCategory(null);
+            if ($product->getSubCategory() === $this) {
+                $product->setSubCategory(null);
             }
         }
 
