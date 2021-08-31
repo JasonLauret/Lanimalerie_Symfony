@@ -18,7 +18,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/product", name="all_product")
      */
-    /*public function allProduct()
+    public function allProduct()
     {
         $product = $this->getDoctrine()
                     ->getRepository(Product::class)
@@ -27,20 +27,20 @@ class ProductController extends AbstractController
         return $this->render('product/allProduct.html.twig', [
             'products' => $product,
         ]);
-    }*/
+    }
 
     // fonction pour afficher les produits par rapport à la sous-categorie parent
     /**
      * @Route("/product/{id}", name="all_product")
      */
-    public function product(ProductRepository $productRepository, $id)
+    /*public function product(ProductRepository $productRepository, $id)
     {
         $product = $productRepository->findAllProduct($id);
 
         return $this->render('product/allProduct.html.twig', [
             'products' => $product,
         ]);
-    }
+    }*/
 
     /**
      * @Route("/admin/product", name="all_productAdmin")
