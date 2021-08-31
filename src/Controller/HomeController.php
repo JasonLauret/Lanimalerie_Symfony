@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    /*#[Route('/', name: 'home')]
+    #[Route('/', name: 'home')]
     public function home(Request $request, MailerInterface $mailer): Response {
 
         $form = $this->createForm(ContactType::class);
@@ -35,9 +35,9 @@ class HomeController extends AbstractController
         return $this->render('home/home.html.twig', [
             'form' => $form->createView()
         ]);
-    }*/
+    }
 
-    #[Route('/', name: 'home')]
+    /*#[Route('/', name: 'home')]
     public function home(Request $request, MailerInterface $mailer): Response {
 
         $form = $this->createForm(ContactType::class);
@@ -64,6 +64,6 @@ class HomeController extends AbstractController
             'form' => $form->createView(),
             'categorys' => $category
         ]);
-    }
+    }*/
 
 }
