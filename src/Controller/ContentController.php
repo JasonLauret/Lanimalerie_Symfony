@@ -3,12 +3,9 @@
 
 namespace App\Controller;
 
-use App\Repository\CategoryRepository;
 use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -48,6 +45,11 @@ class ContentController extends AbstractController
     }
 
 
+    public function setting(): Response {
+        return $this->render('content/setting.html.twig');
+    }
+
+
     #[Route('/delivery', name: 'delivery')]
     public function displayOrder(CartService $cartService) {
 
@@ -56,6 +58,7 @@ class ContentController extends AbstractController
         ]);
         
     }
+
 
     #[Route('/valid', name: 'valid_order')]
     public function validOrder(): Response {

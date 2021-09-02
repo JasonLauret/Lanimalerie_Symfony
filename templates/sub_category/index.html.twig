@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sous-catégories{% endblock %}
+
+{% block body %}
+    
+    <section class="container mt-3">
+        <h1>Liste des sous-catégories</h1>
+        <a class="lien" href="{{ path('sub_category_new') }}">Ajouter une sous-catégorie</a>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Categorie parente</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for sub_category in sub_categories %}
+                <tr class="structure">
+                    <td>{{ sub_category.name }}</td>
+                    <td>{{ sub_category.description }}</td>
+                    <td>{{ sub_category.category.name }}</td>
+                    <td>
+                        <a class="lien" href="{{ path('sub_category_show', {'id': sub_category.id}) }}">Détail</a>
+                        <a class="lien" href="{{ path('sub_category_edit', {'id': sub_category.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucune sous-catégorie trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+{% endblock %}
