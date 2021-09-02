@@ -21,31 +21,24 @@ class MenuController extends AbstractController
 
         $subCategory = $this->getDoctrine()
                         ->getRepository(SubCategory::class)
-                        ->findAll();
-
-        //$subCategory = $subCategory->getAllSubCategory();
-
-            
-        //$product = $productRepository->getAllProduct($id);            
+                        ->findAll();           
 
         return $this->render('menu/menu.html.twig', [
             'categorys' => $category,
-            //'products' => $product,
             'subCategorys' => $subCategory
         ]);
     }
 
 
     // fonction pour afficher les produits par rapport à la sous-categorie parent
-    /**
-     * @Route("/product/{id}", name="all_product")
-     */
-    /*public function product(ProductRepository $productRepository, $id)
+    
+    #[Route('/product/{id}', name: 'all_product')]
+    public function product(ProductRepository $productRepository, $id)
     {
-        $product = $productRepository->findAllProduct($id);
+        $product = $productRepository->getAllProduct($id);
 
         return $this->render('product/allProduct.html.twig', [
             'products' => $product,
         ]);
-    }*/
+    }
 }

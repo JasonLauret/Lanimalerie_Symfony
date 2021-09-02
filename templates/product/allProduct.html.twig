@@ -16,7 +16,7 @@
                             <p>{{ product.price }} €</p>
                             <a href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
 
-                            <!-- Button trigger modal -->
+                            {# <!-- Button trigger modal -->
                             <a href="{{ path('add_cart', {'id': product.id}) }}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <i class="pe-2 bi bi-basket2"></i>Ajouter au panier
                             </a>
@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> #}
                         </div>
                     </div>
                 </a>

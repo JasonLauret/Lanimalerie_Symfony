@@ -80,9 +80,6 @@ a {
     z-index: 1;
 }
 
-.dropdown-menu:hover .menu-button{
-    background-color: rgb(0, 255, 81);
-}
 
 .dropdown-menu a {
     display: block;

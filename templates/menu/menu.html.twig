@@ -7,7 +7,7 @@
             {% for subCategory in subCategorys %}
                 {% if category.id == subCategory.category.id %}
                     <li>
-                         <a class="sous_categorie" href="">{{ subCategory.name }}</a> 
+                        <a class="sous_categorie" href="{{ path('all_product', {'id':subCategory.id}) }}">{{ subCategory.name }}</a> 
                     </li>
                 {% endif %}
             {% endfor %}
