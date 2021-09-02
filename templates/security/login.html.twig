@@ -7,9 +7,9 @@
 <section class="bg_section">
     <div class="container p-5">
         <div class="row d-flex">
-            <div class="col-12 col-md-6">
+            <div class="col-md-6">
                 <h4 class="login_form">Deja inscrit ?</h4>
-                <h1 class="h3 mb-3 font-weight-normal">Connecter vous</h1>
+                <h1 class="mb-3 font-weight-normal">Connectez-vous !</h1>
                 <form method="post">
                     {% if error %}
                         <div class="alert alert-danger">
@@ -18,34 +18,44 @@
                     {% endif %}
                     {% if app.user %}
                         <div class="mb-3">
-                            You are logged in as {{ app.user.username }}, 
-                            <a href="{{ path('app_logout') }}">Logout</a>
+                            Vous êtes connecté en tant que {{ app.user.username }}, 
+                            <a href="{{ path('app_logout') }}">Deconnexion</a>
                         </div>
                     {% endif %}
-                    <label for="inputEmail">Email</label>
-                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-                    <label for="inputPassword">Mot de passe</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-                    <input type="hidden" name="_csrf_token"value="{{ csrf_token('authenticate') }}">
+                    <div class="mb-3">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                    </div>
+                    <div>
+                        <label for="inputPassword">Mot de passe</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                        <input type="hidden" name="_csrf_token"value="{{ csrf_token('authenticate') }}">
+                    </div>
                     {#
                         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
                         See https://symfony.com/doc/current/security/remember_me.html
 
                         <div class="checkbox mb-3">
                             <label>
-                                <input type="checkbox" name="_remember_me"> Remember me
+                                <input type="checkbox" name="_remember_me"> Se souvenir de moi
                             </label>
                         </div>
                     #}
                     <button class="btn_envoyer mt-3" type="submit">Connexion</button>
                 </form>
             </div>
-            <div class="col-12 col-md-6">
-                <div class="inscrit d-flex justify-content-center align-items-center">
-                    <div class="blockInscription p-3">
-                        <p>Vous n'etes pas encore inscrit ?</p>
-                        <p>N'attendez plus !</p>
-                        <a href="{{ path('app_register') }}" class="btn_login_form">Inscription</a>
+            <div class="col-md-6 mt-3">
+                <div class="inscrit">
+                    <div class="blockInscription d-flex flex-column">
+                        <div>
+                            <div class="p-3">
+                                <p class="h4">Vous n'ètes pas encore inscrit ?<p>
+                                <p class="h2">N'attendez plus !</p>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="{{ path('app_register') }}" class="btn_login_form fs-4">M'inscrire</a>
+                        </div>
                     </div>
                 </div>
             </div>

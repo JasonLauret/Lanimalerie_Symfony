@@ -351,21 +351,23 @@ footer div {
 }
 
 .btn_login_form {
+    background-color: rgb(174, 142, 0);
     text-decoration: none;
-    color: rgb(174, 142, 0);
+    color: rgb(255, 255, 255);
     padding: 10px;
     border-radius: 5px;
 }
 
 .btn_login_form:hover {
-    color: rgb(255, 255, 255);
-    background-color: rgb(174, 142, 0);
+    color: rgb(174, 142, 0);
+    background-color: rgb(255, 255, 255);
 }
 
 .blockInscription {
     background-color: rgb(240, 239, 239);
     border-radius: 10px;
-    padding: 5px;
+    height: 270px;
+    padding: 20px;
 }
 
 /*Mettre div au centre*/
