@@ -19,11 +19,11 @@
             {% for product in products %}
                 <tr class="structure">
                     <td>{{ product.name }}</td>
-                    <td>
+                     <td>
                         {% if product.brand.name %}
                             {{ product.brand.name }}
                         {% endif %}
-                    </td>
+                    </td> 
                     <td><img src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}" style="height:100px; width:auto"></td>
                     <td>
                         <a class="lien" href="{{ path('display_productAdmin', {'id':product.id}) }}">Détail</a>
