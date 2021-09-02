@@ -31,7 +31,7 @@ class MenuController extends AbstractController
 
     // fonction pour afficher les produits par rapport à la sous-categorie parent
     
-    #[Route('/product/{id}', name: 'all_product')]
+    #[Route('/category/{id}', name: 'all_product')]
     public function product(ProductRepository $productRepository, $id)
     {
         $product = $productRepository->getAllProduct($id);

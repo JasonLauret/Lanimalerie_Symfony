@@ -4,9 +4,9 @@
     <section class="container py-5">
         <div class="row">
         {% for product in products %}
-            <div class="col-3">
-                <a href="{{ path('display_product', {'id':product.id}) }}" class="text-decoration-none ">
-                    <div class="rounded-3 text-center">
+            <div class="col-3 border border-dark m-2 p-3">
+                <div class="rounded-3 text-center">
+                    <a href="{{ path('display_product', {'id':product.id}) }}" class="text-decoration-none ">
                         <div>
                             <img class="rounded" src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}" style="max-height:150px; width:auto">
                         </div>
@@ -14,37 +14,39 @@
                             <h1 class="fs-3 fw-bold">{{ product.name }}</h1>
                             <h4 class="fs-3 fw-bold">{{ product.brand.name }}</h4>
                             <p>{{ product.price }} €</p>
-                            <a href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
-
-                            {# <!-- Button trigger modal -->
-                            <a href="{{ path('add_cart', {'id': product.id}) }}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="pe-2 bi bi-basket2"></i>Ajouter au panier
-                            </a>
-                            <!-- Modal -->
-                            
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Le produit a bien été ajouté au panier !</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Voulez-vous
-                                        </div>
-                                        <div class="modal-footer justify-content-between">
-                                            <a href="" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer vos achats</a>
-                                            <span>ou</span>
-                                            <a href="{{ path('cart') }}" type="button" class="btn btn-primary">Accéder au panier</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> #}
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+                <div class="text-center">
+                    <a class="lien" href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
+                </div>
             </div>
         {% endfor %}
         </div>
     </section>
 {% endblock body %}
+
+    {# <!-- Button trigger modal -->
+    <a href="{{ path('add_cart', {'id': product.id}) }}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="pe-2 bi bi-basket2"></i>Ajouter au panier
+    </a>
+    <!-- Modal -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Le produit a bien été ajouté au panier !</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Voulez-vous
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <a href="" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer vos achats</a>
+                    <span>ou</span>
+                    <a href="{{ path('cart') }}" type="button" class="btn btn-primary">Accéder au panier</a>
+                </div>
+            </div>
+        </div>
+    </div> #}

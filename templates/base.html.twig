@@ -18,15 +18,12 @@
 
         {% block nav %}
             {% include 'content/include/nav.html.twig' %}
-            {#{% include 'nav_bar/navBar.html.twig' %}#}
         {% endblock %}
 
         {% for message in app.flashes('success') %}
-
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-
+            <div class="alert alert-success">
+                <p>{{ message }} <a style="text-decoration: underline;" href="{{ path('cart') }}">Voir mon panier</a> </p>
+            </div>
         {% endfor %}
 
         {% block body %}{% endblock %}

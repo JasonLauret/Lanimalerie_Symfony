@@ -22,19 +22,18 @@ class CartController extends AbstractController
     
 
     #[Route('/cart/{id}', name: 'add_cart')]
-
     public function add($id, CartService $cartService){
 
         $cartService->add($id);
-        
-        $this->addFlash('success', 'Le produit à bien été ajouter');
 
-        return $this->redirectToRoute('all_product',['id'=> $id]);
+        $this->addFlash('success', 'Un produit à été ajouté au panier.');
+
+        return $this->redirectToRoute('all_product', ['id'=> $id]);
 
     }
 
-    #[Route('/addCart/{id}', name: 'add_inCart')]
 
+    #[Route('/addCart/{id}', name: 'add_inCart')]
     public function addCart($id, CartService $cartService){
 
         $cartService->addCart($id);

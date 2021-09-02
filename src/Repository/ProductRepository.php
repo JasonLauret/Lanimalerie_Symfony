@@ -39,7 +39,7 @@ class ProductRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('p')
             ->innerJoin('p.sub_category', 's')
-            ->where('p.sub_category = :val')
+            ->where('s = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getResult()
