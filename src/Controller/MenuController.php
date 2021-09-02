@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\SubCategory;
 use App\Repository\ProductRepository;
 use App\Repository\SubCategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,22 +13,28 @@ use Symfony\Component\Routing\Annotation\Route;
 class MenuController extends AbstractController
 {
     #[Route('/menu', name: 'menu')]
-    public function index(ProductRepository $productRepository/*, SubCategoryRepository $subCategory, $id*/): Response
+    public function index(): Response
     {   
         $category = $this->getDoctrine()
                     ->getRepository(Category::class)
                     ->findAll();
 
-        //$subCategory = $subCategory->getAllSubCategory($id);
+        $subCategory = $this->getDoctrine()
+                        ->getRepository(SubCategory::class)
+                        ->findAll();
+
+        //$subCategory = $subCategory->getAllSubCategory();
+
             
         //$product = $productRepository->getAllProduct($id);            
 
         return $this->render('menu/menu.html.twig', [
             'categorys' => $category,
             //'products' => $product,
-            //'subCategorys' => $subCategory
+            'subCategorys' => $subCategory
         ]);
     }
+
 
     // fonction pour afficher les produits par rapport à la sous-categorie parent
     /**
