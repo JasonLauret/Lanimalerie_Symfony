@@ -10,7 +10,6 @@
         <table class="table mt-2">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Nom</th>
                     <th>Logo</th>
                     <th>Actions</th>
@@ -19,7 +18,6 @@
             <tbody>
             {% for brand in brands %}
                 <tr class="structure">
-                    <td>{{ brand.id }}</td>
                     <td>{{ brand.name }}</td>
                     <td><img src="{{ asset('upload/' ~ brand.logo) }}" alt="{{ brand.name }}" style="height:100px; width:auto"></td>
                     <td>
@@ -29,7 +27,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="4">Aucune marque trouvé</td>
+                    <td colspan="3">Aucune marque trouvé</td>
                 </tr>
             {% endfor %}
             </tbody>
