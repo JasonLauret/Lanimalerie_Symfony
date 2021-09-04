@@ -18,13 +18,15 @@
                 </tr>
             </thead>
             <tbody>
+            {% for order in orders %}
                 <tr class="structure">
-                    <td></td>
-                    <td></td>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.date ? order.date|date('d/m/Y') : '' }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>
