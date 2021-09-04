@@ -20,6 +20,8 @@ class AddProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $option)
     {
         $builder
+            // ->add('quantity')
+            // ->add('isActive')
             ->add("name", TextType::class)
             ->add("description", TextType::class)
             ->add("price", TextType::class)
@@ -36,7 +38,7 @@ class AddProductType extends AbstractType
                 'class' => SubCategory::class,
                 'choice_label' => 'name',
                 'expanded' => true,
-                'multiple' => true
+                'multiple' => false
                 )
             )
             ->add('picture', FileType::class, [
