@@ -7,9 +7,9 @@ use App\Repository\PaymentMethodRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=PaymentMethodRepository::class)
  */
-#[ApiResource]
 class PaymentMethod
 {
     /**
