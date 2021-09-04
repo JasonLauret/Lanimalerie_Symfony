@@ -27,17 +27,4 @@ class MenuController extends AbstractController
             'subCategorys' => $subCategory
         ]);
     }
-
-
-    // fonction pour afficher les produits par rapport à la sous-categorie parent
-    
-    #[Route('/category/{id}', name: 'all_product')]
-    public function product(ProductRepository $productRepository, $id)
-    {
-        $product = $productRepository->getAllProduct($id);
-
-        return $this->render('product/allProduct.html.twig', [
-            'products' => $product,
-        ]);
-    }
 }

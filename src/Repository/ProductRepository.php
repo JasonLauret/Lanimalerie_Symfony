@@ -35,16 +35,18 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }*/
     
-    public function getAllProduct($value)
+    public function getProductByCategory($value)
     {
         return $this->createQueryBuilder('p')
             ->innerJoin('p.sub_category', 's')
-            ->where('s = :val')
+            ->andWhere('s = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getResult()
         ;
     }
+
+    // affiche tous les produits ou l'id_sousCategory de produit soit égale a l'id de la sous-category
 
     /*
     public function findOneBySomeField($value): ?Product

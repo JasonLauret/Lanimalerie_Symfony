@@ -15,6 +15,17 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class ProductController extends AbstractController
 {
+
+    #[Route('/category/{id}', name: 'all_product')]
+    public function product(ProductRepository $productRepository, $id)
+    {
+        $product = $productRepository->getProductByCategory($id);
+
+        return $this->render('product/allProduct.html.twig', [
+            'products' => $product,
+        ]);
+    }
+    
     /**
      * @Route("/product", name="all_product")
      */

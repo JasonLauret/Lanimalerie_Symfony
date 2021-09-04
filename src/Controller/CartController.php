@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\SubCategory;
 use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,13 +23,15 @@ class CartController extends AbstractController
     
 
     #[Route('/cart/{id}', name: 'add_cart')]
-    public function add($id, CartService $cartService){
+    public function add($id, CartService $cartService/*, SubCategory $subCategory*/){
 
         $cartService->add($id);
 
+        //$idSubCategory = $subCategory->getId();
+
         $this->addFlash('success', 'Un produit à été ajouté au panier.');
 
-        return $this->redirectToRoute('all_product', ['id'=> $id]);
+    return $this->redirectToRoute('all_product', ['id'=> $id/*$idSubCategory*/]);
 
     }
 
