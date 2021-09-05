@@ -1,20 +1,27 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
 
-<section class="border border-dark m-5 p-5">
+<section class="container mt-5">
 
-    <div class="">
-        <div class="">
-            <img class="w-25" src="{{ asset('img/logo/logo-chatChien_3.jpg') }}" alt="Logo entreprise">
-            <p class="mt-2">La Nîme'alerie</p>
-            <p><span>30000</span> <span>Nîmes</span></p>
-            <p>Rue machin bidule chouette</p>
-        </div>
+    <h2>Voici votre reçu</h2>
+    
+    <div class="d-flex mt-5">
+        <p class="h5"><span>Vouler vous:</span></p>
+        <a class="lienRecu mx-5" href="">Imprimer</a>
+        <a class="lienRecu" href="">Télécharger</a>
     </div>
-        
-    <div class="row border border-dark p-5">
+    
+    <div class="border border-dark m-5 p-5">
+        <div>
+            <div>
+                <img class="w-25" src="{{ asset('img/logo/logo-chatChien_3.jpg') }}" alt="Logo entreprise">
+                <p class="mt-2">La Nîme'alerie</p>
+                <p><span>30000</span> <span>Nîmes</span></p>
+                <p>Rue machin bidule chouette</p>
+            </div>
+        </div>
+        <div class="row border border-dark p-5">
             <div class="col-6">
                 <p class="h2 recuFacturation text-danger">Facturation</p>
                 <div class="border border-danger p-1">
@@ -48,44 +55,44 @@
                         <p class="bg-light p-2">Date de commande</p>
                     </div>
                     <div class="col">
-                         <p class="p-2">{{ app.user.id }}</p>
+                            <p class="p-2">{{ app.user.id }}</p>
                         {#<p class="p-2">{{ order.date }}</p> #}
                     </div>
                 </div>
             {# {% endfor %} #}
-        <div>
-            <p class="h2 text-danger">Votre commande</p>
             <div>
-                <table class="table mt-2 border">
-                    <thead class="bg-light">
-                        <tr>
-                            <th>Réf.produit</th>
-                            <th>Nom du produit</th>
-                            <th>Quantité</th>
-                            <th>Prix HT</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for order in orders.orderProducts %}
-                            <tr class="structure fw-bold">
-                                <td>{{ order.id }}</td>
-                                <td>{{ order.product.name }}</td>
-                                <td>{{ order.quantity }}</td>
-                                <td>{{ order.product.price }}</td>
+                <p class="h2 text-danger">Votre commande</p>
+                <div>
+                    <table class="table mt-2 border">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Réf.produit</th>
+                                <th>Nom du produit</th>
+                                <th>Quantité</th>
+                                <th>Prix HT</th>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                    <tfoot>
-                        <tr class="bg-light fw-bold">
-                            <td colspan="3" class="text-end fs-4">Total :</td>
-                            <td class="fs-4">{{ total }} €</td>
-                        </tr>
-                    </tfoot>
-                </table>
+                        </thead>
+                        <tbody>
+                            {% for order in orders.orderProducts %}
+                                <tr class="structure fw-bold">
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.product.name }}</td>
+                                    <td>{{ order.quantity }}</td>
+                                    <td>{{ order.product.price }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr class="bg-light fw-bold">
+                                <td colspan="3" class="text-end fs-4">Total :</td>
+                                <td class="fs-4">{{ total }} €</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-    
 </section>
 
 <a class="lien mb-5" href="/">Retour à la page d'accueil</a>
