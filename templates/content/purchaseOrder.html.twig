@@ -18,13 +18,13 @@
                 </tr>
             </thead>
             <tbody>
-            {% for order in orders %}
+            {% for order in orders.orderProducts %}
                 <tr class="structure">
                     <td>{{ order.id }}</td>
-                    <td>{{ order.date ? order.date|date('d/m/Y') : '' }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ order.product.name }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.product.price }}</td>
+                    <td>Total</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -33,5 +33,35 @@
 
     <a class="lien" href="/">Retour à la page d'accueil</a>
 </section>
+<section>
+    <div class="col-12 col-md-5 border border-dark rounded p-3">
+        <p class="h4">Récapitulatif panier</p>
+        <hr>
+        {% for order in orders.orderProducts %}
+            <tr class="structure">
+                <td>{{ order.id }}</td>
+                <td>{{ order.product.name }}</td>
+                <td>{{ order.quantity }}</td>
+                <td>{{ order.product.price }}</td>
+                <td>Total</td>
+            </tr>
+        {% endfor %}
+        </hr>
+        <div class="h4 d-flex justify-content-between">
+            <p>Montant total:</p>
+            <p>total €</p>
+        </div>
+    </div>
+</section>
+
+<section class="border border-dark m-3 p-4">
+    <div>
+        <img class="w-25 h-25" src="{{ asset('img/logo/logo-chatChien_3.jpg') }}" alt="Logo entreprise">
+        <p>La Nîme'alerie</p>
+        <p><span>30000</span> <span>Nîmes</span></p>
+        <p>rue machin bidule chouette</p>
+    </div>
+</section>
+
 
 {% endblock %}

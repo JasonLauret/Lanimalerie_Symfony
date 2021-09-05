@@ -58,42 +58,14 @@ class NewOrderController extends AbstractController
     }
 
 
-    #[Route('/order/purchase/{id}', name: 'display_order')]
-    public function display_order($id)
+
+    #[Route('/order/{id}', name: 'display_order')]
+    public function exportCommunicationAction(Order $order)
     {
-        $order = $this->getDoctrine()
-                    ->getRepository(Order::class)
-                    ->findAll($id);
-
-        $order_product = $this->getDoctrine()
-                        ->getRepository(OrderProduct::class)
-                        ->findAll($id);
-
         return $this->render('content/purchaseOrder.html.twig', [
             'orders' => $order,
-            'order_products' => $order_product,
         ]);
     }
-
-    // #[Route('/delivery/test/{id}', name: 'display_order')]
-    // public function exportCommunicationAction(Order $order)
-    // {
-    //     dump($order);
-    //     foreach($order->getOrderProducts() as $elem){
-    //         echo $elem->getProduct()->getName();
-    //     }
-    //     die();
-        
-    
-    //     $order = $this->getDoctrine()
-    //                 ->getRepository(Order::class)
-    //                 ->findAll();
-
-
-    //     return $this->render('content/purchaseOrder.html.twig', [
-    //         'order' => $order,
-    //     ]);
-    // }
 
 
     private $requestStack;
