@@ -58,8 +58,9 @@
         </div>
         
     </div>
-    <div class="text-end mt-5">
-        <a href="{{ path('payment') }}" class="menu p-3">Valider ma livraison<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
+    <div class="d-flex justify-content-between mt-5">
+        <a href="{{ path('cart') }}" class="menu p-2"><i class="bi bi-arrow-left-circle-fill fs-5 me-2"></i>Retour au panier</a>
+        <a href="{{ path('payment') }}" class="menu p-2">Moyen de paiement<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
     </div>
 </section>
 {% endblock %}

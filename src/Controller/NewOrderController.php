@@ -53,7 +53,7 @@ class NewOrderController extends AbstractController
         $em->flush();
 
 
-        return $this->render('new_order/newOrder.html.twig', [
+        return $this->render('order_tunnel/newOrder.html.twig', [
             'order' => $order,
         ]);
     }
@@ -65,7 +65,7 @@ class NewOrderController extends AbstractController
     {
         $total = $cartService->getTotal();
 
-        return $this->render('content/purchaseOrder.html.twig', [
+        return $this->render('order_tunnel/purchaseOrder.html.twig', [
             'orders' => $order,
             'total' => $total
         ]);

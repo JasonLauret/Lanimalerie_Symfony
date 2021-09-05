@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+
+    <section class="container my-5">
+        <h2>Mon paiement</h2>
+        <div class="border border-dark p-3 rounded">
+            <p class="h4">Choisissez votre moyen de paiement</p>
+            {{ form_start(form) }}
+
+                <div class="">
+                    {{ form_widget(form.name) }}
+                </div>
+                
+                <div class="d-flex m-4">
+                    <input class="mt-1" type="checkbox" name="choix" value="1">
+                    <label class="ms-3" for="case1">En cochant cette case, je déclare avoir pris connaissance et accepter les <a class="text-decoration-underline" href="{{ path('app_cgv') }}">CGV</a> ainsi que la <a class="text-decoration-underline" href="{{ path('app_politique') }}">Politique de confidentialité</a>.</label>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    
+                    {# {{ form_widget(form.valider, {"label": "Valider ma commande", "attr": {'class':'lien_2'}}) }} #}
+                </div>
+                
+            {{ form_end(form, {'render_rest': true}) }}
+
+            {# --------------Modal-------------- #}
+            <div class="d-flex justify-content-between">
+                <a class="menu p-2" href="delivery"><i class="bi bi-arrow-left-circle-fill fs-5 me-2"></i>Retour à la livraison</a>
+                <a class="menu p-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Valider et payer<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i>
+                </a>
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="">
+                        <h5 class="modal-title h2 text-center mt-5 mb-3" id="exampleModalLabel">Ceci est la dernière étape.</h5>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p class="h2"></p>
+                        <p class="mb-5">Êtes-vous sûr de vouloir valider et payer ?</p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <a class="lienRecu"  type="button" data-bs-dismiss="modal">Non je ne suis pas sur.</a>
+                        <a class="lienRecu" href="{{ path('new_order') }}" type="button">Valider et payer.</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

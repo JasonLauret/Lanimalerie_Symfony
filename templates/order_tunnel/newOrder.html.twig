@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NewOrderController!{% endblock %}
+
+{% block body %}
+
+    <section class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-5 border border-dark p-4 rounded">
+                <p class="h2">Merci {{ app.user.firstName }} !</p>
+                <h2>Votre commande a bien été validée !</h2>
+                <p class="text-center mt-5">Vous pouvez:</p>
+                <div class="text-center d-md-flex justify-content-md-between">
+                    <a class="lien" href="{{ path('home') }}">Revenir à la page d'accueil</a>
+                    <p class="pt-1">ou</p>
+                    <a class="lien ms-md-5" href="{{ path('display_order', {'id': order.id}) }}">Afficher votre reçu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+

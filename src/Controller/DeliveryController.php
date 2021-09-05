@@ -14,7 +14,7 @@ class DeliveryController extends AbstractController
         $nbItem = $cartService->getFullCart();
         $nbItem = count($nbItem);
 
-        return $this->render('content/delivery.html.twig', [
+        return $this->render('order_tunnel/delivery.html.twig', [
             'items' => $cartService->getFullCart(),
             'total' => $cartService->getTotal(),
             'nbItem' => $nbItem

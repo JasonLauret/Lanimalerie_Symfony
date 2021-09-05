@@ -27,7 +27,7 @@ class paymentMethodController extends AbstractController
             return $this->redirectToRoute('payment');
         }
 
-        return $this->render('content/paymentMethod.html.twig', [
+        return $this->render('order_tunnel/paymentMethod.html.twig', [
             'items' => $cartService->getFullCart(),
             'total' => $cartService->getTotal(),
             'payments'=> $payment,
