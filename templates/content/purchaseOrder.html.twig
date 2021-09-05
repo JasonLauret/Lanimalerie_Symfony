@@ -2,66 +2,92 @@
 
 
 {% block body %}
-<section class="m-4">
 
-    <h1>Voici votre recu</h1>
+<section class="border border-dark m-5 p-5">
 
     <div class="">
-        <table class="table mt-2">
-            <thead>
-                <tr>
-                    <th>Réf.produit</th>
-                    <th>Nom</th>
-                    <th>Quantité</th>
-                    <th>Prix HT</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for order in orders.orderProducts %}
-                <tr class="structure">
-                    <td>{{ order.id }}</td>
-                    <td>{{ order.product.name }}</td>
-                    <td>{{ order.quantity }}</td>
-                    <td>{{ order.product.price }}</td>
-                    <td>Total</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <a class="lien" href="/">Retour à la page d'accueil</a>
-</section>
-<section>
-    <div class="col-12 col-md-5 border border-dark rounded p-3">
-        <p class="h4">Récapitulatif panier</p>
-        <hr>
-        {% for order in orders.orderProducts %}
-            <tr class="structure">
-                <td>{{ order.id }}</td>
-                <td>{{ order.product.name }}</td>
-                <td>{{ order.quantity }}</td>
-                <td>{{ order.product.price }}</td>
-                <td>Total</td>
-            </tr>
-        {% endfor %}
-        </hr>
-        <div class="h4 d-flex justify-content-between">
-            <p>Montant total:</p>
-            <p>total €</p>
+        <div class="">
+            <img class="w-25" src="{{ asset('img/logo/logo-chatChien_3.jpg') }}" alt="Logo entreprise">
+            <p class="mt-2">La Nîme'alerie</p>
+            <p><span>30000</span> <span>Nîmes</span></p>
+            <p>Rue machin bidule chouette</p>
         </div>
     </div>
-</section>
-
-<section class="border border-dark m-3 p-4">
-    <div>
-        <img class="w-25 h-25" src="{{ asset('img/logo/logo-chatChien_3.jpg') }}" alt="Logo entreprise">
-        <p>La Nîme'alerie</p>
-        <p><span>30000</span> <span>Nîmes</span></p>
-        <p>rue machin bidule chouette</p>
+        
+    <div class="row border border-dark p-5">
+            <div class="col-6">
+                <p class="h2 recuFacturation text-danger">Facturation</p>
+                <div class="border border-danger p-1">
+                    <p>{{ app.user.lastName }} {{ app.user.firstName }}</p>
+                    <p>{{ app.user.address }}</p>
+                    <p><span>{{ app.user.postalCode }}</span> <span>{{ app.user.city }}</span></p>
+                </div>
+            </div>
+            <div class="col-6">
+                <p class="h2 recuLivraison text-danger">Livraison</p>
+                <div class="border border-danger p-1">
+                    <p>{{ app.user.lastName }} {{ app.user.firstName }}</p>
+                    <p>{{ app.user.address }}</p>
+                    <p><span>{{ app.user.postalCode }}</span> <span>{{ app.user.city }}</span></p>
+                </div>
+            </div>
+            {# {% for order in orders %} #}
+                <div class="row col-6 p-5 ms-2">
+                    <div class="col ">
+                        <p class="bg-light p-2">Adress e-mail</p>
+                        <p class="bg-light p-2">Numéro de commande</p>
+                    </div>
+                    <div class="col">
+                        <p class="p-2">{{ app.user.email }}</p>
+                        {# <p class="p-2">{{ order.id }}</p> #}
+                    </div>
+                </div>
+                <div class="row col-6 p-5 ms-2">
+                    <div class="col">
+                        <p class="bg-light p-2">ID client</p>
+                        <p class="bg-light p-2">Date de commande</p>
+                    </div>
+                    <div class="col">
+                         <p class="p-2">{{ app.user.id }}</p>
+                        {#<p class="p-2">{{ order.date }}</p> #}
+                    </div>
+                </div>
+            {# {% endfor %} #}
+        <div>
+            <p class="h2 text-danger">Votre commande</p>
+            <div>
+                <table class="table mt-2 border">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Réf.produit</th>
+                            <th>Nom du produit</th>
+                            <th>Quantité</th>
+                            <th>Prix HT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders.orderProducts %}
+                            <tr class="structure fw-bold">
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.product.name }}</td>
+                                <td>{{ order.quantity }}</td>
+                                <td>{{ order.product.price }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr class="bg-light fw-bold">
+                            <td colspan="3" class="text-end fs-4">Total :</td>
+                            <td class="fs-4">{{ total }} €</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
     </div>
+    
 </section>
 
+<a class="lien mb-5" href="/">Retour à la page d'accueil</a>
 
 {% endblock %}

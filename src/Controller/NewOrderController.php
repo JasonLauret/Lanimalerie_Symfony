@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Order;
 use App\Entity\OrderProduct;
 use App\Repository\ProductRepository;
+use App\Service\Cart\CartService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -60,10 +61,13 @@ class NewOrderController extends AbstractController
 
 
     #[Route('/order/{id}', name: 'display_order')]
-    public function exportCommunicationAction(Order $order)
+    public function exportCommunicationAction(Order $order, CartService $cartService)
     {
+        $total = $cartService->getTotal();
+
         return $this->render('content/purchaseOrder.html.twig', [
             'orders' => $order,
+            'total' => $total
         ]);
     }
 
