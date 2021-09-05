@@ -23,7 +23,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'order_new', methods: ['GET', 'POST'])]
+    #[Route('/newOrder', name: 'order_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
         $order = new Order();
@@ -44,7 +44,7 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'order_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'order_show', methods: ['GET'])]
     public function show(Order $order): Response
     {
         return $this->render('order/show.html.twig', [

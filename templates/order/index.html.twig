@@ -9,7 +9,6 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Référence</th>
                 <th>Date</th>
                 <th>Prix HT</th>
                 <th>actions</th>
@@ -19,9 +18,7 @@
         {% for order in orders %}
             <tr>
                 <td>{{ order.id }}</td>
-                <td>{{ order.reference }}</td>
                 <td>{{ order.date ? order.date|date('d/m/Y') : '' }}</td>
-                <td>{{ order.priceHt }} €</td>
                 <td>
                     <a href="{{ path('order_show', {'id': order.id}) }}">Detail</a>
                     <a href="{{ path('order_edit', {'id': order.id}) }}">Modifier</a>
