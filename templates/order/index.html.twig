@@ -3,38 +3,44 @@
 {% block title %}Order index{% endblock %}
 
 {% block body %}
-    <h1>Order index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
+    <section class="container mt-3">
+        <h1>Commandes</h1>
+        <p class="h3">Nombre de commande: {{ count }} commande{% if count > 1 %}s{% endif %}</p>
+        {# <h1>Somme de toutes les commandes: {{ sum }} €</h1> #}
+        <a class="lien" href="{{ path('brand_new') }}">Ajouter une marque</a>
+        <table class="table mt-2">
+            <thead>
+                <tr>
                 <th>Id</th>
                 <th>Date</th>
-                <th>Prix HT</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Total de la commande</th>
                 <th>actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for order in orders %}
+            </thead>
+            <tbody>
+            {% for order in orders %}
             <tr>
                 <td>{{ order.id }}</td>
                 <td>{{ order.date ? order.date|date('d/m/Y') : '' }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td>
-                    <a href="{{ path('order_show', {'id': order.id}) }}">Detail</a>
-                    <a href="{{ path('order_edit', {'id': order.id}) }}">Modifier</a>
+                    <a class="lien" href="{{ path('order_show', {'id': order.id}) }}">Detail</a>
+                    <a class="lien" href="{{ path('order_edit', {'id': order.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Ancune commande trouvé</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <h1>Nombre de commande: {{ count }} commande{% if count > 1 %}s{% endif %}</h1>
-    {# <h1>Somme de toutes les commandes: {{ sum }} €</h1> #}
-    <a href="{{ path('order_new') }}">Créer une nouvelle commande</a>
+            </tbody>
+        </table>
+    </section>
 
 {% endblock %}
 

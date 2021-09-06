@@ -57,6 +57,16 @@ class OrderRepository extends ServiceEntityRepository
         ;
     }
 
+    public function allUserOrder($value)
+    {
+        return $this->createQueryBuilder('o')
+            ->where('o.user = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 
     /*public function sumOrder(): ?Order
     {

@@ -73,9 +73,10 @@
                             </tr>
                         </thead>
                         <tbody>
+                        {{ dump(orders) }}
                             {% for order in orders.orderProducts %}
                                 <tr class="structure fw-bold">
-                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.product.id }}</td>
                                     <td>{{ order.product.name }}</td>
                                     <td>{{ order.quantity }}</td>
                                     <td>{{ order.product.price }}</td>
