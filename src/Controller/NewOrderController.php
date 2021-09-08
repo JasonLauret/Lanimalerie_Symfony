@@ -17,7 +17,7 @@ class NewOrderController extends AbstractController
     #[Route('/new/order', name: 'new_order')]
     public function index(ProductRepository $productRepository, EntityManagerInterface $em): Response
     {
-        //_____Création de la commande_____
+        //__________Création de la commande__________
 
         //Création new objet commande
         $order = new Order();
@@ -28,10 +28,11 @@ class NewOrderController extends AbstractController
         //Récupere le panier dans la session
         $session = $this->requestStack->getSession();
         $panier = $session->get('panier');
+        //Récupere le moyen de paiement
+        $order->getPaymentMethod($order->getUser());
         //Enregistre la commande
         $em->persist($order);
         
-        dump($panier);
         //parcour le panier
         foreach($panier as $key => $value){
             //Création d'un nouveau objet orderProduct (nouvelle ligne dans orderProduct)

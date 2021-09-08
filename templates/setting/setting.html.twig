@@ -46,7 +46,7 @@
         </table>
         <div class="d-flex flex-column col-6 text-end">
             <p><a class="lien" href="{{ path('edit_user', {'id': app.user.id}) }}">Modifier mes informations</a></p>
-            <p><a class="lien" href="">Changer mon mot de passe</a></p>
+            <p><a class="lien" href="{{ path('edit_password', {'id': app.user.id}) }}">Changer mon mot de passe</a></p>
         </div>
     </div>
 </section>

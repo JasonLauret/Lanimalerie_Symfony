@@ -13,17 +13,12 @@
                 <div class="">
                     {{ form_widget(form.name) }}
                 </div>
-                
-                <div class="d-flex m-4">
+
+                {# <div class="d-flex m-4">
                     <input class="mt-1" type="checkbox" name="choix" value="1">
                     <label class="ms-3" for="case1">En cochant cette case, je déclare avoir pris connaissance et accepter les <a class="text-decoration-underline" href="{{ path('app_cgv') }}">CGV</a> ainsi que la <a class="text-decoration-underline" href="{{ path('app_politique') }}">Politique de confidentialité</a>.</label>
-                </div>
+                </div> #}
 
-                <div class="d-flex justify-content-between">
-                    
-                    {# {{ form_widget(form.valider, {"label": "Valider ma commande", "attr": {'class':'lien_2'}}) }} #}
-                </div>
-                
             {{ form_end(form, {'render_rest': true}) }}
 
             {# --------------Modal-------------- #}

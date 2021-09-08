@@ -55,4 +55,23 @@ class SettingController extends AbstractController
         ]);
     }
 
+    #[Route('/user/edit/password/{id}', name: 'edit_password', methods: ['GET', 'POST'])]
+    public function editPassword(Request $request, User $user): Response
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('setting/editPassword.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
+
 }
