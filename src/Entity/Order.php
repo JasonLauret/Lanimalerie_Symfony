@@ -38,6 +38,11 @@ class Order
      */
     private $user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=PaymentMethod::class, inversedBy="orders")
+     */
+    private $payment_method;
+
     
 
     public function __construct()
@@ -101,6 +106,18 @@ class Order
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPaymentMethod(): ?PaymentMethod
+    {
+        return $this->payment_method;
+    }
+
+    public function setPaymentMethod(?PaymentMethod $payment_method): self
+    {
+        $this->payment_method = $payment_method;
 
         return $this;
     }
