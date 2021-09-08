@@ -18,13 +18,38 @@
                     </a>
                 </div>
                 <div class="text-center">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, nihil non fugit nesciunt similique voluptate quae hic quaerat ipsum quasi, soluta voluptates ut accusamus harum nostrum! Eos, saepe! Iure, saepe.</p>
                     <a class="lien" href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
                 </div>
             </div>
         {% endfor %}
         </div>
     </section>
+
+
+    <section class="container my-3">
+        <div class="row">
+            {% for product in products %}
+                <div class="card m-5" style="width:20%;">
+                    <img class="rounded" src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}" style="max-height:200px; width:auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <div class="cardInCard p-3 text-center">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </p>
+                        <a href="#" class="card-link">Ajouter au panier</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock body %}
+
+
+
+
+
 
     {# <!-- Button trigger modal -->
     <a href="{{ path('add_cart', {'id': product.id}) }}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
