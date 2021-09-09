@@ -98,21 +98,18 @@ class ProductController extends AbstractController
      */
     public function addProduct(Request $request, SluggerInterface $slugger): Response { //La function est bien pour les produit et non pas pour les categorie
         
-        $form = $this->createForm(AddProductType::class);
-        $form->handleRequest($request);
         $product = new Product();
+        $form = $this->createForm(AddProductType::class, $product);
+        $form->handleRequest($request);
+        
         
         if ($form->isSubmitted() && $form->isValid()){
 
             $pictureFile = $form->get('picture')->getData();
-
             if($pictureFile) {
                 $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
-
                 $safeFilename = $slugger->slug($originalFilename);
-
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
-
                 try{
                     $pictureFile->move($this->getParameter('upload_directory'), $newFilename);
                 }
@@ -120,25 +117,10 @@ class ProductController extends AbstractController
                     var_dump($e);
                     die('Erreur' );
                 }
-
                 $product->setPicture($newFilename);
-
             }
-
-            $data = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
-
-            
-            $product->setName($data['name']);
-            $product->setDescription($data['description']);
-            $product->setPrice($data['price']);
-            $product->setBrand($data['brand']);
-            foreach($data['subCategory'] as $valeur){
-                $product->setSubCategory($valeur);
-            }
-
-           // var_dump($data['category']);
             $entityManager->persist($product);
             $entityManager->flush();
 

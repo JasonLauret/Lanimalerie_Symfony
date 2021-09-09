@@ -20,6 +20,14 @@
                 </td>
             </tr>
             <tr>
+                <th>Catégory</th>
+                <td>
+                    {% if product.subCategory.category %}
+                        {{ product.subCategory.category.name }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
                 <th>Sous-catégory</th>
                 <td>
                 {% if product.subCategory %}
