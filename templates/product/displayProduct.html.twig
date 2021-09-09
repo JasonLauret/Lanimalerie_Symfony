@@ -1,20 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategoryController!{% endblock %}
-
 {% block body %}
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="{{ product.picture }}" class="img-fluid rounded-start" alt="image {{ product.name }}">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.description }}</p>
-                    <p class="card-text"><small class="text-muted">Prix: {{ product.price }} €</small></p>
+
+    <section class="container my-5">
+            <div class="card" style="max-width: auto;">
+                <div class="row g-0">
+                    <div class="col-lg-6">
+                        <img class="img-fluid rounded-start" alt="{{ product.name }}"
+                            src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}"
+                            style="min-width:100%;">
+                    </div>
+                    <div class="col-lg-6 d-flex flex-column">
+                        <div class="card-header bg-white">
+                            <p class="h2">{{ product.name }}</p>
+                        </div>
+                        <div class="card-body col-10 mt-5">
+                            <p class="descriptionProduct">{{ product.description }}</p>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <p class="text-end"><span>Prix: </span><span class="priceProduct">{{ product.price }} €</span></p>
+                        </div>
+                         <a class="btn-product text-center" href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+    </section>
+    
 {% endblock %}
