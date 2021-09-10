@@ -1,5 +1,5 @@
-<header>
-    <div class="container-fluid pb-5 pt-3">
+<header class="myHeader">
+    <div class="container-fluid">
         {# <!--___________réseaux sociaux___________-->
         <div class="social_network d-flex justify-content-center p-4">
             <a href="https://www.facebook.com"><img class="facebook" src="{{ asset('img/logo/logo_facebook.png') }}" alt="logo facebook"></a>
@@ -10,14 +10,14 @@
         <div class="row">
             <!--_____________Logo________________-->
             <div class="col-12 col-md-4">
-                <div class="mt-1 mb-3 d-flex justify-content-center">
-                    <a href="{{ path('home') }}"><img class="img_logo" src="{{ asset('img/logo/logo-chatChien_3.jpg') }}"></a>
+                <div class="">
+                    <a href="{{ path('home') }}"><img class="img_logo mt-2" style="min-height: 150px; max-width: 400px;" src="{{ asset('img/logo/logoLanimalerie_1-2.png') }}"></a>
                 </div>
             </div>
             
             <!--______Mon compte, mon panier, gestion______-->
             {% if is_granted('ROLE_ADMIN') %}
-            <div class="col-12 col-md-8 mt-4">
+            <div class="col-12 col-md-8 mt-3">
                 <div class="d-flex flex-column align-items-center align-items-md-end">
                     <div>
                         <p class="m-0 pb-2"><span class="fw-bold">Bonjour {{ app.user.firstName }}</span>. Vous ètes connecter en tant qu'Admin.</p>
@@ -77,6 +77,6 @@
         </div>
     </div>
 
-    
-    
+    {% include 'content/include/nav.html.twig' %}
+
 </header>

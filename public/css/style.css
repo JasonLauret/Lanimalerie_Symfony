@@ -2,6 +2,10 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+.myBody{
+    padding-top: 206px;
+}
+
 a {
     text-decoration: none;
 }
@@ -21,6 +25,13 @@ a {
 }
 
 /*______________Header_______________*/
+
+.myHeader {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+}
 
 .menu, .menu-button {
     margin-right: 2rem;
@@ -104,8 +115,11 @@ a {
     display: block;
 }
 
-/*_______________Navigation__________________*/
+/*_______________NavBar__________________*/
 
+ .myNavbar{
+    box-shadow: 3px 3px 3px rgba(174, 142, 0, 0.37);
+} 
 
 nav div .nav_haut {
     text-decoration: none;
@@ -142,6 +156,7 @@ nav div .nav_haut {
     background-color: rgba(136, 72, 0, 0.37);
 }
 */
+
 /*_____________Produit phares_______________*/
 
 h2 {
