@@ -1,4 +1,4 @@
-<header class="myHeader">
+<header class="myHeader py-2">
     <div class="container-fluid">
         {# <!--___________réseaux sociaux___________-->
         <div class="social_network d-flex justify-content-center p-4">
@@ -17,7 +17,7 @@
             
             <!--______Mon compte, mon panier, gestion pour admin, user et visiteur______-->
             {% if is_granted('ROLE_ADMIN') %}
-                <div class="col-12 col-md-8 mt-3">
+                <div class="col-12 col-md-8">
                     <div class="d-flex flex-column align-items-center align-items-md-end">
                         <div>
                             <p class="m-0 pb-2"><span class="fw-bold">Bonjour {{ app.user.firstName }}</span>. Vous ètes connecter en tant qu'Admin.</p>
