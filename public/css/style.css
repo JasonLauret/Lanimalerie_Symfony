@@ -303,13 +303,20 @@ footer div {
     max-width: 400px;
 }
 
-.logo_paypal {
-    width: 10%;
+.icon{
+    width: 20%;
+}
+.logo {
+    width: 25%;
+}
+
+/* .logo_paypal {
+    width: 28%;
 }
 
 .logo_laposte {
-    width: 15%;
-}
+    width: 28%;
+} */
 
 /*_____________Bouton Haut de page_______________*/
 
