@@ -75,10 +75,12 @@
                         <tbody>
                         {{ dump(orders) }}
                             {# Ne marche pas #}
-                            {% for order in orders %}
-                                <td>{{ order.id }}</td>
-                            {% endfor %}
-                            <p>ddwh qbb bwcVGH BQJc s</p>
+                                {% for order in orders %}
+                                    <td>{{ order.id }}</td>
+                                {% endfor %}
+                                <p>ddwh qbb bwcVGH BQJc s</p>
+                            {# ___ #}
+                            
                             {% for order in orders.orderProducts %}
                                 <tr class="structure fw-bold">
                                     <td>{{ order.product.id }}</td>

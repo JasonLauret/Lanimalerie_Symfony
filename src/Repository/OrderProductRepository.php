@@ -36,6 +36,24 @@ class OrderProductRepository extends ServiceEntityRepository
     }
     */
 
+
+    // La requette qui suis ne marche pas
+    // public function productByOrder($value)
+    // {
+    //     return $this->createQueryBuilder('op')
+    //         ->innerJoin('op.order', 'o')
+    //         ->where('op.commande = o.id')
+    //         ->andWhere('o.user = :val')
+    //         ->setParameter('val', $value)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+    // affiche * from orderproduct where commande_id = id(order) andWhere id(order) = 2
+
+
+
+
     /*
     public function findOneBySomeField($value): ?OrderProduct
     {
