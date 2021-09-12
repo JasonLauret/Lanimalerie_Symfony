@@ -199,6 +199,13 @@ h2 {
     border-radius: 20px;
 }
 
+/* .spaceBox {
+    background-color: rgba(0, 0, 0, 0.637);
+    padding: 30px;
+    border-radius: 20px;
+    border: none;
+} */
+
 .cardSpace {
     border: none;
 }
