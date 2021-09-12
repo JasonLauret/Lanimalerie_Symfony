@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-<section class="container my-5">
+{# <section class="container my-5">
     <h4>Mes informations</h4>
     <div class="row rounded shadow p-3 m-4">
-        <table class="col-6">
+        <table class="col-12 col-md-6">
             <tbody class="fs-5">
                 <tr class="bg-light">
                     <th>Genre:</th>
@@ -22,7 +22,7 @@
                     <th>Email:</th>
                     <td>{{ app.user.email }}</td>
                 </tr>
-                <tr>
+                <tr  class="bg-light">
                     <th>Pays</th>
                     <td>{{ app.user.country }}</td>
                 </tr>
@@ -30,24 +30,81 @@
                     <th>PostalCode</th>
                     <td>{{ app.user.postalCode }}</td>
                 </tr>
-                <tr>
+                <tr class="bg-light">
                     <th>Ville</th>
                     <td>{{ app.user.city }}</td>
                 </tr>
-                <tr class="bg-light">
+                <tr>
                     <th>Adresse:</th>
                     <td>{{ app.user.address }}</td>
                 </tr>
-                <tr>
+                <tr class="bg-light">
                     <th>Date de naissance:</th>
                     <td>{{ app.user.birthDate ? app.user.birthDate|date('d/m/Y') : '' }}</td>
                 </tr>
             </tbody>
         </table>
-        <div class="d-flex flex-column col-6 text-end">
+        <div class="col-12 text-center pt-4 col-lg-6 d-flex flex-column text-lg-end pt-lg-0">
             <p><a class="lien" href="{{ path('edit_user', {'id': app.user.id}) }}">Modifier mes informations</a></p>
             <p><a class="lien" href="{{ path('edit_password', {'id': app.user.id}) }}">Changer mon mot de passe</a></p>
         </div>
+    </div>
+</section> #}
+
+<section class="container my-5">
+    <div class="row">
+        <div class=" col-lg-3">
+        
+        </div>
+        <p class="h2 col-12 text-start col-md-6 pb-3">Mes informations</p>
+    </div>
+    
+    <div class="row">
+        <div class="col-12 text-center col-lg-3 text-lg-start flex-lg-column pt-3 border rounded">
+            <p><a class="lien" href="{{ path('edit_user', {'id': app.user.id}) }}">Modifier mes informations</a></p>
+            <p><a class="lien" href="{{ path('all_user_order', {'id': app.user.id}) }}">Voir mes commandes</a></p>
+            <p><a class="lien" href="{{ path('edit_password', {'id': app.user.id}) }}">Changer mon mot de passe</a></p>
+        </div>
+        <table class="border rounded shadow ms-1 pt-4 col-12 col-lg-6">
+            <tbody class="fs-5">
+                <tr class="bg-light">
+                    <th>Genre:</th>
+                    <td>{{ app.user.civility }}</td>
+                </tr>
+                <tr>
+                    <th>Prénom:</th>
+                    <td>{{ app.user.firstName }}</td>
+                </tr>
+                <tr class="bg-light">
+                    <th>Nom:</th>
+                    <td>{{ app.user.lastName }}</td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td>{{ app.user.email }}</td>
+                </tr>
+                <tr  class="bg-light">
+                    <th>Pays</th>
+                    <td>{{ app.user.country }}</td>
+                </tr>
+                <tr>
+                    <th>PostalCode</th>
+                    <td>{{ app.user.postalCode }}</td>
+                </tr>
+                <tr class="bg-light">
+                    <th>Ville</th>
+                    <td>{{ app.user.city }}</td>
+                </tr>
+                <tr>
+                    <th>Adresse:</th>
+                    <td>{{ app.user.address }}</td>
+                </tr>
+                <tr class="bg-light">
+                    <th>Date de naissance:</th>
+                    <td>{{ app.user.birthDate ? app.user.birthDate|date('d/m/Y') : '' }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
