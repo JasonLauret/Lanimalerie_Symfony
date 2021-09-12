@@ -64,4 +64,10 @@ class ContentController extends AbstractController
     public function validOrder(): Response {
         return $this->render('content/validOrder.html.twig');
     }
+
+
+    #[Route('/spaceProgram', name: 'space_program')]
+    public function spaceProgram(): Response {
+        return $this->render('content/space_program.html.twig');
+    }
 }

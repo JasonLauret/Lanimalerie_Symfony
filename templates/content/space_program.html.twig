@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <section class="mySpaceProgram text-white">
+
+        <h1 class="text-center pt-5">Prêt à décoller !! </h1>
+        <div class="container py-5">
+            <div class="spaceContent bg-white text-dark p-5">
+                <p class="h2 text-center pb-5">Découvrer notre programme spacial !</p>
+
+                <div class="row">
+                    <div class="col-12 col-md-6 d-flex justify-content-center">
+                        <img class="rounded-3" src="{{ asset('img/programmeSpatial/fusee.jpg') }}" alt="">
+                    </div>
+                    <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+                        <p class="p-5">
+                            Tout comme Laika en 1957, envoyer vous aussi votre animal préféré pour une expérience mémorable au coeur de notre fusée spéciale. Plusieurs on suivie après elle, Ham (un chimpanzé), Félicette (une chatte)... Ne vous inquiété pas, les technologie ont beaucoup évoluer pour améliorer le confort de l’animal dans l’espace. Aujourd’hui les animaux partent dans des vaisseaux adaptés, très protégés du bruit et des agitations afin de permettre un meilleur bien être.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row border-bottom pt-5 pb-5">
+                    <div class="col-12 col-md-6 d-flex flex-column justify-content-center order-1 order-lg-0">
+                        <p class="p-5 text-start text-md-end">
+                            Ce programme est rendu disponible grace à l'armée Americain ! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem neque necessitatibus itaque suscipit cupiditate, facilis molestiae porro fugiat, quo obcaecati voluptates? Cum pariatur dolorum nesciunt asperiores ratione, ipsam repellendus quidem.
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-6 d-flex justify-content-center">
+                        <img class="rounded-3" src="{{ asset('img/programmeSpatial/fusee2.jpg') }}" alt="">
+                    </div>
+                </div>
+
+
+                {# _______________Moment culture_______________ #}
+                
+                
+                <p class="pt-5 pb-4 ps-5 h2">Moment culturel</p>
+
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                    <div class="col">
+                        <div class="cardSpace card border-none">
+                            <div class="d-flex justify-content-center">
+                                <img class="card-img-top w-75 rounded-3" src="{{ asset('img/programmeSpatial/leika.jpg') }}" alt="Photo de Leika">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Laïka</h5>
+                                <p class="card-text textSpace">
+                                    Le 3 novembre 1957, la chienne Laïka est devenue le premier être vivant à aller dans l'Espace. La chienne Laïka a été envoyée à bord de l'engin spatial Spoutnik 2, un mois à peine après le lancement du premier satellite artificiel Spoutnik 1.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="cardSpace card border-none">
+                            <div class="d-flex justify-content-center">
+                                <img class="card-img-top w-75 rounded-3" src="{{ asset('img/programmeSpatial/felicette.jpg') }}" alt="Photo de Félicette">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Félicette</h5>
+                                <p class="card-text textSpace">
+                                    Félicette, premier chat dans l'espace (CERMA 1963). Félicette est la première chatte lancée dans l'espace le 18 octobre 1963 dans le cadre du programme spatial français, dans une fusée Véronique AGI no 47, lancée à 8 h 9 du Centre interarmées d'essais d'engins spéciaux à Hammaguir dans le Sahara algérien.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="cardSpace card border-none">
+                            <div class="d-flex justify-content-center">
+                                <img class="card-img-top w-75 rounded-3" src="{{ asset('img/programmeSpatial/ham.jpg') }}" alt="Photo de Ham">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Ham</h5>
+                                <p class="card-text textSpace">
+                                    Le premier hominidé qui s’est rendu dans l’espace le 31 janvier 1961 ce nomme Ham. Il tient son nom de l’acronyme du laboratoire. Il s’agit du Holloman Aerospace Medical Center (HAM) de l’Etat du Nouveau-Mexique. Ayant vu le jour au Cameroun, Ham a été ramené aux États-Unis en vue d’embarquer sur le vol opérationnel de la deuxième édition du programme Mercury-Restone 2.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

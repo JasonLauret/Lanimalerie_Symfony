@@ -187,9 +187,30 @@ h2 {
     color: white;
     background: rgb(174, 142, 0);
 }
+/*________________________Annimaux espaces page_______________________*/
 
+.mySpaceProgram {
+    background-image: url("../img/programmeSpatial/space.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-/*________________________Annimaux espace_______________________*/
+.spaceContent {
+    border-radius: 20px;
+}
+
+.cardSpace {
+    border: none;
+}
+
+.textSpace {
+    text-align: center;
+    height: 150px;
+    overflow:auto;
+    text-align: justify;
+}
+
+/*________________________Annimaux espaces_______________________*/
 
 .bg_section {
     background-color: rgba(248, 232, 215, 0.37);
