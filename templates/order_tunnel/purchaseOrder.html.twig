@@ -46,7 +46,7 @@
                     </div>
                     <div class="col">
                         <p class="p-2">{{ app.user.email }}</p>
-                        {# <p class="p-2">{{ order.id }}</p> #}
+                        {# <p class="p-2">{{ order.id }}</p> #}<td>{{ orders.id }}</td>
                     </div>
                 </div>
                 <div class="row col-6 p-5 ms-2">
@@ -74,11 +74,8 @@
                         </thead>
                         <tbody>
                         {{ dump(orders) }}
-                            {# Ne marche pas #}
-                                {% for order in orders %}
-                                    <td>{{ order.id }}</td>
-                                {% endfor %}
-                                <p>ddwh qbb bwcVGH BQJc s</p>
+                            
+                                    
                             {# ___ #}
                             
                             {% for order in orders.orderProducts %}

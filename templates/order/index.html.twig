@@ -8,26 +8,24 @@
         <h1>Commandes</h1>
         <p class="h3">Nombre de commande: {{ count }} commande{% if count > 1 %}s{% endif %}</p>
         {# <h1>Somme de toutes les commandes: {{ sum }} €</h1> #}
-        <a class="lien" href="{{ path('brand_new') }}">Ajouter une marque</a>
+        <a class="lien" href="{{ path('order_new') }}">Ajouter une commande</a>
         <table class="table mt-2">
             <thead>
                 <tr>
                 <th>Id</th>
-                <th>Date</th>
                 <th>Nom</th>
                 <th>Prénom</th>
-                <th>Total de la commande</th>
-                <th>actions</th>
+                <th>Date</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             {% for order in orders %}
             <tr>
                 <td>{{ order.id }}</td>
+                <td>{{ order.user.lastName }}</td>
+                <td>{{ order.user.firstName }}</td>
                 <td>{{ order.date ? order.date|date('d/m/Y') : '' }}</td>
-                <td></td>
-                <td></td>
-                <td></td>
                 <td>
                     <a class="lien" href="{{ path('order_show', {'id': order.id}) }}">Detail</a>
                     <a class="lien" href="{{ path('order_edit', {'id': order.id}) }}">Modifier</a>

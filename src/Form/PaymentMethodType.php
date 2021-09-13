@@ -34,4 +34,23 @@ class PaymentMethodType extends AbstractType
             'data_class' => PaymentMethod::class,
         ]);
     }
+
+
+    // public function buildForm(FormBuilderInterface $builder, array $options)
+    // {
+    //     $builder
+    //         ->add('payment_method', EntityType::class,
+    //         [
+    //             'class' => PaymentMethod::class
+    //         ])
+    //         ->add("valider", SubmitType::class)
+    //     ;
+    // }
+
+    // public function configureOptions(OptionsResolver $resolver)
+    // {
+    //     $resolver->setDefaults([
+    //         'data_class' => Order::class,
+    //     ]);
+    // }
 }
