@@ -20,7 +20,7 @@ class MenuController extends AbstractController
 
         $subCategory = $this->getDoctrine()
                         ->getRepository(SubCategory::class)
-                        ->findAll();           
+                        ->findAll();
 
         return $this->render('menu/menu.html.twig', [
             'categorys' => $category,

@@ -38,15 +38,14 @@
                     <p><span>{{ app.user.postalCode }}</span> <span>{{ app.user.city }}</span></p>
                 </div>
             </div>
-            {# {% for order in orders %} #}
                 <div class="row col-6 p-5 ms-2">
-                    <div class="col ">
+                    <div class="col-6">
                         <p class="bg-light p-2">Adress e-mail</p>
                         <p class="bg-light p-2">Numéro de commande</p>
                     </div>
-                    <div class="col">
+                    <div class="col-6">
                         <p class="p-2">{{ app.user.email }}</p>
-                        {# <p class="p-2">{{ order.id }}</p> #}<td>{{ orders.id }}</td>
+                        <p class="p-2">{{ orders.id }}</p>
                     </div>
                 </div>
                 <div class="row col-6 p-5 ms-2">
@@ -54,12 +53,11 @@
                         <p class="bg-light p-2">ID client</p>
                         <p class="bg-light p-2">Date de commande</p>
                     </div>
-                    <div class="col">
-                            <p class="p-2">{{ app.user.id }}</p>
-                        {#<p class="p-2">{{ order.date }}</p> #}
+                    <div class="col-6">
+                        <p class="p-2">{{ app.user.id }}</p>
+                        <p class="p-2">{{ orders.date ? orders.date|date('d/m/Y') : '' }}</p>
                     </div>
                 </div>
-            {# {% endfor %} #}
             <div>
                 <p class="h2 text-danger">Votre commande</p>
                 <div>
@@ -73,11 +71,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                        {{ dump(orders) }}
-                            
-                                    
-                            {# ___ #}
-                            
                             {% for order in orders.orderProducts %}
                                 <tr class="structure fw-bold">
                                     <td>{{ order.product.id }}</td>
