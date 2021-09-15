@@ -62,6 +62,7 @@
     <div class="row">
         <div class="col-12 text-center col-lg-3 text-lg-start flex-lg-column pt-3 border rounded">
             <p><a class="lien" href="{{ path('edit_user', {'id': app.user.id}) }}">Modifier mes informations</a></p>
+            <p><a class="lien" href="{{ path('adress_index') }}">Mes adresses</a></p>
             <p><a class="lien" href="{{ path('all_user_order', {'id': app.user.id}) }}">Voir mes commandes</a></p>
             <p><a class="lien" href="{{ path('edit_password', {'id': app.user.id}) }}">Changer mon mot de passe</a></p>
         </div>

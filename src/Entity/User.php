@@ -78,29 +78,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $orders;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $country;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $city;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $postalCode;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $address;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Adress::class, mappedBy="user")
+     */
+    private $adresses;
 
 
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->adresses = new ArrayCollection();
     }
 
 
@@ -341,6 +347,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAddress(string $address): self
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Adress[]
+     */
+    public function getAdresses(): Collection
+    {
+        return $this->adresses;
+    }
+
+    public function addAdress(Adress $adress): self
+    {
+        if (!$this->adresses->contains($adress)) {
+            $this->adresses[] = $adress;
+            $adress->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdress(Adress $adress): self
+    {
+        if ($this->adresses->removeElement($adress)) {
+            // set the owning side to null (unless already changed)
+            if ($adress->getUser() === $this) {
+                $adress->setUser(null);
+            }
+        }
 
         return $this;
     }
