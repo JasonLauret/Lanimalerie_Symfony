@@ -79,7 +79,7 @@ class CartService {
         return $panierWithData;
     }
 
-    //______________
+    //______________Total_______________
 
     public function getTotal(){
 

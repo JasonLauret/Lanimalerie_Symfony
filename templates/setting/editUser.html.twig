@@ -99,14 +99,16 @@
                         {{ form_row(form.postalCode, {"label": "Code postale", "attr": {'class':'form-control'}}) }}
                     </div>
                     <div class="pb-3">
-                        {{ form_row(form.address, {"label": "Adresse 1", "attr": {'class':'form-control'}}) }}
+                        {{ form_row(form.address, {"label": "Adresse", "attr": {'class':'form-control'}}) }}
                     </div>
                 </div>
             </div>
 
             <div class="mt-3 text-center">
                 <a class="lien" href="{{ path('setting') }}">Revenir à la liste</a>
-                <button class="lien_2">{{ button_label|default('Valider') }}</button>
+                <div class="pb-3">
+                    {{ form_row(form.valider, {"label": "Valider"}) }}
+                </div>
             </div>
 
         {{ form_end(form, {'render_rest': false}) }}

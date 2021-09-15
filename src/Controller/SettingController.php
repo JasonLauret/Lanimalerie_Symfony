@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserType;
+use App\Form\EditPasswordType;
+use App\Form\EditUserType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,17 +39,19 @@ class SettingController extends AbstractController
         ]);
     } */
 
-    #[Route('/user/{id}/edit', name: 'edit_user', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user): Response
+    #[Route('/user/edit/{id}', name: 'edit_user', methods: ['GET', 'POST'])]
+    public function editUser(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(EditUserType::class, $user);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
-            
 
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('user_index', ['id' => $user->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('setting', ['id' => $user->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('setting/editUser.html.twig', [
@@ -59,21 +63,19 @@ class SettingController extends AbstractController
     #[Route('/user/edit/password/{id}', name: 'edit_password', methods: ['GET', 'POST'])]
     public function editPassword(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(EditPasswordType::class, $user);
         $form->handleRequest($request);
-        dd($form->get('password')->getData());
         if ($form->isSubmitted() && $form->isValid()) {
             
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
-                    
                     $form->get('password')->getData()
                 )
             );
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('setting', ['id' => $this->$user->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('setting/editPassword.html.twig', [
