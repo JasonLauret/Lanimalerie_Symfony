@@ -3,39 +3,41 @@
 {% block title %}Adress index{% endblock %}
 
 {% block body %}
-    <h1>Adress index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Country</th>
-                <th>City</th>
-                <th>Postal_code</th>
-                <th>Adress</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for adress in adresses %}
-            <tr>
-                <td>{{ adress.id }}</td>
-                <td>{{ adress.country }}</td>
-                <td>{{ adress.city }}</td>
-                <td>{{ adress.postalCode }}</td>
-                <td>{{ adress.adress }}</td>
-                <td>
-                    <a href="{{ path('adress_show', {'id': adress.id}) }}">show</a>
-                    <a href="{{ path('adress_edit', {'id': adress.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <section class="container my-4">
 
-    <a href="{{ path('adress_new') }}">Create new</a>
+        <div class="d-flex justify-content-between mb-3">
+            <p class="h2">Vos adresses</p>
+            <a class="lien" href="{{ path('adress_new') }}">Créer une nouvelle adresse</a>
+        </div>
+
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+                <th>Pays</th>
+                <th>Ville</th>
+                <th>Code postal</th>
+                <th>Adresse</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for adress in adresses %}
+                <tr class="">
+                    <td>{{ adress.country }}</td>
+                    <td>{{ adress.city }}</td>
+                    <td>{{ adress.postalCode }}</td>
+                    <td>{{ adress.adress }}</td>
+                    <td class="d-flex">
+                        <a class="btnAdress1 me-2" href="{{ path('adress_edit', {'id': adress.id}) }}">Modifier</a>
+                        {{ include('adress/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">Aucune adresse trouvé</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
 {% endblock %}
