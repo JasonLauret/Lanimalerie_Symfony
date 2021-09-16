@@ -36,6 +36,16 @@ class AdressRepository extends ServiceEntityRepository
     }
     */
 
+    public function displayAdressById($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.user = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Adress
     {

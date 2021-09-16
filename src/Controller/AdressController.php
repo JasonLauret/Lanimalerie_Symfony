@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Adress;
-use App\Form\AdressType;
+use App\Form\Adress1Type;
 use App\Repository\AdressRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +17,7 @@ class AdressController extends AbstractController
     public function index(AdressRepository $adressRepository): Response
     {
         return $this->render('adress/index.html.twig', [
-            'adresses' => $adressRepository->findAll(),
+            'adresses' => $adressRepository->displayAdressById($this->getUser()),
         ]);
     }
 
@@ -25,7 +25,7 @@ class AdressController extends AbstractController
     public function new(Request $request): Response
     {
         $adress = new Adress();
-        $form = $this->createForm(AdressType::class, $adress);
+        $form = $this->createForm(Adress1Type::class, $adress);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -54,7 +54,7 @@ class AdressController extends AbstractController
     #[Route('/{id}/edit', name: 'adress_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Adress $adress): Response
     {
-        $form = $this->createForm(AdressType::class, $adress);
+        $form = $this->createForm(Adress1Type::class, $adress);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

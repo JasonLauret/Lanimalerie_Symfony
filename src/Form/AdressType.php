@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdressType extends AbstractType
+class Adress1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -16,7 +16,6 @@ class AdressType extends AbstractType
             ->add('city')
             ->add('postal_code')
             ->add('adress')
-            ->add('user')
         ;
     }
 
