@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
     
@@ -10,15 +10,15 @@
     {% endfor %}
     <section class="bg_section">
         <div class="container py-5">
-            <h4 class="labelColor text-center">Inscrivez-vous</h4>
+            <h2 class="labelColor text-center">Inscrivez-vous</h2>
             {{ form_start(form) }}
 
                 <div class="pb-3 labelColor text-center">
                     {{ form_row(form.civility, {"label": "Civilité", "attr": {'class':''}}) }}
                 </div>
 
-                <div class="row labelColor">
-                    <div class="col-12 col-md-6">
+                <div class="row labelColor justify-content-center">
+                    <div class="col-12 col-md-6 ">
                         <div class="pb-3">
                             {{ form_row(form.lastName, {"label": "Nom", "attr": {'class':'form-control', 'placeholder':'Dupond'} }) }}
                         </div>
@@ -33,21 +33,6 @@
                         </div>
                         <div class="pb-3">
                             {{ form_row(form.confirmPassword, {"label": "Confimation du mot de passe", "attr": {'class':'form-control'}}) }}
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6">
-                        <div class="pb-3">
-                            {{ form_row(form.country, {"label": "Pays", "attr": {'class':'form-control'}}) }}
-                        </div>
-                        <div class="pb-3">
-                            {{ form_row(form.city, {"label": "Ville", "attr": {'class':'form-control'}}) }}
-                        </div>
-                        <div class="pb-3">
-                            {{ form_row(form.postalCode, {"label": "Code postale", "attr": {'class':'form-control'}}) }}
-                        </div>
-                        <div class="pb-3">
-                            {{ form_row(form.address, {"label": "Adresse 1", "attr": {'class':'form-control'}}) }}
                         </div>
                         <div class="pb-3 mt-3 mt-md-4">
                             {{ form_row(form.birthDate, {"label": "Date de naissance", "attr": {'class':'motif'}}) }}

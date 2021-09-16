@@ -43,10 +43,6 @@ class RegistrationFormType extends AbstractType
                     ],
                     'expanded' => true,
                 ])
-            ->add('country', TextType::class)
-            ->add('city', TextType::class)
-            ->add('postalCode', TextType::class)
-            ->add('address', TextType::class)
         ;
     }
 

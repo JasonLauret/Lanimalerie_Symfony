@@ -34,22 +34,6 @@
                     <th>Email:</th>
                     <td>{{ app.user.email }}</td>
                 </tr>
-                <tr  class="bg-light">
-                    <th>Pays</th>
-                    <td>{{ app.user.country }}</td>
-                </tr>
-                <tr>
-                    <th>PostalCode</th>
-                    <td>{{ app.user.postalCode }}</td>
-                </tr>
-                <tr class="bg-light">
-                    <th>Ville</th>
-                    <td>{{ app.user.city }}</td>
-                </tr>
-                <tr>
-                    <th>Adresse:</th>
-                    <td>{{ app.user.address }}</td>
-                </tr>
                 <tr class="bg-light">
                     <th>Date de naissance:</th>
                     <td>{{ app.user.birthDate ? app.user.birthDate|date('d/m/Y') : '' }}</td>
