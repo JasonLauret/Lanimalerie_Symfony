@@ -35,7 +35,7 @@
                                 <button class="menu-button fs-5 ms-2 m-0"><i class="pe-2 bi bi-gear"></i>Mon compte</button>
                                 <div class="dropdown-menu">
                                     <a class="" href="{{ path('setting') }}"><i class="bi bi-gear me-1"></i>Paramètre</a>
-                                    <a class="" href="{{ path('all_user_order', {'id': app.user.id}) }}"><i class="bi bi-gear me-1"></i>Commandes</a>
+                                    <a class="" href="{{ path('all_user_order', {'id': app.user.id}) }}"><i class="bi bi-list-ul"></i>Commandes</a>
                                     <a class="" href="{{ path('app_logout') }}"><i class="bi bi-door-open me-1"></i>Deconnecter</a>
                                 </div>
                             </div> 
@@ -52,7 +52,7 @@
                     <button class="menu-button fs-5 ms-2 m-0"><i class="pe-2 bi bi-gear"></i>Mon compte</button>
                     <div class="dropdown-menu">
                         <a href="{{ path('setting') }}"><i class="bi bi-gear me-1"></i>Paramètre</a>
-                        <a href="{{ path('all_user_order', {'id': app.user.id}) }}"><i class="bi bi-gear me-1"></i>Commandes</a>
+                        <a href="{{ path('all_user_order', {'id': app.user.id}) }}"><i class="bi bi-list-ul"></i>Commandes</a>
                         <a href="{{ path('app_logout') }}"><i class="bi bi-door-open me-1"></i>Deconnecter</a>
                     </div>
                 </div>
