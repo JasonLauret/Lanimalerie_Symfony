@@ -71,6 +71,7 @@ class Product
     {
         $this->category = new ArrayCollection();
         $this->orderProducts = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -203,5 +204,4 @@ class Product
 
         return $this;
     }
-
 }

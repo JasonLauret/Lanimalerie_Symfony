@@ -7,20 +7,19 @@ use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class DeliveryController extends AbstractController
+class SummaryCartController extends AbstractController
 {
-    #[Route('/delivery', name: 'delivery')]
+    #[Route('/summaryCart', name: 'summary_cart')]
     public function index(CartService $cartService, AdressRepository $adressRepository)
     {   
         $nbItem = $cartService->getFullCart();
         $nbItem = count($nbItem);
         
-
-        return $this->render('order_tunnel/delivery.html.twig', [
+        return $this->render('order_tunnel/summaryCart.html.twig', [
             'adresses' => $adressRepository->displayAdressById($this->getUser()),
             'items' => $cartService->getFullCart(),
             'total' => $cartService->getTotal(),
-            'nbItem' => $nbItem
+            'nbItem' => $nbItem,
         ]);
     }
 }

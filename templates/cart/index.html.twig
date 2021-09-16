@@ -5,7 +5,7 @@
 {% block body %}
 
 <section class="container py-5">
-    <h2 class="mb-5">Mon panier</h2>
+    <h2 class="mb-5">Panier</h2>
     {% if items | length > 0 %}
         <table class="table border border-dark rounded">
             <thead>
@@ -51,11 +51,11 @@
         </table>
         {% if is_granted('ROLE_ADMIN') or app.user %}
             <div class="text-end mt-5">
-                <a href="{{ path('delivery') }}" class="menu p-3">Livraison<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
+                <a href="{{ path('summary_cart') }}" class="menu p-3">Récapitulatif panier<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
             </div>
         {% else %}
             <div class="text-end mt-5">
-                <a href="{{ path('app_login') }}" class="menu p-3">Livraison<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
+                <a href="{{ path('app_login') }}" class="menu p-3">Récapitulatif panier<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
             </div>
         {% endif %}
     {% else %}

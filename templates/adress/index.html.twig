@@ -6,14 +6,23 @@
 
     <section class="container my-4">
 
-        <div class="d-flex justify-content-between mb-3">
+        <div class="d-md-flex mb-3">
             <p class="h2">Vos adresses</p>
-            <a class="lien" href="{{ path('adress_new') }}">Créer une nouvelle adresse</a>
+            <div class="ms-4">
+                {% if adresses | length >= 3%}
+                    <a class="lien btn disabled" disabled href="{{ path('adress_new') }}">Créer une nouvelle adresse</a>
+                    Vous avez atteint le maximum d'adresse autorisé.
+                    Modifier ou supprimer une adresse pour pouvoir en saisir une nouvelle.
+                {% else %}
+                    <a class="lien" href="{{ path('adress_new') }}">Créer une nouvelle adresse</a>
+                {% endif %}
+            </div>
         </div>
 
         <table class="table table-borderless">
             <thead>
             <tr>
+                <th>Id</th>
                 <th>Pays</th>
                 <th>Ville</th>
                 <th>Code postal</th>
@@ -23,12 +32,16 @@
             <tbody>
                 {% for adress in adresses %}
                 <tr class="">
+                    <td>{{ adress.id }}</td>
                     <td>{{ adress.country }}</td>
                     <td>{{ adress.city }}</td>
                     <td>{{ adress.postalCode }}</td>
                     <td>{{ adress.adress }}</td>
                     <td class="d-flex">
-                        <a class="btnAdress1 me-2" href="{{ path('adress_edit', {'id': adress.id}) }}">Modifier</a>
+                        {% if items | length > 0 %}
+                            <a class="btnAdress1 pe-2 me-2 border-end" href=" {{ path('delivery_payment', {'id': adress.id}) }} ">Choisir</a>
+                        {% endif %}
+                        <a class="btnAdress1 pe-2 me-2 border-end" href="{{ path('adress_edit', {'id': adress.id}) }}">Modifier</a>
                         {{ include('adress/_delete_form.html.twig') }}
                     </td>
                 </tr>

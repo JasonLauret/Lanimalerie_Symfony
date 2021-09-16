@@ -43,6 +43,11 @@ class Order
      */
     private $payment_method;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $delivery;
+
     
 
     public function __construct()
@@ -118,6 +123,18 @@ class Order
     public function setPaymentMethod(?PaymentMethod $payment_method): self
     {
         $this->payment_method = $payment_method;
+
+        return $this;
+    }
+
+    public function getDelivery(): ?string
+    {
+        return $this->delivery;
+    }
+
+    public function setDelivery(string $delivery): self
+    {
+        $this->delivery = $delivery;
 
         return $this;
     }

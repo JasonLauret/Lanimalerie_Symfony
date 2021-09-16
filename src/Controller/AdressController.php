@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Adress;
 use App\Form\Adress1Type;
 use App\Repository\AdressRepository;
+use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +15,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdressController extends AbstractController
 {
     #[Route('/', name: 'adress_index', methods: ['GET'])]
-    public function index(AdressRepository $adressRepository): Response
+    public function allAdress(AdressRepository $adressRepository, CartService $cartService): Response
     {
+        $panierWithData = $cartService->getFullCart();
+
         return $this->render('adress/index.html.twig', [
             'adresses' => $adressRepository->displayAdressById($this->getUser()),
+            'items' => $panierWithData,
         ]);
     }
 

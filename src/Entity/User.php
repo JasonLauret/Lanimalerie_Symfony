@@ -87,6 +87,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->orders = new ArrayCollection();
         $this->adresses = new ArrayCollection();
+        $this->orderss = new ArrayCollection();
     }
 
 
