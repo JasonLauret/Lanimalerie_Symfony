@@ -5,7 +5,7 @@
 {% block body %}
 
     <section class="container mt-3">
-        <h1>Commandes</h1>
+        <h1>Liste des commandes</h1>
         <p class="h3">Nombre de commande: {{ count }} commande{% if count > 1 %}s{% endif %}</p>
         {# <h1>Somme de toutes les commandes: {{ sum }} €</h1> #}
         <a class="lien" href="{{ path('order_new') }}">Ajouter une commande</a>

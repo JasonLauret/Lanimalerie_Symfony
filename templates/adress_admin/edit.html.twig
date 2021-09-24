@@ -1,13 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Adress{% endblock %}
+{% block title %}Modification adresse{% endblock %}
 
 {% block body %}
-    <h1>Edit Adress</h1>
 
-    {{ include('adress_admin/_form.html.twig', {'button_label': 'Update'}) }}
+    {# {{ include('adress_admin/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('adress_admin_index') }}">back to list</a>
 
-    {{ include('adress_admin/_delete_form.html.twig') }}
+    {{ include('adress_admin/_delete_form.html.twig') }} #}
+
+<section>
+    <div class="container my-3">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="col-6">
+                <h1 class="mt-3">Modifier l'adresse</h1>
+                {{ form_start(form) }}
+                    <div class="mb-3">
+                        {{ form_row(form.country, {"attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(form.city, {"attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(form.postal_code, {"attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="mb-4">   
+                        {{ form_row(form.adress, {"attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_row(form.user) }}
+                    </div>
+                    <div class="mt-3 text-center">
+                        <a class="lien p-2 me-2" href="{{ path('adress_admin_index') }}">Revenir à la liste</a>
+                        <button class="lien_2">{{ button_label|default('Valider') }}</button>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

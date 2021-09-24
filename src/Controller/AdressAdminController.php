@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Adress;
 use App\Form\Adress1Type;
+use App\Form\AdressAdminType;
 use App\Form\AdressType;
 use App\Repository\AdressRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/adress/admin')]
+#[Route('/admin/adress')]
 class AdressAdminController extends AbstractController
 {
     #[Route('/', name: 'adress_admin_index', methods: ['GET'])]
@@ -26,7 +27,7 @@ class AdressAdminController extends AbstractController
     public function new(Request $request): Response
     {
         $adress = new Adress();
-        $form = $this->createForm(AdressType::class, $adress);
+        $form = $this->createForm(AdressAdminType::class, $adress);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -54,7 +55,7 @@ class AdressAdminController extends AbstractController
     #[Route('/{id}/edit', name: 'adress_admin_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Adress $adress): Response
     {
-        $form = $this->createForm(AdressType::class, $adress);
+        $form = $this->createForm(AdressAdminType::class, $adress);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
