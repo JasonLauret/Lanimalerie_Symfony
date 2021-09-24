@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+
+    <section class="container my-5">
+        <div class="row">
+            <div class=" col-lg-3"></div>
+            <p class="h2 col-12 text-start col-md-6 pb-3">Mes informations</p>
+        </div>
+        {% for user in users %}
+            <div class="row">
+                <div class="col-12 text-center col-lg-3 text-lg-start flex-lg-column pt-3 border rounded">
+                    <p><a class="lien" href="{{ path('setting_user_edit', {'id': user.id}) }}">Modifier mes informations</a></p>
+                    <p><a class="lien" href="{{ path('adress_index', {'id': user.id}) }}">Voir mes adresses</a></p>
+                    <p><a class="lien" href="{{ path('all_user_order', {'id': user.id}) }}">Voir mes commandes</a></p>
+                    {# <p><a class="lien" href="{{ path('edit_password', {'id': app.user.id}) }}">Changer mon mot de passe</a></p> #}
+                </div>
+                <table class="border rounded shadow ms-1 pt-4 col-12 col-lg-6">
+                    <tbody class="fs-5">
+                        <tr class="bg-light">
+                            <th>Genre:</th>
+                            <td>{{ user.civility }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prénom:</th>
+                            <td>{{ user.firstName }}</td>
+                        </tr>
+                        <tr class="bg-light">
+                            <th>Nom:</th>
+                            <td>{{ user.lastName }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr class="bg-light">
+                            <th>Date de naissance:</th>
+                            <td>{{ user.birthDate ? user.birthDate|date('d/m/Y') : '' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    </section>
+
+
+
+    {# <h1>User index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>IsVerified</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>BirthDate</th>
+                <th>Civility</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.birthDate ? user.birthDate|date('Y-m-d') : '' }}</td>
+                <td>{{ user.civility }}</td>
+                <td>
+                    <a href="{{ path('setting_user_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('setting_user_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+
+    <a href="{{ path('setting_user_new') }}">Create new</a> #}
+
+    
+{% endblock %}

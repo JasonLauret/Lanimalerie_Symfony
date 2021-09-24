@@ -4,7 +4,12 @@
 
 {% block body %}
     <section class="container mt-3">
-        <p class="h2">Liste des commandes</p>
+        <div class="d-flex">
+            <p class="h2">Liste des commandes</p>
+            <div class="ms-5 mt-2">
+                <a class="lien" href="{{ path('setting_user_index') }}">Retour</a>
+            </div>
+        </div>
         <div class="mt-3 mb-5">
             <div class="row col-6">
                 {% for order in allOrder %}
@@ -34,6 +39,10 @@
                                 </div><p class="text-end fw-bold pe-4">Montant total de la commande: <span class="fs-5">{{ total }}</span> €</p>
                             </div>
                         </div>
+                    </div>
+                    {% else %}
+                    <div>
+                        <p class="h5">Vous n'avez éffectué aucune commande.</p>
                     </div>
                 {% endfor %}
             </div>
