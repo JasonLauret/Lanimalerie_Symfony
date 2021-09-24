@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-#[Route('/setting/edit')]
+#[Route('/setting')]
 class SettingUserController extends AbstractController
 {
 
@@ -25,7 +25,7 @@ class SettingUserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'setting_user_edit', methods: ['GET', 'POST'])]
+    #[Route('/user/{id}', name: 'setting_user_edit', methods: ['GET', 'POST'])]
     public function editUser(Request $request, User $user): Response
     {
         $form = $this->createForm(EditUserType::class, $user);
@@ -68,5 +68,19 @@ class SettingUserController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/delete/{id}', name: 'delete_account', methods: ['GET', 'POST'])]
+    public function deleteAccount($id): Response {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $entityManager
+                    ->getRepository(User::class)
+                    ->find($id);
+
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute("app_login");
     }
 }

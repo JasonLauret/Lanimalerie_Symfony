@@ -528,6 +528,19 @@ input[type='radio']:checked:before {
     background-color: rgb(174, 142, 0);
 }
 
+.deleteAcount {
+    margin-top: -7px;
+    padding: 5px 7px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(174, 142, 0);
+}
+
+.deleteAcount:hover {
+    padding: 5px 7px;
+    color: rgb(255, 253, 243);
+    background-color: rgb(218, 7, 0);
+}
 
 
 /*_____________Address_____________*/

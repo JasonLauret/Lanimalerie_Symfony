@@ -15,7 +15,29 @@
                     <p><a class="lien" href="{{ path('setting_user_edit', {'id': user.id}) }}">Modifier mes informations</a></p>
                     <p><a class="lien" href="{{ path('adress_index', {'id': user.id}) }}">Voir mes adresses</a></p>
                     <p><a class="lien" href="{{ path('all_user_order', {'id': user.id}) }}">Voir mes commandes</a></p>
-                    <p><a class="lien" href="{{ path('edit_password', {'id': app.user.id}) }}">Changer mon mot de passe</a></p>
+                    <p><a class="lien" href="{{ path('edit_password', {'id': user.id}) }}">Changer mon mot de passe</a></p>
+                    
+                    {# Modal #}
+                    <a class="deleteAcount mb-3" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Supprimer mon compte
+                    </a>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="">
+                                <h5 class="modal-title h2 text-center mt-5 mb-3" id="exampleModalLabel">Vous vous apprêtez à supprimer votre compte !</h5>
+                            </div>
+                            <div class="modal-body text-center">
+                                <p class="h2"></p>
+                                <p class="mb-5">Êtes-vous bien sûr de vouloir effectuer cette opération ?</p>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <a class="btn btn-danger" href="{{ path('delete_account', {'id': user.id}) }}">Oui, suppimer mon compte</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    {# Fin modal #}
                 </div>
                 <table class="border rounded shadow ms-1 pt-4 col-12 col-lg-6">
                     <tbody class="fs-5">
