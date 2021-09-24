@@ -42,10 +42,6 @@ class UserType extends AbstractType
                 ], 
                 'expanded' => true,
             ])
-            ->add('country')
-            ->add('city')
-            ->add('postalCode')
-            ->add('address')
         ;
     }
 

@@ -6,48 +6,112 @@
 
 <section class="container my-5">
     <div class="row">
-        {#-------Adresse de livraison-------#}
-        <div class="col-12 col-md-6">
-            <h2>Adresse de livraison</h2>
-            <div class="border rounded p-3">
-                <div class="d-flex justify-content-between">
-                    <p class="h4">Vous serez livré à l'adresse suivante:</p>
-                    <a class="lien" href="{{ path('adress_index') }}">Changer d'adresse</a>
-                </div>
-                <hr>
-                {# {% for adress in adresses %}
+        {{ form_start(form) }}
+            {#-------Adresse de livraison-------#}
+            <div class="col-12 col-md-6">
+                <h2>Adresse de livraison</h2>
+                <div class="border rounded p-3">
+                    <div class="d-flex justify-content-between">
+                        <p class="h4">Choisissez votre adresse de livraison:</p>
+                        <a class="lien" href="{{ path('adress_index') }}">Changer d'adresse</a>
+                    </div>
+                    <hr>
                     <div class="border rounded-3 p-3 my-2">
-                        <td>{{ adress.adress }}, </td>
-                        <td>{{ adress.postalCode }}, </td>
-                        <td>{{ adress.city }}, </td>
-                        <td>{{ adress.country }}</td>
+                        <div class="pb-3">
+                            {{ form_row(form.delivery) }}
+                        </div>
                     </div>
-                {% else %}
-                    <div class="alert alert-danger" role="alert">
-                        Vous n'avez aucune adresse enregistrer.
-                    </div>
-                {% endfor %} #}
+                </div>
             </div>
-        </div>
+        
+            {#-------Moyen de payment-------#}
+            <div class="col-12 col-md-6">
+                <h2>Paiement</h2>
+                <div class="border p-3 rounded">
+                    <p class="h4 pb-2">Choisissez votre moyen de paiement:</p>
+                    <hr>
+                    <div>
+                        <input type="radio" id="huey" name="drone" value="huey">
+                        <label for="huey">CB</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="dewey" name="drone" value="dewey">
+                        <label for="dewey">Paypal</label>
+                    </div>
+                </div>
+            </div>
 
-        {#-------Moyen de payment-------#}
+            {#-------Validation-------#}
+            {#-Modal-#}
+            <div class="d-flex justify-content-between">
+                <a class="menu p-2" href="{{ path('summary_cart') }}"><i class="bi bi-arrow-left-circle-fill fs-5 me-2"></i>Retour au récapitulatif panier</a>
+                <a class="menu p-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Valider et payer<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i>
+                </a>
+            </div>
 
-        <div class="col-12 col-md-6">
-            <h2>Paiement</h2>
-            <div class="border p-3 rounded">
-                <p class="h4 pb-2">Choisissez votre moyen de paiement</p>
-                <hr>
-                {# {{ form_start(form) }}
-
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
                     <div class="">
-                        {{ form_widget(form.name) }}
+                        <h5 class="modal-title h2 text-center mt-5 mb-3" id="exampleModalLabel">Ceci est la dernière étape.</h5>
                     </div>
-
-                {{ form_end(form, {'render_rest': true}) }} #}
+                    <div class="modal-body text-center">
+                        <p class="h2"></p>
+                        <p class="mb-5">Êtes-vous sûr de vouloir valider et payer ?</p>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <a class="lienRecu"  type="button" data-bs-dismiss="modal">Non je ne suis pas sur.</a>
+                        {{ form_row(form.valider, {"label": "Valider et payer.", "attr": {'class':'lienRecu'}}) }}
+                    </div>
+                    </div>
+                </div>
             </div>
+        {{ form_end(form) }}
+
+    </div>
+</section>
+
+        {#-------Adresse de livraison-------#}
+    
+        {# {% for adress in adresses %}
+            <div class="border rounded-3 p-3 my-2">
+                <input type="radio" id="address" name="address" value="huey">
+                <label for="huey">
+                    <td>{{ adress.adress }}, </td>
+                    <td>{{ adress.postalCode }}, </td>
+                    <td>{{ adress.city }}, </td>
+                    <td>{{ adress.country }}</td>
+                </label>
+            </div>
+        {% else %}
+            <div class="alert alert-danger" role="alert">
+                Vous n'avez aucune adresse enregistrer.
+            </div>
+        {% endfor %} #}
+
+
+        {# -------Moyen de payment-------
+
+        {{ form_start(form) }}
+
+            <div class="">
+                {{ form_widget(form.name) }}
+            </div>
+
+        {{ form_end(form, {'render_rest': true}) }}
+
+        <div>
+            <input type="radio" id="huey" name="drone" value="huey">
+            <label for="huey">CB</label>
         </div>
 
-        {# --------------Modal-------------- #}
+        <div>
+            <input type="radio" id="dewey" name="drone" value="dewey">
+            <label for="dewey">Paypal</label>
+        </div>
+
+         --------------Modal-------------- 
         <div class="d-flex justify-content-between">
             <a class="menu p-2" href="{{ path('summary_cart') }}"><i class="bi bi-arrow-left-circle-fill fs-5 me-2"></i>Retour au récapitulatif panier</a>
             <a class="menu p-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -71,7 +135,6 @@
                 </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </div> #}
+    
 {% endblock %}

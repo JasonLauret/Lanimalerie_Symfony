@@ -44,7 +44,7 @@ class Order
     private $payment_method;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $delivery;
 

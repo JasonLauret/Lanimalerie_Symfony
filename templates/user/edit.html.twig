@@ -9,7 +9,7 @@
         <h1 class="">Modifier un utilisateur</h1>
         {{ form_start(form) }}
 
-            <div class="row">
+            <div class="row  labelColor">
                 <div class="col-12 col-md-6">
                     <div class="pb-3">
                         {{ form_row(form.lastName, {"label": "Nom", "attr": {'class':'form-control', 'placeholder':'Dupond'} }) }}
@@ -29,22 +29,7 @@
                     <div class="pb-3">
                         {{ form_row(form.roles, {"label": "Rôle"}) }}
                     </div>
-                </div>
-
-                <div class="col-12 col-md-6">
                     <div class="pb-3">
-                        {{ form_row(form.country, {"label": "Pays", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="pb-3">
-                        {{ form_row(form.city, {"label": "Ville", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="pb-3">
-                        {{ form_row(form.postalCode, {"label": "Code postale", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="pb-3">
-                        {{ form_row(form.address, {"label": "Adresse 1", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="pb-3 mt-3 mt-md-4">
                         {{ form_row(form.birthDate, {"label": "Date de naissance", "attr": {'class':'motif'}}) }}
                     </div>
                     <div class="pb-3">

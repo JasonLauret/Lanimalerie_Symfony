@@ -39,9 +39,9 @@
                     <td>{{ adress.adress }}</td>
                     <td class="d-flex">
                         {% if items | length > 0 %}
-                            <a class="btnAdress1 pe-2 me-2 border-end" href=" {{ path('delivery_payment', {'id': adress.id}) }} ">Choisir</a>
+                            {# <a class="btnAdress1 pe-2 me-2 border-end" href=" {{ path('delivery_payment', {'id': adress.id}) }} ">Choisir</a> #}
                         {% endif %}
-                        <a class="btnAdress1 pe-2 me-2 border-end" href="{{ path('adress_edit', {'id': adress.id}) }}">Modifier</a>
+                            <a class="btnAdress1 pe-2 me-2 border-end" href="{{ path('adress_edit', {'id': adress.id}) }}">Modifier</a>
                         {{ include('adress/_delete_form.html.twig') }}
                     </td>
                 </tr>
