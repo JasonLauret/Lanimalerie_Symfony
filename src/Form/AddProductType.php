@@ -37,7 +37,7 @@ class AddProductType extends AbstractType
                 array(
                 'class' => SubCategory::class,
                 'choice_label' => 'name',
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false
                 )
             )

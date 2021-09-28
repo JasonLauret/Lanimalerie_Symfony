@@ -64,7 +64,7 @@ a {
 }
 
 
-/*----Bouton dropdown----*/
+/* ----Bouton dropdown----
 
 .right-menu {
     position: relative;
@@ -98,6 +98,60 @@ div .dropdown-menu a {
 div .dropdown-menu a:hover {
     color: rgb(174, 142, 0);
     color: rgb(165, 121, 0);
+    background-size: 100% 100%;
+}
+
+div .right-menu:hover .dropdown-menu {
+    display: block;
+} */
+
+/*----Bouton gestion----*/
+
+.menu-gestion {
+    margin-right: 2rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    background: rgb(0, 55, 117);
+    border: white;
+    color: rgb(255, 255, 255);
+}
+
+.menu-gestion:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 2, 126);
+}
+
+.right-menu {
+    position: relative;
+    display: inline-block;
+    float: right;
+}
+
+div .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: rgb(233, 233, 233);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+
+div .dropdown-menu a {
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(174, 142, 0);
+    background: linear-gradient(to top, rgba(174, 142, 0, 0.37) 0%, rgba(174, 142, 0, 0.37) 10%, 
+    transparent 10.01%) no-repeat left bottom / 0 100%;
+    transition: background-size .5s;
+    margin: 10px;
+    padding: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+div .dropdown-menu a:hover {
+    color: rgb(174, 142, 0);
     background-size: 100% 100%;
 }
 
@@ -544,14 +598,6 @@ input[type='radio']:checked:before {
 
 
 /*_____________Address_____________*/
-
-.burger{
-    color: rgb(114, 114, 114);
-}
-
-.burger:hover{
-    color: rgb(0, 0, 0);
-}
 
 .btnAdress1{
     color: rgb(174, 142, 0);

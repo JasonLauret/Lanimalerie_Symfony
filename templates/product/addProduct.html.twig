@@ -20,14 +20,15 @@
                         {{ form_row(form.price, {"label": "Prix", "attr": {'class':'form-control'}}) }}
                     </div>
                     <div class="pb-3">
+                        {{ form_row(form.picture, {"label": "Image", "attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="pb-3">
                         {{ form_row(form.brand, {"label": "Marque", "attr": {'class':'form-control'}}) }}
                     </div>
                     <div class="pb-3">
-                        {{ form_row(form.subCategory, {"label": "Sous-catégorie"}) }}
+                        {{ form_row(form.subCategory, {"label": "Sous-catégorie", "attr": {'class':'form-control'}}) }}
                     </div>
-                    <div class="pb-3">
-                        {{ form_row(form.picture, {"label": "Image", "attr": {'class':'form-control'}}) }}
-                    </div>
+                    
                     <div class="d-flex justify-content-center">
                         <a class="lien me-2" href="{{ path('all_productAdmin') }}">Revenir à la liste</a>
                         {{ form_row(form.valider, {"label": "Valider", "attr": {'class':'lien_2'}}) }}
