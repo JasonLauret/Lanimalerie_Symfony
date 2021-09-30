@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Entity\OrderProduct;
+use App\Form\OrderAdminType;
 use App\Form\OrderType;
 use App\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,7 +29,7 @@ class OrderController extends AbstractController
     public function new(Request $request): Response
     {
         $order = new Order();
-        $form = $this->createForm(OrderType::class, $order);
+        $form = $this->createForm(OrderAdminType::class, $order);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -56,7 +57,7 @@ class OrderController extends AbstractController
     #[Route('/{id}/edit', name: 'order_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Order $order): Response
     {
-        $form = $this->createForm(OrderType::class, $order);
+        $form = $this->createForm(OrderAdminType::class, $order);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
