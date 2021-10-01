@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SearchController!{% endblock %}
+
+{% block body %}
+    {{form_start(form)}}
+    {{form_end(form)}}
+    <div class="d-flex justify-content-between">  
+        {% for product in results %}
+        <div class="border shadow rounded">
+            {{ product.name }}
+        </div>
+            
+        {% endfor %}
+        {% if results is empty %}
+            <p>Aucun resulta trouvé</p>
+        {% endif %}
+    </div>
+{% endblock %}

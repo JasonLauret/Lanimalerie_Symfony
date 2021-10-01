@@ -35,6 +35,31 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }*/
     
+    // Barre de recherche
+    public function searchProduct($filter){
+        $objectArray = $this->createQueryBuilder('p')
+        ->join('p.brand', 'm')
+        ->join('p.sub_category', 'sb');
+        
+        if(!is_null($filter['searchText'])){
+            $objectArray->where('p.name LIKE :name');
+            $objectArray->setParameter(':name', '%'.$filter['searchText'].'%');
+        }
+
+        if(!is_null($filter['brand'])){
+            $objectArray->andWhere('m = :brand')
+            ->setParameter('brand', $filter['brand']);
+        }
+
+        if(!is_null($filter['subCategory'])){
+            $objectArray->andWhere('sb = :subCategory')
+            ->setParameter('subCategory', $filter['subCategory']);
+        }
+
+        return $objectArray->getQuery()->getResult();
+    }
+    
+    // Afficher le produit par ropport à sa catégorie parent
     public function getProductByCategory($value)
     {
         return $this->createQueryBuilder('p')
