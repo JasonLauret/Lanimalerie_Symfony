@@ -4,19 +4,47 @@ namespace App\Form;
 
 use App\Entity\Adress;
 use App\Entity\Order;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Security;
 
 class OrderType extends AbstractType
 {
+    // private $security;
+
+    // public function __construct(Security $security)
+    // {
+    //     $this->security = $security;
+    // }
+
+    // public function buildForm(FormBuilderInterface $builder, array $options)
+    // {
+    //     $user = $this->security->getUser();
+
+    //     $builder
+    //         ->add('tags', EntityType::class, array(
+    //             'class' => Adress::class,
+    //             // 'query_builder' => function (EntityRepository $er) use ($user) {
+    //             //     return $er->createQueryBuilder('u')
+    //             //         ->where('u.user = :user')
+    //             //         ->setParameter('user', $user->getId())
+    //             //     ;
+    //             // },
+    //             'expanded' => true,
+    //             'multiple' => true
+    //         ))
+    //         ->add('valider', SubmitType::class)
+    //     ;
+    // }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         // $user = $options['user'];
         $builder
-            ->add('date')
             ->add('delivery', EntityType::class, 
                 array(
                     'class' => Adress::class,

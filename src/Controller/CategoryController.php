@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Form\AddCateroryType;
+use App\Form\CateroryType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -47,7 +47,7 @@ class CategoryController extends AbstractController
      */
     public function addCategory(Request $request): Response {
 
-        $form = $this->createForm(AddCateroryType::class);
+        $form = $this->createForm(CateroryType::class);
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()){
@@ -89,7 +89,7 @@ class CategoryController extends AbstractController
             return $this->render('category/error.html.twig',['error' => 'La categorie n\'existe pas'] );
         }
 
-        $form = $this->createForm(AddCateroryType::class, $category);
+        $form = $this->createForm(CateroryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){

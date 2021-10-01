@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-class AddCateroryType extends AbstractType
+class CateroryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $option)
     {

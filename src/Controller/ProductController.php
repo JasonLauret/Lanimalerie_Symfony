@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
-use App\Form\AddProductType;
+use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -99,7 +99,7 @@ class ProductController extends AbstractController
     public function addProduct(Request $request, SluggerInterface $slugger): Response { //La function est bien pour les produit et non pas pour les categorie
         
         $product = new Product();
-        $form = $this->createForm(AddProductType::class, $product);
+        $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
         
         
@@ -146,7 +146,7 @@ class ProductController extends AbstractController
             return $this->render('product/error.html.twig',['error' => 'Le produit n\'existe pas'] );
         }
 
-        $form = $this->createForm(AddProductType::class, $product);
+        $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
