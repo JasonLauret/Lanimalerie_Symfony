@@ -132,7 +132,7 @@ class Order
         return $this->delivery;
     }
 
-    public function setDelivery(string $delivery): self
+    public function setDelivery(?string $delivery): self
     {
         $this->delivery = $delivery;
 
