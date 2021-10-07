@@ -29,7 +29,7 @@ class CartController extends AbstractController
 
         $idSubCategory = $productRepository->findOneBy(['id'=>$id])->getSubCategory()->getId();
 
-        $this->addFlash('success', 'Un produit à été ajouté au panier.');
+        $this->addFlash('ajouter', 'Un produit à été ajouté au panier.');
 
     return $this->redirectToRoute('all_product', ['id'=> $idSubCategory]);
 

@@ -13,23 +13,17 @@
         {% endblock %}
     </head>
     <body>
-        {% block header %}
-            {% include 'content/include/header1.html.twig' %}
-        {% endblock %}
+        {% include 'content/include/header1.html.twig' %}
+        
+        {% include 'content/include/nav.html.twig' %}
 
-        {% block nav %}
-            {% include 'content/include/nav.html.twig' %}
-        {% endblock %}
-
-
-        {% for message in app.flashes('success') %}
+        {% for message in app.flashes('ajouter') %}
             <div class="alert alert-success">
-                <p>{{ message }} <a style="text-decoration: underline;" href="{{ path('cart') }}">Voir mon panier</a> </p>
+                <p>{{ message }} <a style="text-decoration: underline;" href="{{ path('cart') }}">Voir mon panier</a></p>
             </div>
         {% endfor %}
         
         {% block body %}{% endblock %}
-        </div>
         
         {% include 'content/include/backToTop.html.twig' %}
         {% include 'content/include/reassurance.html.twig' %}

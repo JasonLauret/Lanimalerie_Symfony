@@ -1,1 +1,0 @@
-const cb = getElementById("cb");

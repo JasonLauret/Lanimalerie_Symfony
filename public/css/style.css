@@ -353,15 +353,18 @@ footer div {
     position: fixed;
     bottom : 10px;
     right: -200px;
-    opacity: 0.5;
+    opacity: 1;
 }
 
 #scrollUp a {
     text-decoration: none;
-    color: black;
+    color: rgba(174, 142, 0);
 }
 #scrollUp a:hover {
-    color: rgb(255, 0, 0);
+    border-radius: 5px;
+    padding: 8px;
+    color: rgb(255, 253, 243);
+    background-color: rgb(174, 142, 0);
 }
 
 /*____________Page produit___________*/
@@ -440,6 +443,7 @@ p.descriptionProduct{
 .blockInscription {
     background-color: rgb(240, 239, 239);
     border-radius: 10px;
+    box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.15);
     height: 270px;
     padding: 20px;
 }
