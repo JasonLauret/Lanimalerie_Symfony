@@ -76,7 +76,7 @@ div .dropdown-menu {
     display: none;
     position: absolute;
     background-color: rgb(233, 233, 233);
-    min-width: 160px;
+    min-width: 180px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }

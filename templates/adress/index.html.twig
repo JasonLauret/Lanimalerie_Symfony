@@ -5,9 +5,8 @@
 {% block body %}
 
     <section class="container my-4">
-
         <div class="d-md-flex mb-3">
-            <p class="h2">Vos adresses</p>
+            <h2 class="">Vos adresses</h2>
             <div class="ms-4 mt-1">
                 {% if adresses | length >= 3%}
                     <a class="lien btn disabled" disabled href="{{ path('adress_new') }}">Créer une nouvelle adresse</a>
