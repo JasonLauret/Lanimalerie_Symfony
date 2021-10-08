@@ -61,7 +61,8 @@ class SettingUserController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('setting_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
+            
         }
 
         return $this->renderForm('setting_user/editPassword.html.twig', [

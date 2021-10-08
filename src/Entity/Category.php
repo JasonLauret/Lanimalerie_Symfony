@@ -37,7 +37,7 @@ class Category
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity=SubCategory::class, mappedBy="category")
+     * @ORM\OneToMany(targetEntity=SubCategory::class, mappedBy="category", cascade={"remove"})
      */
     private $sub_category;
 

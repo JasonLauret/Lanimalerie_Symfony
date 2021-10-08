@@ -42,7 +42,28 @@
         <div class="d-flex justify-content-center mb-4 border-none">
             <a class="lien" href="{{ path('user_index') }}">Revenir à la liste</a>
             <a class="lien mx-3" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
-            {{ include('user/_delete_form.html.twig') }}
+            {# Modal #}
+            <a class="lien" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Supprimer
+            </a>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="">
+                            <p class="h5 modal-title text-center mt-5 mb-3" id="exampleModalLabel">Vous vous appretez à supprimer un utilisateur.</p>
+                        </div>
+                        <div class="modal-body text-center">
+                            <p class="h2"></p>
+                            <p class="mb-5">Êtes-vous bien sûr de vouloir effectuer cette opération ?</p>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between">
+                            <a type="button" class="lien" data-bs-dismiss="modal">Ne pas supprimer</a>
+                            {{ include('user/_delete_form.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {# Fin modal #}
         </div>
     </section>
 {% endblock %}

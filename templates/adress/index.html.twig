@@ -40,8 +40,29 @@
                         {# {% if items | length > 0 %}
                             <a class="btnAdress1 pe-2 me-2 border-end" href=" {{ path('delivery_payment', {'id': adress.id}) }} ">Choisir</a>
                         {% endif %} #}
-                            <a class="btnAdress1 pe-2 me-2 border-end" href="{{ path('adress_edit', {'id': adress.id}) }}">Modifier</a>
-                        {{ include('adress/_delete_form.html.twig') }}
+                        <a class="btnAdress1 pe-2 me-2 border-end" href="{{ path('adress_edit', {'id': adress.id}) }}">Modifier</a>
+                        {# Modal #}
+                        <a class="lien" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Supprimer
+                        </a>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="">
+                                        <p class="h5 modal-title text-center mt-5 mb-3" id="exampleModalLabel">Vous vous appretez à supprimer une adresse.</p>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <p class="h2"></p>
+                                        <p class="mb-5">Êtes-vous bien sûr de vouloir effectuer cette opération ?</p>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-between">
+                                        <a type="button" class="lien" data-bs-dismiss="modal">Ne pas supprimer</a>
+                                        {{ include('adress/_delete_form.html.twig') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {# Fin modal #}
                     </td>
                 </tr>
                 {% else %}

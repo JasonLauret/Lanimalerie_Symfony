@@ -38,12 +38,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length="255")
-     * @Assert\Length(min="6", minMessage="Votre mot de passe doit fair minimum 6 caractères")
+     * @Assert\Length(min="6", minMessage="Votre mot de passe doit avoir minimum 6 caractères.")
      */
     private $password;
 
     /**
-     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
+     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas saisie le même mot de passe.")
      */
     private $confirmPassword;
 
