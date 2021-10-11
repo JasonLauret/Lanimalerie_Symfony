@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Adress;
 use App\Entity\Order;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -15,28 +16,33 @@ class OrdersType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        
         $builder
-            // ->add('user')
             ->add('delivery', EntityType::class, 
                 array(
                     'class' => Adress::class,
-                    // 'choices' => $user->getAdresses(),
+                    'query_builder' => function (EntityRepository $er) use ($options) {
+                        return $er->createQueryBuilder('adr')
+                            ->where('adr.user = :user')->setParameter('user', $options['user']);
+                    },
                     'choice_label' => 'country',
-                    'required' => false,
+                    'required' => true,
                     'expanded' => true,
                     'multiple' => false,
                 )
             )
-            ->add('payment_method', ChoiceType::class,
-            [
-                'choices'  => 
-                [
-                    'Carte Bancaire' => 'Carte Bancaire',
-                    'Paypal' => 'Paypal'
-                ],
-                'expanded' => true,
-                'multiple' => false
-            ])
+
+            
+            // ->add('payment_method', ChoiceType::class,
+            // [
+            //     'choices'  => 
+            //     [
+            //         'Carte Bancaire' => 'Carte Bancaire',
+            //         'Paypal' => 'Paypal'
+            //     ],
+            //     'expanded' => true,
+            //     'multiple' => false
+            // ])
             ->add('valider', SubmitType::class)
         ;
     }

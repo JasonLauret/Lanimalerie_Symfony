@@ -19,68 +19,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class DeliveryPaymentController extends AbstractController
 {   
-    // #[Route('/delivery_payment', name: 'delivery_payment')]
-    // public function index(ProductRepository $productRepository, EntityManagerInterface $em, Request $request): Response
-    // {
-    //     //__________Création de la commande__________
-
-    //     //Création new objet commande
-    //     $order = new Order();
-    //     //Date du jour de la commande
-    //     $order->setDate(new \Datetime());
-    //     //Qui à fait la commande (celui qui est connecter)
-    //     $order->setUser($this->getUser());
-    //     //Récupere le panier dans la session
-    //     $session = $this->requestStack->getSession();
-    //     $panier = $session->get('panier');
-    //     //Récupere l'adresse de livraison
-    //     // $order->setDelivery($this->getUser());
-    //     //Enregistre la commande
-    //     $em->persist($order);
-        
-    //     //parcour le panier
-    //     foreach($panier as $key => $value){
-    //         //Création d'un nouveau objet orderProduct (nouvelle ligne dans orderProduct)
-    //         $orderProduct = new OrderProduct();
-    //         //Lie cette ligne à la commande
-    //         $order->addOrderProduct($orderProduct);
-    //         //Récupère le produit a partir de l'id
-    //         $produit = $productRepository->find($key);
-    //         //Lie le produit à la commande
-    //         $orderProduct->setProduct($produit);
-    //         //On lui donne la quantité
-    //         $orderProduct->setQuantity($value);
-    //         //Enregistrement
-    //         $em->persist($orderProduct);
-    //     }
-
-    //     $form = $this->createForm(OrdersType::class, $order);
-    //     $form->handleRequest($request);
-
-
-    //     if ($form->isSubmitted() && $form->isValid()){
-
-    //         $em = $this->getDoctrine()->getManager();
-    //         $em->persist($order);
-    //         //Exécution des requètes
-    //         $em->flush();
-
-    //         return $this->redirectToRoute("new_order");
-    //     }
-
-    //     return $this->render('order_tunnel/deliveryPayment.html.twig', [
-    //         'order' => $order,
-    //         'form' => $form->createView(),
-    //     ]);
-    // }
-
-    // private $requestStack;
-
-    // public function __construct(RequestStack $requestStack)
-    // {
-    //     $this->requestStack = $requestStack;
-    // }
-
 
 
     // #[Route('/deliveryPayment', name: 'delivery_payment')]
@@ -97,12 +35,10 @@ class DeliveryPaymentController extends AbstractController
     public function addPaymentMethod(Request $request): Response {
 
         $order = new Order();
-        $form = $this->createForm(OrdersType::class, $order);
+        $form = $this->createForm(OrdersType::class, $order, ['user'=>$this->getUser()]);
         $form->handleRequest($request);
         
-        
         if ($form->isSubmitted() && $form->isValid()){
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($order);
             $entityManager->flush();

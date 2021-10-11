@@ -115,24 +115,24 @@ class Order
         return $this;
     }
 
-    public function getPaymentMethod(): ?PaymentMethod
+    public function getPaymentMethod()
     {
         return $this->payment_method;
     }
 
-    public function setPaymentMethod(?PaymentMethod $payment_method): self
+    public function setPaymentMethod($payment_method): self
     {
         $this->payment_method = $payment_method;
 
         return $this;
     }
 
-    public function getDelivery(): ?string
+    public function getDelivery()
     {
         return $this->delivery;
     }
 
-    public function setDelivery(?string $delivery): self
+    public function setDelivery($delivery)
     {
         $this->delivery = $delivery;
 
