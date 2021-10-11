@@ -4,35 +4,42 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\OrderProductRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=OrderProductRepository::class)
  */
+#[ApiResource(
+    normalizationContext:['groups' => ['orderProduct_product']]
+)]
 class OrderProduct
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"orderProduct_product"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="orderProducts")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"orderProduct_product"})
      */
     private $product;
 
     /**
      * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderProducts")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"orderProduct_product"})
      */
     private $commande;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Groups({"orderProduct_product"})
      */
     private $quantity;
 
