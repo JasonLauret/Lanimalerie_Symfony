@@ -39,14 +39,14 @@ class Order
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=PaymentMethod::class, inversedBy="orders")
-     */
-    private $payment_method;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $delivery;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $payment;
 
     
 
@@ -115,18 +115,6 @@ class Order
         return $this;
     }
 
-    public function getPaymentMethod()
-    {
-        return $this->payment_method;
-    }
-
-    public function setPaymentMethod($payment_method): self
-    {
-        $this->payment_method = $payment_method;
-
-        return $this;
-    }
-
     public function getDelivery()
     {
         return $this->delivery;
@@ -135,6 +123,18 @@ class Order
     public function setDelivery($delivery)
     {
         $this->delivery = $delivery;
+
+        return $this;
+    }
+
+    public function getPayment(): ?string
+    {
+        return $this->payment;
+    }
+
+    public function setPayment(string $payment): self
+    {
+        $this->payment = $payment;
 
         return $this;
     }

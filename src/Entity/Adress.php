@@ -108,4 +108,9 @@ class Adress
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->adress." ".$this->postal_code." ".$this->city." ".$this->country;
+    }
 }
