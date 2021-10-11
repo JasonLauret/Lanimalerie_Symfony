@@ -5,8 +5,13 @@
 {% block body %}
 
 <section class="container py-5">
-    <h2 class="mb-5">Panier</h2>
+    <h2 class="mb-3">Panier</h2>
     {% if items | length > 0 %}
+        {# en cour
+        <div class="my-2">
+            <a class="lien" href="{{ path('remove_all_cart') }}">Supprimer le panier</a>
+        </div>
+        #}
         <table class="table border border-dark rounded">
             <thead>
                 <tr>
