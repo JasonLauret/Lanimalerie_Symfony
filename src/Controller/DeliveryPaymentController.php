@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class DeliveryPaymentController extends AbstractController
 {
     #[Route('/deliveryPayment', name: 'delivery_payment')]
-    public function deliveryPayment(Request $request, ProductRepository $productRepository, EntityManagerInterface $entityManager): Response {
+    public function deliveryPayment(Request $request, ProductRepository $productRepository, EntityManagerInterface $entityManager, CartService $cartService): Response {
 
         $order = new Order();
         $form = $this->createForm(OrderType::class, $order, ['user'=>$this->getUser()]);
@@ -56,7 +56,7 @@ class DeliveryPaymentController extends AbstractController
             //Exécution des requètes
             $entityManager->flush();
             //-----------------
-
+            $cartService->removeAll();
             return $this->redirectToRoute("order_validated");
         }
         
@@ -64,6 +64,14 @@ class DeliveryPaymentController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    // #[Route('/cancel_order', name: 'cancel_order')]
+    // public function cancelOrder(CartService $cartService) {
+
+    //     $cartService->removeAll();
+        
+    //     return $this->redirectToRoute("home");
+    // }
 
     #[Route('/validated', name: 'order_validated')]
     public function orderValidated(): Response {
@@ -76,20 +84,6 @@ class DeliveryPaymentController extends AbstractController
             'order' => $order,
         ]);
     }
-
-    // #[Route('/order/{id}', name: 'display_order')]
-    // public function exportCommunicationAction(CartService $cartService)
-    // {
-    //     $total = $cartService->getTotal();
-    //     $order = $this->getDoctrine()
-    //                 ->getRepository(Order::class)
-    //                 ->findAll();
-
-    //     return $this->render('order_tunnel/purchaseOrder.html.twig', [
-    //         'orders' => $order,
-    //         'total' => $total
-    //     ]);
-    // }
 
     private $requestStack;
 

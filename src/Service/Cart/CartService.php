@@ -4,6 +4,7 @@ namespace App\Service\Cart;
 
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Annotation\Route;
 
 class CartService {
 
@@ -42,7 +43,11 @@ class CartService {
     }
 
     //_______remove_______
-    
+
+    public function removeAll(){
+        $this->session->set('panier', []);
+    }
+
     public function remove($id){
         $panier = $this->session->get('panier', []);
         if(!empty($panier[$id])) {

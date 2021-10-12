@@ -39,6 +39,7 @@
             {#-Modal-#}
             <div class="d-flex justify-content-between">
                 <a class="menu p-2" href="{{ path('cart') }}"><i class="bi bi-arrow-left-circle-fill fs-5 me-2"></i>Retour au panier</a>
+                <a class="menu p-2" href="{{ path('cancel_order') }}"><i class="bi bi-x-circle fs-5 me-2"></i>Abandonner la commande</a>
                 <a class="menu p-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Valider et payer<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i>
                 </a>
@@ -57,7 +58,6 @@
                     <div class="modal-footer d-flex justify-content-between">
                         <a class="lienRecu" type="button" data-bs-dismiss="modal">Non je ne suis pas sur.</a>
                         {{ form_row(form.valider, {"label": "Valider et payer.", "attr": {'class':'lienRecu'}}) }}
-                        {# <a class="lienRecu" href="{{ path('new_order') }}" type="submit">Valider et payer.</a> #}
                     </div>
                     </div>
                 </div>

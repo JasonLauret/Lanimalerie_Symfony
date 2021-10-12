@@ -36,34 +36,4 @@ class HomeController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-
-    /*#[Route('/', name: 'home')]
-    public function home(Request $request, MailerInterface $mailer): Response {
-
-        $form = $this->createForm(ContactType::class);
-
-        $form->handleRequest($request);
-        
-        if ($form->isSubmitted() && $form->isValid()){
-            $data = $form->getData();
-            $message = (new Email())
-                ->from($data['email'])
-                ->to("lauret.jason73390@gmail.com")
-                ->subject('Demande en provenance du site')
-                ->text('From '. $data['email'].' '.$data['message'], 'text/plain');
-
-            $mailer->send($message);
-        }
-
-        $category = $this->getDoctrine()
-                    ->getRepository(Category::class)
-                    ->findAll();
-
-
-        return $this->render('home/home.html.twig', [
-            'form' => $form->createView(),
-            'categorys' => $category
-        ]);
-    }*/
-
 }

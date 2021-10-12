@@ -25,33 +25,29 @@ class CartController extends AbstractController
 
     #[Route('/cart/{id}', name: 'add_cart')]
     public function add($id, CartService $cartService, ProductRepository $productRepository){
-
         $cartService->add($id);
-
         $idSubCategory = $productRepository->findOneBy(['id'=>$id])->getSubCategory()->getId();
-
         $this->addFlash('ajouter', 'Un produit à été ajouté au panier.');
 
         return $this->redirectToRoute('all_product', ['id'=> $idSubCategory]);
-
     }
 
 
     #[Route('/addCart/{id}', name: 'add_inCart')]
     public function addCart($id, CartService $cartService){
-
         $cartService->addCart($id);
-        return $this->redirectToRoute("cart");
 
+        return $this->redirectToRoute("cart");
     }
 
     // en cour
+    #[Route('/cancel_order', name: 'cancel_order')]
+    public function cancelOrder(CartService $cartService) {
 
-    #[Route('/cart/remove', name: 'remove_all_cart')]
-    public function removeAll(){
-        $this->session->set('panier', []);
+        $cartService->removeAll();
+        
+        return $this->redirectToRoute("home");
     }
-    
     //-------
     
     #[Route('/cart/remove/{id}', name: 'remove_cart')]
