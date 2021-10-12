@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <section class="container my-5">
+    {# <section class="container my-5">
             <div class="card" style="max-width: auto;">
                 <div class="row g-0">
                     <div class="col-lg-6">
@@ -24,6 +24,46 @@
                     </div>
                 </div>
             </div>
+    </section> #}
+
+    <section class="container my-5">
+        <div class="row bg-light rounded p-5">
+            <div class="col-6 d-flex justify-content-center">
+                <img class="img-fluid rounded-start" alt="{{ product.name }}"
+                        src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}"
+                        style="min-width:80%;">
+            </div>
+
+            <div class="col-5 d-flex flex-column justify-content-between">
+                <div>
+                    <p class="h2">{{ product.name }}</p>
+                    <p class="fs-3">{{ product.price }} €</p>
+                    <p class="descriptionProduct">{{ product.description }}</p>
+                </div>
+                <div class="text-end">
+                    <a class="btn-product rounded" href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ dump(similarProducts) }}
+
+    <section class="container">
+        <p class="h3 text-center my-3">Vous aimerez aussi</p>
+        <div class="row ">
+            {% for similarProduct in similarProducts %}
+            <div class="col bg-danger rounded mx-2 p-3">
+                <div class="text-start d-flex flex-column">
+                    <img class="img-fluid rounded" alt="{{ similarProduct.name }}"
+                                src="{{ asset('upload/' ~ similarProduct.picture) }}" alt="{{ similarProduct.name }}"
+                                style="min-width:40%; max-width:40%;">
+                    <p class="">{{ similarProduct.name }}</p>
+                    <p class="">{{ similarProduct.price }} €</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </section>
     
 {% endblock %}

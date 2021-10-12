@@ -71,6 +71,17 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
 
+    public function similarProduct($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.sub_category = :val')
+            ->setParameter('val', $value)
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // affiche tous les produits ou l'id_sousCategory de produit soit égale a l'id de la sous-category
 
     /*

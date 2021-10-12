@@ -26,9 +26,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/product", name="all_productAdmin")
-     */
+    #[Route('/admin/product', name: 'all_productAdmin')]
     public function allProductAdmin()
     {
         $product = $this->getDoctrine()
@@ -40,9 +38,8 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/product/{id}", name="display_productAdmin")
-     */
+
+    #[Route('/admin/product/{id}', name: 'display_productAdmin')]
     public function displayProductAdmin($id)
     {
         $product = $this->getDoctrine()
@@ -59,14 +56,16 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/display/product/{id}", name="display_product")
-     */
-    public function displayProduct($id)
+
+    #[Route('/display/product/{id}', name: 'display_product')]
+    public function displayProduct($id, ProductRepository $productRepository)
     {
         $product = $this->getDoctrine()
                     ->getRepository(Product::class)
                     ->find($id);
+                    
+        $idCourant = $productRepository->similarProduct($product->getSubCategory()->getId());
+        
 
         if (!$product){
             //throw $this->createNotFoundException("Le produit demandée n'existe pas");
@@ -75,13 +74,31 @@ class ProductController extends AbstractController
 
         return $this->render('product/displayProduct.html.twig', [
             'product' => $product,
+            'similarProducts' => $idCourant
         ]);
     }
 
+
+    //Bon
+    // #[Route('/display/product/{id}', name: 'display_product')]
+    // public function displayProduct($id)
+    // {
+    //     $product = $this->getDoctrine()
+    //                 ->getRepository(Product::class)
+    //                 ->find($id);
+
+    //     if (!$product){
+    //         //throw $this->createNotFoundException("Le produit demandée n'existe pas");
+    //         return $this->render('product/error.html.twig', ['product' => $product,]);
+    //     }
+
+    //     return $this->render('product/displayProduct.html.twig', [
+    //         'product' => $product,
+    //     ]);
+    // }
+
     //Filtrer
-    /**
-     * @Route("/product/name/{name}", name="display_product_name")
-     */
+    #[Route('/product/name/{name}', name: 'display_product_name')]
     public function displayProductByName($name)
     {
         $product = $this->getDoctrine()
@@ -92,10 +109,7 @@ class ProductController extends AbstractController
         return $this->render('product/allProduct.html.twig', ['products' => $product,]);
     }
     
-
-    /**
-     * @Route("/admin/addProduct", name="add_productAdmin")
-     */
+    #[Route('/admin/addProduct', name: 'add_productAdmin')]
     public function addProduct(Request $request, SluggerInterface $slugger): Response { //La function est bien pour les produit et non pas pour les categorie
         
         $product = new Product();
@@ -133,9 +147,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/updateProduct/{id}", name="update_product")
-     */
+    #[Route('/admin/updateProduct/{id}', name: 'update_product')]
     public function updateProduct(Request $request, $id, SluggerInterface $slugger): Response {
 
         $product = $this->getDoctrine()
@@ -182,9 +194,8 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/deleteProduct/{id}", name="delete_product")
-     */
+
+    #[Route('/admin/deleteProduct/{id}', name: 'delete_product')]
     public function deleteProduct($id): Response {
 
         $entityManager = $this->getDoctrine()->getManager();
