@@ -20,8 +20,7 @@
 
         <table class="table table-borderless">
             <thead>
-            <tr>
-                <th>Id</th>
+            <tr class="border-bottom">
                 <th>Pays</th>
                 <th>Ville</th>
                 <th>Code postal</th>
@@ -30,17 +29,13 @@
             </thead>
             <tbody>
                 {% for adress in adresses %}
-                <tr class="">
-                    <td>{{ adress.id }}</td>
+                <tr>
                     <td>{{ adress.country }}</td>
                     <td>{{ adress.city }}</td>
                     <td>{{ adress.postalCode }}</td>
                     <td>{{ adress.adress }}</td>
                     <td class="d-flex">
-                        {# {% if items | length > 0 %}
-                            <a class="btnAdress1 pe-2 me-2 border-end" href=" {{ path('delivery_payment', {'id': adress.id}) }} ">Choisir</a>
-                        {% endif %} #}
-                        <a class="btnAdress1 pe-2 me-2 border-end" href="{{ path('adress_edit', {'id': adress.id}) }}">Modifier</a>
+                        <a class="lien pe-2 me-2 border-end" href="{{ path('adress_edit', {'id': adress.id}) }}">Modifier</a>
                         {# Modal #}
                         <a class="lien" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Supprimer

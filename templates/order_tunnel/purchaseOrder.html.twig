@@ -22,42 +22,36 @@
             </div>
         </div>
         <div class="row border border-dark p-5">
-            <div class="col-6">
-                <p class="h2 recuFacturation text-danger">Facturation</p>
-                <div class="border border-danger p-1">
-                    <p>{{ app.user.lastName }} {{ app.user.firstName }}</p>
-                    {# <p>{{ app.user.address }}</p>
-                    <p><span>{{ app.user.postalCode }}</span> <span>{{ app.user.city }}</span></p> #}
+            <div class="col-12">
+                <div class="col-6">
+                    <p class="h2 recuFacturation text-danger">Livraison</p>
+                    <div class="border border-danger p-3">
+                        <p class="fw-bold">{{ app.user.lastName }} {{ app.user.firstName }}</p>
+                        <p class="border-bottom">Adresse de livraison:</p><p>{{ orders.delivery }}</p>
+                        <p class="border-bottom mt-4">Paiement par:</p><p>{{ orders.payment }}</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-6">
-                <p class="h2 recuLivraison text-danger">Livraison</p>
-                <div class="border border-danger p-1">
-                    <p>{{ app.user.lastName }} {{ app.user.firstName }}</p>
-                    {# <p>{{ app.user.address }}</p>
-                    <p><span>{{ app.user.postalCode }}</span> <span>{{ app.user.city }}</span></p> #}
+            <div class="row col-6 p-5 ms-2">
+                <div class="col-6">
+                    <p class="bg-light p-2">Adresse E-mail</p>
+                    <p class="bg-light p-2">Numéro de commande</p>
+                </div>
+                <div class="col-6">
+                    <p class="p-2">{{ app.user.email }}</p>
+                    <p class="p-2">{{ orders.id }}</p>
                 </div>
             </div>
-                <div class="row col-6 p-5 ms-2">
-                    <div class="col-6">
-                        <p class="bg-light p-2">Adresse E-mail</p>
-                        <p class="bg-light p-2">Numéro de commande</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="p-2">{{ app.user.email }}</p>
-                        <p class="p-2">{{ orders.id }}</p>
-                    </div>
+            <div class="row col-6 p-5 ms-2">
+                <div class="col">
+                    <p class="bg-light p-2">ID client</p>
+                    <p class="bg-light p-2">Date de commande</p>
                 </div>
-                <div class="row col-6 p-5 ms-2">
-                    <div class="col">
-                        <p class="bg-light p-2">ID client</p>
-                        <p class="bg-light p-2">Date de commande</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="p-2">{{ app.user.id }}</p>
-                        <p class="p-2">{{ orders.date ? orders.date|date('d/m/Y') : '' }}</p>
-                    </div>
+                <div class="col-6">
+                    <p class="p-2">{{ app.user.id }}</p>
+                    <p class="p-2">{{ orders.date ? orders.date|date('d/m/Y') : '' }}</p>
                 </div>
+            </div>
             <div>
                 <p class="h2 text-danger">Votre commande</p>
                 <div>

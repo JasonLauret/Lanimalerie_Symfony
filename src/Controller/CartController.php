@@ -14,13 +14,14 @@ class CartController extends AbstractController
     {
         $panierWithData = $cartService->getFullCart();
         $total = $cartService->getTotal();
+        $nbItem = count($panierWithData);
 
         return $this->render('cart/index.html.twig', [
             'items' => $panierWithData,
-            'total' => $total
+            'total' => $total,
+            'nbItem' => $nbItem,
         ]);
     }
-    
 
     #[Route('/cart/{id}', name: 'add_cart')]
     public function add($id, CartService $cartService, ProductRepository $productRepository){
@@ -31,7 +32,7 @@ class CartController extends AbstractController
 
         $this->addFlash('ajouter', 'Un produit à été ajouté au panier.');
 
-    return $this->redirectToRoute('all_product', ['id'=> $idSubCategory]);
+        return $this->redirectToRoute('all_product', ['id'=> $idSubCategory]);
 
     }
 
@@ -45,13 +46,12 @@ class CartController extends AbstractController
     }
 
     // en cour
-    #[Route('/cart/remove', name: 'remove_all_cart')]
-    public function removeAllCart(CartService $cartService){
-        
-        $cartService->removeAll();
 
-        return $this->redirectToRoute("home");
+    #[Route('/cart/remove', name: 'remove_all_cart')]
+    public function removeAll(){
+        $this->session->set('panier', []);
     }
+    
     //-------
     
     #[Route('/cart/remove/{id}', name: 'remove_cart')]
@@ -69,4 +69,6 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute("cart");
     }
+
+    
 }

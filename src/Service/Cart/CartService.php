@@ -42,17 +42,7 @@ class CartService {
     }
 
     //_______remove_______
-
-    // en cour
-    public function removeAll(){
-        $panier = $this->session->get('panier', []);
-        die(dump($panier));
-        // if(!empty($panier)) {
-        //     unset($panier);
-        // }
-        $this->session->set('panier', $panier);
-    }
-    //-------
+    
     public function remove($id){
         $panier = $this->session->get('panier', []);
         if(!empty($panier[$id])) {

@@ -33,8 +33,6 @@ class DeliveryPaymentController extends AbstractController
             //Récupere le panier dans la session
             $session = $this->requestStack->getSession();
             $panier = $session->get('panier');
-            //Récupere l'adresse de livraison
-            // $order->setDelivery($this->getUser());
             //Enregistre la commande
             $entityManager->persist($order);
             

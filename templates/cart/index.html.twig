@@ -4,114 +4,78 @@
 
 {% block body %}
 
-<section class="container py-5">
-    <h2 class="mb-3">Panier</h2>
-    {% if items | length > 0 %}
-        {# en cour
-        <div class="my-2">
-            <a class="lien" href="{{ path('remove_all_cart') }}">Supprimer le panier</a>
-        </div>
-        #}
-        <table class="table border border-dark rounded">
-            <thead>
-                <tr>
-                    <th>Produit</th>
-                    <th>Image</th>
-                    <th>Prix</th>
-                    <th>Quantité</th>
-                    <th>Total</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in items %}
-                    <tr>
-                        <td>{{ item.product.name }}</td>
-                        <td>
-                            <img class="rounded" src="{{ asset('upload/' ~ item.product.picture) }}" alt="{{ item.product.name }}" style="max-height:120px; width:auto">
-                        </td>
-                        <td>{{ item.product.price }} €</td>
-                        <td>
-                            <a href="{{ path('removeOne_cart', {'id': item.product.id}) }}"><i class="bi bi-dash"></i></a>
-                            {{ item.quantity }} 
-                            <a href="{{ path('add_inCart', {'id': item.product.id}) }}"><i class="bi bi-plus"></i></a>
-                        </td>
-                        <td>{{ item.product.price * item.quantity }} €</td>
-                        <td>
-                            <a href="{{ path('remove_cart', {'id': item.product.id}) }}" 
-                                class="btn btn-danger btn-sm">
-                                <i class="bi bi-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3"></td>
-                    <td class="text-end">Total:</td>
-                    <td> {{ total }} €</td>
-                </tr>
-            </tfoot>
-        </table>
-        {% if is_granted('ROLE_ADMIN') or app.user %}
-            <div class="text-end mt-5">
-                <a href="{{ path('summary_cart') }}" class="menu p-3">Récapitulatif panier<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
+    <section class="container py-5">
+        {% if items | length > 0 %}
+            <div class="d-flex justify-content-between mb-3">
+                <h2>Panier</h2>
+                <div>
+                    <a class="lien" href="{{ path('remove_all_cart') }}">Supprimer le panier</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-7">
+                    {% for item in items %}
+                        <div class="row text-center border rounded shadow p-4 mb-3">
+                            <div class="col-12 col-md-5 text-center">
+                                <img class="rounded" src="{{ asset('upload/' ~ item.product.picture) }}" alt="{{ item.product.name }}" style="max-height:150px; width:auto">
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <p class="col-6">{{ item.product.name }}</p>
+                            </div>
+                            <div class="col-12 col-md-3 d-flex flex-column justify-content-between">
+                                <div class="d-flex justify-content-end">
+                                    <p class="me-3">Quantité:</p>
+                                    <a href="{{ path('removeOne_cart', {'id': item.product.id}) }}"><i class="bi bi-dash text-dark fs-5"></i></a>
+                                    <p class="fs-5">{{ item.quantity }} </p>
+                                    <a href="{{ path('add_inCart', {'id': item.product.id}) }}"><i class="bi bi-plus text-dark fs-5"></i></a>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="m-0">Total: {{ item.product.price * item.quantity }} €</p>
+                                    <a href="{{ path('remove_cart', {'id': item.product.id}) }}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-5 d-flex flex-column">
+                    <div class="border rounded p-3">
+                        <p class="h4">Récapitulatif du panier</p>
+                        <hr>
+                        {% for item in items %}
+                            <div class="d-flex justify-content-between">
+                                <p>{{ item.quantity }}</p>
+                                <p>{{ item.product.name }}</p>
+                                <p>{{ item.product.price * item.quantity }} €</p>
+                            </div>
+                        {% endfor %}
+                        <hr>
+                        
+                        <p>{{ nbItem }} article{% if nbItem > 1%}s{% endif %}</p>
+                        
+                        <hr>
+                        <div class="h4 text-end">
+                            <p>Montant total: {{ total }} €</p>
+                        </div>
+                    </div>
+                    {% if is_granted('ROLE_ADMIN') or app.user %}
+                    <div class="text-end mt-5">
+                        <a href="{{ path('delivery_payment') }}" class="menu p-3">Livraison et paiement<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
+                    </div>
+                    {% else %}
+                        <div class="text-end mt-5">
+                            <a href="{{ path('app_login') }}" class="menu p-3">Récapitulatif panier<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         {% else %}
-            <div class="text-end mt-5">
-                <a href="{{ path('app_login') }}" class="menu p-3">Récapitulatif panier<i class="bi bi-arrow-right-circle-fill fs-5 ps-3"></i></a>
+            <h2 class="mb-3">Panier</h2>
+            <div class="border rounded shadow p-4">
+                <p class="fs-4">Bonjour !</p>
+                <p>Votre panier est vide !</p>
             </div>
         {% endif %}
-    {% else %}
-        <div class="border rounded shadow p-4">
-            <p class="fs-4">Bonjour !</p>
-            <p>Votre panier est vide !</p>
-        </div>
-    {% endif %}
-</section>
+    </section>
+
 {% endblock %}
-
-{#
-<section class="container">
-    <div class="row flex-column">
-        {% for item in items %}
-            <div class="rounded border border-dark p-3 g-3 col-12 col-md-6">
-                <div class="d-flex">
-                    <div class="col-6">
-                        <p class="h5">{{ item.product.name }}</p>
-                        <p>
-                            <img class="rounded" src="{{ asset('upload/' ~ item.product.picture) }}" alt="{{ item.product.name }}" style="max-height:120px; width:auto">
-                        </p>
-                    </div>
-                    <div class="col-6 d-flex text-end mt-4">
-                        {#<p><span class="me-5">Prix unitaire: </span><span>{{ item.product.price }} €</span></p>
-                        <p><span class="me-5">Quantité: </span><span>{{ item.quantity }}</span></p>
-                        <p><span class="me-5">Total: </span><span>{{ item.product.price * item.quantity }} €</span></p>--
-
-                        <div class="col-6">
-                            <p class="me-5">Prix unitaire: </p>
-                            <p class="me-5">Quantité: </p>
-                            <p class="me-5">Total: </p>
-                        </div>
-                        <div class="col-6">
-                            <p>{{ item.product.price }} €</p>
-                            <p>{{ item.quantity }}</p>
-                            <p>{{ item.product.price * item.quantity }} €</p>
-                        </div>
-                        {#<p class="ms-5">Prix: {{ item.product.price }} €</p>
-                        <p class="ms-5">Quantité: {{ item.quantity }}</p>
-                        <p class="ms-5">Total: {{ item.product.price * item.quantity }} €</p>--
-                    </div>
-                </div>
-                <p class="text-end">
-                    <a href="{{ path('remove_cart', {'id': item.product.id}) }}" 
-                        class="btn btn-danger btn-sm">
-                        <i class="bi bi-trash"></i>
-                    </a>
-                </p>
-            </div>
-        {% endfor %}
-    </div>
-</section>
-#}

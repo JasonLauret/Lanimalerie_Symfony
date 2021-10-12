@@ -35,19 +35,6 @@ class OrderRepository extends ServiceEntityRepository
         ;
     }
     */
-
-    /*
-    public function findOneBySomeField($value): ?Order
-    {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-    
     public function countOrder()
     {
         return $this->createQueryBuilder('o')
@@ -67,7 +54,18 @@ class OrderRepository extends ServiceEntityRepository
         ;
     }
 
-
+    /*
+    public function findOneBySomeField($value): ?Order
+    {
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    */
+    
     /*public function sumOrder(): ?Order
     {
         return $this->createQueryBuilder('o')

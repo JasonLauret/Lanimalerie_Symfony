@@ -550,15 +550,6 @@ input[type='radio']:checked:before {
 
 /*_____________Address_____________*/
 
-.btnAdress1{
-    color: rgb(174, 142, 0);
-    border:none;
-}
-
-.btnAdress1:hover{
-    color: rgb(88, 72, 0);
-}
-
 .btnAddress2{
     border: none;
     color: rgb(255, 0, 0);
