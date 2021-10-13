@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use Knp\Component\Pager\PaginatorInterface;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use ContainerPndtUT7\PaginatorInterface_82dac15;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,24 +20,38 @@ class ProductController extends AbstractController
     /**
      * product
      *
+     * Cette fonction affiche tous les produits par rapport à sa catégorie parent
      * @param  mixed $productRepository // Injecte la class ProductRepository, pour accéder à ses fonctions.
      * @param  int $id // Prend l'id de l'URL, et l'ajoute en paramètre de la fonction getProductByCategory(). Correspond à l'id de la sous-categorie.
      * @return array // Retourne un tableau contenant tous les produits par rapport à sa sous-categorie.
      */
     #[Route('/category/{id}', name: 'all_product')]
-    
-    public function product(ProductRepository $productRepository, $id)
+    public function product(ProductRepository $productRepository, $id, PaginatorInterface $paginator, Request $request)
     {
-        $product = $productRepository->getProductByCategory($id);
+        $productByCategory = $productRepository->getProductByCategory($id);
+        
+        $product = $paginator->paginate($productByCategory, $request->query->getInt('page', 1), 8);
 
         return $this->render('product/allProduct.html.twig', [
             'products' => $product,
         ]);
     }
 
+    //Bon
+    // #[Route('/category/{id}', name: 'all_product')]
+    // public function product(ProductRepository $productRepository, $id)
+    // {
+    //     $product = $productRepository->getProductByCategory($id);
+
+    //     return $this->render('product/allProduct.html.twig', [
+    //         'products' => $product,
+    //     ]);
+    // }
+
     /**
      * allProductAdmin
-     *
+     * 
+     * Cette fonction affiche tous les produits de BDD
      * @return array // Retourne un tableau contenant tous les produits de la table product.
      */
     #[Route('/admin/product', name: 'all_productAdmin')]
