@@ -1,19 +1,21 @@
 <header>
     <div class="container-fluid pt-2">
         <div class="row">
-            <div class="col-12 col-md-4 mt-1 mb-3">
-                <a href="{{ path('home') }}"><img class="img_logo" src="{{ asset('img/logo/logoLanimalerie.png') }}"></a>
+            <div class="col-12 col-md-4 mt-1 mb-3 text-center">
+                <a href="{{ path('home') }}">
+                    <img class="img_logo" src="{{ asset('img/logo/logoLanimalerie.png') }}">
+                </a>
             </div>
             <!--______Mon compte, mon panier, gestion______-->
             {% if is_granted('ROLE_ADMIN') %}
             <div class="col-12 col-md-8 mt-1">
                 <div class="d-flex flex-column align-items-center align-items-md-end me-3">
-                    <div>
+                    <div class="text-center">
                         <p class="m-0 pb-2"><span class="fw-bold">Bonjour {{ app.user.firstName }}</span>. Vous êtes connecté en tant qu'Admin.</p>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <div class="right-menu">
-                            <button class="menu-button fs-5 ms-2 m-0"><i class="pe-2 bi bi-gear"></i>Gestion</button>
+                        <div class="right-menu display-4">
+                            <button class="menu-button ms-2 m-0"><i class="pe-2 bi bi-gear"></i>Gestion</button>
                             <div class="dropdown-menu">
                                 <a class="" href="{{ path('user_index') }}">Utilisateurs</a>
                                 <a class="" href="{{ path('adress_admin_index') }}">Adresses</a>
@@ -25,10 +27,10 @@
                             </div>
                         </div>
                         <div>
-                            <a href="{{ path('cart') }}"><button class="menu fs-5 ms-2 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button></a>
+                            <a href="{{ path('cart') }}"><button class="menu ms-2 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button></a>
                         </div>
                         <div class="right-menu">
-                            <button class="menu-button fs-5 ms-2 m-0"><i class="pe-2 bi bi-gear"></i>Mon compte</button>
+                            <button class="menu-button ms-2 m-0"><i class="pe-2 bi bi-gear"></i>Mon compte</button>
                             <div class="dropdown-menu">
                                 <a class="" href="{{ path('setting_user_index') }}"><i class="bi bi-gear me-1"></i>Paramètres</a>
                                 <a class="" href="{{ path('all_user_order', {'id': app.user.id}) }}"><i class="pe-1 bi bi-list-ul"></i>Commandes</a>

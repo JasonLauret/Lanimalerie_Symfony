@@ -411,14 +411,10 @@ a.btn-product:hover {
     text-decoration: underline;
 } */
 
-/*____________Display Product___________*/
+/*____________Page détail produit___________*/
 
-p.descriptionProduct{
-    text-align: justify;
-}
-
-.priceProduct{
-    font-size: 40px;
+.bgSimilarProduct{
+    background-color: rgba(230, 189, 5, 0.07);
 }
 
 /*____________Page login___________*/
