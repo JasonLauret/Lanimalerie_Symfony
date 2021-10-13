@@ -78,7 +78,7 @@ class ProductRepository extends ServiceEntityRepository
             ->where('p.sub_category = :val')
             ->setParameter('val', $value)
             ->orderBy('RAND()')
-            ->setMaxResults(4)
+            ->setMaxResults(3)
             ->getQuery()
             ->getResult()
         ;

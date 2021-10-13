@@ -1,9 +1,10 @@
 <header>
     <div class="container-fluid pt-2">
         <div class="row">
+            <!--_____________Logo________________-->
             <div class="col-12 col-md-4 mt-1 mb-3 text-center">
                 <a href="{{ path('home') }}">
-                    <img class="img_logo" src="{{ asset('img/logo/logoLanimalerie.png') }}">
+                    <img class="img_logo w-75 h-auto wm-100" src="{{ asset('img/logo/logoLanimalerie.png') }}">
                 </a>
             </div>
             <!--______Mon compte, mon panier, gestion______-->
@@ -13,8 +14,8 @@
                     <div class="text-center">
                         <p class="m-0 pb-2"><span class="fw-bold">Bonjour {{ app.user.firstName }}</span>. Vous êtes connecté en tant qu'Admin.</p>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="right-menu display-4">
+                    <div class="d-flex justify-content-between fs-5">
+                        <div class="right-menu">
                             <button class="menu-button ms-2 m-0"><i class="pe-2 bi bi-gear"></i>Gestion</button>
                             <div class="dropdown-menu">
                                 <a class="" href="{{ path('user_index') }}">Utilisateurs</a>
@@ -62,22 +63,15 @@
                     </div>
                 </div>
             </div>
-
             {% else %}
-            <div class="col-12 col-md-8 d-flex justify-content-between justify-content-md-end">
+            <div class="col-12 col-md-8 d-flex justify-content-between justify-content-md-end fs-5">
                 <a {% if app.user %}href=""{% else %}href="{{ path('cart') }}"{% endif %}>
-                    <button class="menu fs-5 ms-md-3 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button>
+                    <button class="menu ms-md-3 m-0"><i class="pe-2 bi bi-basket2"></i>Panier</button>
                 </a>
-                <a href="{{ path('app_login') }}"><button class="menu fs-5 m-0 ms-2"><i class="pe-2 bi bi-person-fill"></i>Me connecter</button></a>
+                <a href="{{ path('app_login') }}"><button class="menu m-0 ms-2"><i class="pe-2 bi bi-person-fill"></i>Me connecter</button></a>
                 
             </div>
             {% endif %}
-            <!--_____________Logo________________-->
-            
         </div>
-        
-        
     </div>
-    
-    
 </header>
