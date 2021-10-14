@@ -5,9 +5,14 @@
 {% block body %}
 
     <section class="container mt-3">
-        <h1>Liste des commandes</h1>
-        <p class="h3">Nombre de commande: {{ count }} commande{% if count > 1 %}s{% endif %}</p>
-        {# <h1>Somme de toutes les commandes: {{ sum }} €</h1> #}
+        <div class="row d-flex justify-content-between">
+            <div class="col-12 col-lg-6">
+                <h1>Liste des commandes</h1>
+            </div>
+            <div class="col-12 col-lg-6 text-end">
+                <p class="h3">Nombre de commande: {{ count }} commande{% if count > 1 %}s{% endif %}</p>
+            </div>
+        </div>
         <a class="lien" href="{{ path('order_new') }}">Ajouter une commande</a>
         <table class="table mt-2">
             <thead>
@@ -15,27 +20,30 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Prénom</th>
+                <th>Montant total de la commande</th>
                 <th>Date</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
+            
             {% for order in orders %}
             <tr>
                 <td>{{ order.id }}</td>
                 <td>{{ order.user.lastName }}</td>
                 <td>{{ order.user.firstName }}</td>
+                <td>{{ order.total }} €</td>
                 <td>{{ order.date ? order.date|date('d/m/Y') : '' }}</td>
                 <td>
                     <a class="lien" href="{{ path('order_show', {'id': order.id}) }}">Detail</a>
                     <a class="lien" href="{{ path('order_edit', {'id': order.id}) }}">Modifier</a>
                 </td>
             </tr>
-        {% else %}
+            {% else %}
             <tr>
                 <td colspan="3">Ancune commande trouvé</td>
             </tr>
-        {% endfor %}
+            {% endfor %}
             </tbody>
         </table>
         <div class="pagination mt-5 d-flex justify-content-center">

@@ -24,8 +24,6 @@ class DeliveryPaymentController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()){
-            
-            //-----------------
             //Date du jour de la commande
             $order->setDate(new \Datetime());
             //Qui à fait la commande (celui qui est connecter)
@@ -33,6 +31,8 @@ class DeliveryPaymentController extends AbstractController
             //Récupere le panier dans la session
             $session = $this->requestStack->getSession();
             $panier = $session->get('panier');
+            //Récupere le prix total de la commande
+            $order->setTotal($cartService->getTotal());
             //Enregistre la commande
             $entityManager->persist($order);
             

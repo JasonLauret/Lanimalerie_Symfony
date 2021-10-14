@@ -10,13 +10,30 @@
                 <h1 class="mt-3">Modifier la commande</h1>
                 {{ form_start(form) }}
                     <div class="mb-3">
-                        {{ form_row(form.date, {"attr": {'class':'motif'}}) }}
-                    </div>
-                
-                    <div class="mt-3 d-flex">
-                        <a class="lien p-2 me-2" href="{{ path('order_index') }}">Revenir à la liste</a>
-                        {{ form_row(form.valider, {"attr": {'class':'lien_2'}}) }}
-                    </div>
+                            {{ form_row(form.user, {"attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(form.delivery, {"attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(form.date, {"attr": {'class':'form-control'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            <span>
+                                {{ form_label(form.payment) }}
+                             </span>
+                            <span> 
+                                {{ form_widget(form.payment) }}
+                            </span>
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(form.total, {"attr": {'class':'form-control'}}) }}
+                        </div>
+                    
+                        <div class="mt-3 d-flex justify-content-center">
+                            <a class="lien p-2 me-2" href="{{ path('order_index') }}">Revenir à la liste</a>
+                            {{ form_row(form.valider, {"attr": {'class':'lien_2'}}) }}
+                        </div>
                 {{ form_end(form) }}
             </div>
         </div>

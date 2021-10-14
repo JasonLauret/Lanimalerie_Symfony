@@ -1,4 +1,4 @@
-<form method="post" action="{{ path('order_delete', {'id': order.id}) }}">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ order.id) }}">
+<form method="post" action="{{ path('order_delete', {'id': orders.id}) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ orders.id) }}">
     <button class="lien_2">Oui, supprimer</button>
 </form>

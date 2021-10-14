@@ -48,6 +48,11 @@ class Order
      */
     private $payment;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $total;
+
     
 
     public function __construct()
@@ -135,6 +140,18 @@ class Order
     public function setPayment(string $payment): self
     {
         $this->payment = $payment;
+
+        return $this;
+    }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(float $total): self
+    {
+        $this->total = $total;
 
         return $this;
     }

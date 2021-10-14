@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Form\OrderAdminType;
+use App\Form\OrdersAdminType;
 use App\Repository\OrderRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +23,6 @@ class OrderController extends AbstractController
         return $this->render('order/index.html.twig', [
             'orders' => $orders,
             'count' => $orderRepository->countOrder(),
-            //'sum' => $orderRepository->sumOrder(),
         ]);
     }
 
@@ -30,7 +30,7 @@ class OrderController extends AbstractController
     public function new(Request $request): Response
     {
         $order = new Order();
-        $form = $this->createForm(OrderAdminType::class, $order);
+        $form = $this->createForm(OrdersAdminType::class, $order);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,14 +51,14 @@ class OrderController extends AbstractController
     public function show(Order $order): Response
     {
         return $this->render('order/show.html.twig', [
-            'order' => $order,
+            'orders' => $order,
         ]);
     }
 
     #[Route('/{id}/edit', name: 'order_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Order $order): Response
     {
-        $form = $this->createForm(OrderAdminType::class, $order);
+        $form = $this->createForm(OrdersAdminType::class, $order);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

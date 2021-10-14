@@ -19,8 +19,8 @@ class CartService {
     //_______add_______
 
     public function add($id){
-        $panier = $this->session->get("panier", []);
 
+        $panier = $this->session->get("panier", []);
         if(!empty($panier[$id])){
             $panier[$id]++;
         } else {
@@ -31,8 +31,8 @@ class CartService {
     }
 
     public function addCart($id){
-        $panier = $this->session->get("panier", []);
 
+        $panier = $this->session->get("panier", []);
         if(!empty($panier[$id])){
             $panier[$id]++;
         } else {
@@ -45,14 +45,17 @@ class CartService {
     //_______remove_______
 
     public function removeAll(){
+
         $this->session->set('panier', []);
     }
 
     public function remove($id){
+
         $panier = $this->session->get('panier', []);
         if(!empty($panier[$id])) {
             unset($panier[$id]);
         }
+
         $this->session->set('panier', $panier);
     }
 
@@ -64,6 +67,7 @@ class CartService {
                 unset($panier[$id]);
             }
         }
+        
         $this->session->set('panier', $panier);
     }
 
@@ -72,24 +76,21 @@ class CartService {
     public function getFullCart(){
 
         $panier = $this->session->get('panier', []);
-
         $panierWithData = [];
-
         foreach($panier as $id => $quantity) {
             $panierWithData[] = [
                 'product' => $this->productRepository->find($id),
                 'quantity' => $quantity
             ];
         }
+
         return $panierWithData;
     }
 
     //______________Total_______________
 
     public function getTotal(){
-
         $total = 0;
-
         foreach($this->getFullCart() as $item){
             $total += $item['product']->getPrice() * $item['quantity'];
         }
