@@ -297,7 +297,7 @@ h2 {
     color: rgb(174, 142, 0);
 }
 
-.btn_envoyer {
+.btn_form {
     border: none;
     text-decoration: none;
     color: rgb(174, 142, 0);
@@ -305,7 +305,7 @@ h2 {
     border-radius: 5px;
 }
 
-.btn_envoyer:hover {
+.btn_form:hover {
     color: rgb(255, 255, 255);
     background-color: rgb(174, 142, 0);
 }

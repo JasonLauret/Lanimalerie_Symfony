@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Information utilisateur{% endblock %}
+{% block title %}Paramètre{% endblock %}
 
 {% block body %}
 
@@ -31,7 +31,8 @@
                                 <p class="h2"></p>
                                 <p class="mb-5">Êtes-vous bien sûr de vouloir effectuer cette opération ?</p>
                             </div>
-                            <div class="modal-footer d-flex justify-content-center">
+                            <div class="modal-footer d-flex justify-content-between">
+                                <a type="button" class="lien" data-bs-dismiss="modal">Non, ne pas supprimer</a>
                                 <a class="btn btn-danger" href="{{ path('delete_account', {'id': user.id}) }}">Oui, suppimer mon compte</a>
                             </div>
                             </div>

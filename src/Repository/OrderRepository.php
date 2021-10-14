@@ -49,6 +49,7 @@ class OrderRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('o')
             ->where('o.user = :val')
             ->setParameter('val', $value)
+            ->orderBy('o.id', 'DESC')
             ->getQuery()
             ->getResult()
         ;

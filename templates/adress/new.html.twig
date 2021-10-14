@@ -1,32 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Adress{% endblock %}
+{% block title %}Nouvelle adresse{% endblock %}
 
 {% block body %}
-    <div class="container my-3">
-        {{ form_start(form) }}
-        <div class="d-flex flex-column justify-content-center align-items-center labelColor">
-            <div class="col-6">
-                <p class="h2 py-3">Ajouter une adresse</p>
-                <div>
-                    {{ form_row(form.country, {"label": "Pays", "attr": {'class':'form-control'}}) }}
-                </div>
-                <div class="my-2">
-                    {{ form_row(form.city, {"label": "Ville", "attr": {'class':'form-control'}}) }}
-                </div>
-                <div>
-                    {{ form_row(form.postal_code, {"label": "Code postal", "attr": {'class':'form-control'}}) }}
-                </div>
-                <div class="my-2">
-                    {{ form_row(form.adress, {"label": "Adresse", "attr": {'class':'form-control'}}) }}
-                </div>
-                <div class="d-flex justify-content-center mt-3">
-                    <a class="lien me-2" href="{{ path('adress_index') }}">Revenir à la liste</a>
-                    <button class="lien_2">{{ button_label|default('Valider') }}</button>
+    <section  class="bg_section">
+        <div class="container py-5">
+            {{ form_start(form) }}
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="col-6 labelColor">
+                    <h2 class="pb-3">Ajouter une adresse</h2>
+                    <div>
+                        {{ form_row(form.country, {"label": "Pays", "attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="my-2">
+                        {{ form_row(form.city, {"label": "Ville", "attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div>
+                        {{ form_row(form.postal_code, {"label": "Code postal", "attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="my-2">
+                        {{ form_row(form.adress, {"label": "Adresse", "attr": {'class':'form-control'}}) }}
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <a class="btn_form me-2" href="{{ path('adress_index') }}">Revenir à la liste</a>
+                        <button class="btn_form">{{ button_label|default('Valider') }}</button>
+                    </div>
                 </div>
             </div>
+            {{ form_end(form) }}
         </div>
-        {{ form_end(form) }}
-    </div>
-
+    </section>
 {% endblock %}
