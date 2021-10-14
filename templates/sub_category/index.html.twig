@@ -34,6 +34,9 @@
             {% endfor %}
             </tbody>
         </table>
+        <div class="pagination mt-5 d-flex justify-content-center">
+            {{ knp_pagination_render(sub_categories) }}
+        </div>
     </section>
 
 {% endblock %}

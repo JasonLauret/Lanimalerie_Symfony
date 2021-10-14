@@ -32,5 +32,8 @@
             {% endfor %}
             </tbody>
         </table>
+        <div class="pagination mt-5 d-flex justify-content-center">
+            {{ knp_pagination_render(brands) }}
+        </div>
     </section>
 {% endblock body %}

@@ -36,6 +36,7 @@ class EditUserType extends AbstractType
                 'Monsieur' => "Monsieur", //1er: Se qui sera afficher dans le formulaire  2eme: se qui sera afficher en bdd
                 'Madame' => "Madame"
             ], 
+            'label' => 'Civilité',
         ])
         ;
     }

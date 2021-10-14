@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Form\CateroryType;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,11 +15,13 @@ class CategoryController extends AbstractController
     /**
      * @Route("/admin/categoryAdmin", name="all_category")
      */
-    public function allCategoryAdmin()
+    public function allCategoryAdmin(PaginatorInterface $paginator, Request $request)
     {
-        $category = $this->getDoctrine()
+        $allCategory = $this->getDoctrine()
                     ->getRepository(Category::class)
                     ->findAll();
+
+        $category = $paginator->paginate($allCategory, $request->query->getInt('page', 1), 5);
 
         return $this->render('category/allCategory.html.twig', [
             'categorys' => $category,

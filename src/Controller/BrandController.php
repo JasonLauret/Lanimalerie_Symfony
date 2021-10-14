@@ -5,12 +5,12 @@ namespace App\Controller;
 use App\Entity\Brand;
 use App\Form\BrandType;
 use App\Repository\BrandRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
@@ -18,10 +18,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class BrandController extends AbstractController
 {
     #[Route('/admin/brand', name: 'brand_index', methods: ['GET'])]
-    public function index(BrandRepository $brandRepository): Response
+    public function index(BrandRepository $brandRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $brand = $paginator->paginate($brandRepository->findAll(), $request->query->getInt('page', 1), 5);
+
         return $this->render('brand/index.html.twig', [
-            'brands' => $brandRepository->findAll(),
+            'brands' => $brand,
         ]);
     }
 

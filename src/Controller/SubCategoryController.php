@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\SubCategory;
 use App\Form\SubCategoryType;
 use App\Repository\SubCategoryRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +15,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class SubCategoryController extends AbstractController
 {
     #[Route('/', name: 'sub_category_index', methods: ['GET'])]
-    public function index(SubCategoryRepository $subCategoryRepository): Response
+    public function index(SubCategoryRepository $subCategoryRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $subCategory = $paginator->paginate($subCategoryRepository->findAll(), $request->query->getInt('page', 1), 10);
+
         return $this->render('sub_category/index.html.twig', [
-            'sub_categories' => $subCategoryRepository->findAll(),
+            'sub_categories' => $subCategory,
         ]);
     }
 

@@ -3,10 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Adress;
-use App\Form\Adress1Type;
 use App\Form\AdressAdminType;
-use App\Form\AdressType;
 use App\Repository\AdressRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,10 +15,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdressAdminController extends AbstractController
 {
     #[Route('/', name: 'adress_admin_index', methods: ['GET'])]
-    public function index(AdressRepository $adressRepository): Response
+    public function index(AdressRepository $adressRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $adress = $paginator->paginate($adressRepository->findAll(), $request->query->getInt('page', 1), 10);
+
         return $this->render('adress_admin/index.html.twig', [
-            'adresses' => $adressRepository->findAll(),
+            'adresses' => $adress,
         ]);
     }
 
