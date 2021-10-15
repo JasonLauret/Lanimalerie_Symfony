@@ -29,7 +29,10 @@ class HomeController extends AbstractController
                 ->text('From '. $data['email'].' '.$data['message'], 'text/plain');
 
             $mailer->send($message);
+            $this->addFlash('envoyer', 'Merci beaucoup ! Votre message a bien été envoyé, nous traitons votre demande et nous vous recontacterons sous peu.');
+            return $this->redirectToRoute("home");
         }
+        
 
         return $this->render('home/home.html.twig', [
             'form' => $form->createView(),

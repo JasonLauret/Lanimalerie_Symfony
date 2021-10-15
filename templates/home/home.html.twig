@@ -34,27 +34,6 @@
 
 <!--__________________________________________Nos produit phare_________________________________________-->
 
-    {# <section class="container-fluid d-none d-md-block">
-        <div class="container">
-            <h2 class="ms-5 mt-5">Nos produits phares</h2>
-            <div class="row row-cols-1 g-2 row-cols-md-3 g-md-2 row-cols-lg-5 div_conteneur d-flex justify-content-evenly mx-auto my-4 p-4">
-                {% for bestSale in bestSales %}
-                <div class="div_produit m-md-1 text-center py-3">
-                    <a class="text-dark" href="">
-                        <div>
-                            <img class="w-50" src="{{ asset('upload/' ~ bestSale.product.picture) }}" alt="{{ bestSale.product.name }}">
-                        </div>
-                        <h4>{{bestSale.product.name}}</h4>
-                        <p>{{bestSale.product.price}} €</p>
-                        <a class="btn_produit" href="">Voir le produit</a>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section> #}
-
-
     <section class="container d-none d-md-block">
         <h2 class="ms-5 mt-5">Nos produits phares</h2>
         <div class="bestProductContainer row p-5 mb-5">
@@ -129,32 +108,37 @@
     </section>
     
 <!--______________________________________________Contact________________________________________________-->
-
+    
     <section id="contact" class="bg_section">
+    {% for message in app.flashes('envoyer') %}
+        <div class="alert alert-success">
+            <p>{{ message }}
+        </div>
+    {% endfor %}
         <div class="container py-5">
             <h2 class="text-center pb-3">Nous contactez</h2>
             <p class="text-center">Pour nous contactez veuillez remplir le formulaire ci-dessous !</ci-dessous></p>
             {{ form_start(form) }}
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <div class="col-lg-6 py-3">
-                        {{ form_row(form.nom, {"label": "Nom", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="col-lg-6 pb-3">
-                        {{ form_row(form.prenom, {"label": "Prénom", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="col-lg-6 pb-3">
-                        {{ form_row(form.email, {"label": "Email", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="col-lg-6 pb-3">
-                        {{ form_row(form.message, {"label": "Message", "attr": {'class':'form-control'}}) }}
-                    </div>
-                    <div class="col-lg-6 pb-3">
-                        {{ form_row(form.civilite, {"label": "Civilité", "attr": {'class':'motif'}}) }}
-                    </div>
-                    <div class="text-center mt-2">
-                        {{ form_row(form.valider, {"attr": {'class':'m-auto btn_form'}}) }}
-                    </div>
+            <div class="d-flex flex-column justify-content-center align-items-center labelColor">
+                <div class="col-lg-6 py-3">
+                    {{ form_row(form.nom, {"label": "Nom", "attr": {'class':'form-control'}}) }}
                 </div>
+                <div class="col-lg-6 pb-3">
+                    {{ form_row(form.prenom, {"label": "Prénom", "attr": {'class':'form-control'}}) }}
+                </div>
+                <div class="col-lg-6 pb-3">
+                    {{ form_row(form.email, {"label": "Email", "attr": {'class':'form-control'}}) }}
+                </div>
+                <div class="col-lg-6 pb-3">
+                    {{ form_row(form.message, {"label": "Message", "attr": {'class':'form-control'}}) }}
+                </div>
+                <div class="col-lg-6 pb-3">
+                    {{ form_row(form.civilite, {"label": "Civilité", "attr": {'class':'motif'}}) }}
+                </div>
+                <div class="text-center mt-2">
+                    {{ form_row(form.valider, {"attr": {'class':'m-auto btn_form'}}) }}
+                </div>
+            </div>
             {{ form_end(form, {'render_rest': true}) }}
         </div>
     
