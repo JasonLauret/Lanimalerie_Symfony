@@ -23,10 +23,14 @@ class OrderType extends AbstractType
                     'class' => Adress::class,
                     'query_builder' => function (EntityRepository $er) use ($options) {
                         return $er->createQueryBuilder('adr')
-                            ->where('adr.user = :user')->setParameter('user', $options['user']);
+                            ->where('adr.user = :user')
+                            ->setParameter('user', $options['user']);
                     },
                     "choice_label" => function (Adress $adress) {
-                        return " ".$adress->getAdress(). ", " .$adress->getPostalCode().", " .$adress->getCity().", ".$adress->getCountry();
+                        return " ".$adress->getAdress(). ", " .
+                                    $adress->getPostalCode().", " .
+                                    $adress->getCity().", ".
+                                    $adress->getCountry();
                     },
                     'label' => 'Livraison',
                     'required' => true,
