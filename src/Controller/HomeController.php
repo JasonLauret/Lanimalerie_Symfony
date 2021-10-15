@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
 use App\Form\ContactType;
-use App\Repository\SubCategoryRepository;
+use App\Repository\OrderProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\MailerInterface;
@@ -15,12 +14,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function home(Request $request, MailerInterface $mailer): Response {
+    public function home(Request $request, MailerInterface $mailer, OrderProductRepository $orderProductRepository): Response {
+
+        $bestSale = $orderProductRepository->getBestSales();
 
         $form = $this->createForm(ContactType::class);
-
         $form->handleRequest($request);
-        
         if ($form->isSubmitted() && $form->isValid()){
             $data = $form->getData();
             $message = (new Email())
@@ -33,7 +32,8 @@ class HomeController extends AbstractController
         }
 
         return $this->render('home/home.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'bestSales' => $bestSale
         ]);
     }
 }

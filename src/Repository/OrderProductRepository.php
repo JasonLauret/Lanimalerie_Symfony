@@ -36,6 +36,16 @@ class OrderProductRepository extends ServiceEntityRepository
     }
     */
 
+    public function  getBestSales()
+    {
+        return $this->createQueryBuilder("o")
+            ->groupBy("o.product")
+            ->setMaxResults(3)
+            ->orderBy("COUNT(o.product)", "DESC")
+            ->getQuery()
+            ->getResult();
+    }
+
 
     // La requette qui suis ne marche pas
     // public function productByOrder($value)

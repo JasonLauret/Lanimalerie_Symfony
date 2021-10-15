@@ -153,10 +153,9 @@ h2 {
     color: rgb(174, 142, 0);
 }
 
-.div_conteneur {
+.bestProductContainer {
     border: solid rgb(218, 178, 0);
     border-radius: 2rem;
-    
 }
 
 .div_produit {
@@ -166,13 +165,8 @@ h2 {
     box-shadow: 5px 5px 5px rgba(174, 142, 0, 0.37);
     transition: transform 1s;
 }
-
 .div_produit:hover {
-    transform: scale(1.1);
-}
-
-.div_img {
-    border-radius: 2rem;
+    transform: scale(1.08);
 }
 
 .btn_produit {
@@ -183,7 +177,6 @@ h2 {
     border: solid 1px;
     border-radius: 5px;
 }
-
 .btn_produit:hover {
     color: white;
     background: rgb(174, 142, 0);
@@ -200,12 +193,19 @@ h2 {
     border-radius: 20px;
 }
 
-/* .spaceBox {
+.spaceBox {
     background-color: rgba(0, 0, 0, 0.637);
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.534);
     padding: 30px;
     border-radius: 20px;
     border: none;
-} */
+    transition: transform 0.7s;
+}
+
+.spaceBox:hover {
+    box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.534);
+    transform: scale(1.05);
+}
 
 .cardSpace {
     border: none;
@@ -217,6 +217,25 @@ h2 {
     overflow:auto;
     text-align: justify;
 }
+
+.boxReservation {
+    background-color: rgba(0, 0, 0, 0.637);
+    border-radius: 20px;
+    margin-top: 100px;
+    padding: 30px;
+}
+
+.btnTravel {
+    background-color: rgb(0, 0, 150);
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.7s;
+}
+
+.btnTravel:hover {
+    transform: scale(1.3);
+}
+
 
 /*________________________Annimaux espaces_______________________*/
 
