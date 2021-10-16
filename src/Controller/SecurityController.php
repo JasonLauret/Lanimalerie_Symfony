@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\NewPasswordType;
 use App\Form\ResetPasswordType;
 use App\Repository\UserRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -51,8 +52,11 @@ class SecurityController extends AbstractController
             $user = $userRepository->findOneByEmail($data['email']);
             // Si il n'y pas d'utilisateur avec cette email on renvoie une erreur et on redirige vers la page de login
             if(!$user){
-                $this->addFlash('dangerEmail', 'Cette email n\'éxiste pas');
+                $this->addFlash('danger', 'Cette email n\'éxiste pas');
                 $this->redirectToRoute('app_login');
+            }else {
+                $this->addFlash('messageValide', 'Vous recevrez un mail avec les instructions pour réinitialiser votre mot de passe.
+                Si vous ne recevez aucun mail au bout de quelques minutes, veuillez renouveler l\'opération.');
             }
             //On génère un token
             $token = $tokenGenerator->generateToken();
@@ -95,22 +99,28 @@ class SecurityController extends AbstractController
         ]);
     }
 
-    #[Route('/resetPassword', name: 'app_reset_password')]
+    #[Route('/resetPassword/{token}', name: 'app_reset_password')]
     public function resetPassword($token, Request $request, UserPasswordEncoderInterface $passwordEncoder) {
+
+        $form = $this->createForm(NewPasswordType::class);
+        $form->handleRequest($request);
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['reset_token' => $token]);
 
         if(!$user){
             $this->addFlash('danger', 'Le token est inconnu');
             return $this->redirectToRoute('app_login');
         }
-        // Si le formulaire est envoyer en methode post
-        if($request->isMethod('POST')){
+
+        if($form->isSubmitted() && $form->isValid()){
             // On supprime le token
             $user->setResetToken(null);
             //On va chiffrer le mot de passe
             $user->setPassword(
                 $passwordEncoder->encodePassword(
-                    $user, $request->request->get('password')));
+                    $user,
+                    $form->get('password')->getData()
+                )
+            );
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -120,8 +130,10 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('app_login');
 
         }else {
-            return $this->render('security/restPassword.html.twig', ['token' => $token]);
+            return $this->render('security/resetPassword.html.twig', [
+                'token' => $token,
+                'form' => $form->createView()
+            ]);
         }
-
     }
 }
