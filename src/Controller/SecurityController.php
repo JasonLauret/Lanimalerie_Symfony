@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\NewPasswordType;
-use App\Form\ResetPasswordType;
+use App\Form\formResetPasswordType;
+use App\Form\formSendEmailPasswordType;
 use App\Repository\UserRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,17 +22,14 @@ class SecurityController extends AbstractController
     #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
-
-        // get the login error if there is one
+        // Récupérer l'erreur de connexion s'il y en a une
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
+        // Dernier nom d'utilisateur saisi par l'utilisateur
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
+
 
     #[Route('/logout', name: 'app_logout')]
     public function logout()
@@ -40,9 +37,10 @@ class SecurityController extends AbstractController
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
+
     #[Route('/forgotten-password', name: 'app_forgotten_password')]
     public function forgottenPassword(Request $request, UserRepository $userRepository, MailerInterface $mailer, TokenGeneratorInterface $tokenGenerator){
-        $form = $this->createForm(ResetPasswordType::class);
+        $form = $this->createForm(formSendEmailPasswordType::class);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -52,10 +50,10 @@ class SecurityController extends AbstractController
             $user = $userRepository->findOneByEmail($data['email']);
             // Si il n'y pas d'utilisateur avec cette email on renvoie une erreur et on redirige vers la page de login
             if(!$user){
-                $this->addFlash('danger', 'Cette email n\'éxiste pas');
+                $this->addFlash('danger', 'Cette e-mail n\'éxiste pas');
                 $this->redirectToRoute('app_login');
             }else {
-                $this->addFlash('messageValide', 'Vous recevrez un mail avec les instructions pour réinitialiser votre mot de passe.
+                $this->addFlash('messageValide', 'Vous allez bientot recevoir un mail avec les instructions pour réinitialiser votre mot de passe.
                 Si vous ne recevez aucun mail au bout de quelques minutes, veuillez renouveler l\'opération.');
             }
             //On génère un token
@@ -67,8 +65,7 @@ class SecurityController extends AbstractController
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
-
-            } catch(\Exception $e){
+            }catch(\Exception $e){
                 $this->addFlash('warning', 'Une erreur est survenue : '. $e->getMessage());
                 $this->redirectToRoute('app_login');
             }
@@ -78,8 +75,8 @@ class SecurityController extends AbstractController
             // On envoie le message
             $newEmail = (new TemplatedEmail())
                 ->from($_ENV['EMAIL_FROM'])
-                ->to('lauret.jason73390@gmail.com')
-                //->to($user->getEmail())
+                // ->to('lauret.jason73390@gmail.com')
+                ->to($user->getEmail())
                 ->subject('Réinitialisation de mon mot de passe')
                 ->htmlTemplate('security/emailForgottenPassword.html.twig')
                 ->context([
@@ -94,15 +91,16 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('security/forgettenPassword.html.twig', [
+        return $this->render('security/formSendEmailPassword.html.twig', [
             'emailForm' => $form->createView(),
         ]);
     }
 
+
     #[Route('/resetPassword/{token}', name: 'app_reset_password')]
     public function resetPassword($token, Request $request, UserPasswordEncoderInterface $passwordEncoder) {
 
-        $form = $this->createForm(NewPasswordType::class);
+        $form = $this->createForm(formResetPasswordType::class);
         $form->handleRequest($request);
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['reset_token' => $token]);
 
@@ -130,7 +128,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('app_login');
 
         }else {
-            return $this->render('security/resetPassword.html.twig', [
+            return $this->render('security/formResetPassword.html.twig', [
                 'token' => $token,
                 'form' => $form->createView()
             ]);
