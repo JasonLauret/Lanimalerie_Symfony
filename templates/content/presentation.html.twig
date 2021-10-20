@@ -1,11 +1,77 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
 
-<section class="container">
-    <h1>Qui sommes nous ?</h1>
-    
+<section class="bg_section">
+    <div class="row p-5">
+        <h2 class="mb-5">Qui sommes nous ?</h2>
+        <div class="col-12 col-lg-4">
+            <img class="w-100 h-auto" src="{{ asset('img/m.Capard.jpg') }}" alt="Homme et son chien regarde la photo">
+        </div>
+        <div class="col-12 my-4 my-lg-0 col-lg-4 d-flex flex-column justify-content-center ">
+            <p>
+                M. Capard possède une boutique physique à Nîmes.
+            </p>
+            <p>
+                Il y vend toutes sortes de produits pour animaux, allant des produits bien connus comme les croquettes, les niches ou encore les coussins, en passant par des services 3.0 comme l’envoi de votre animal préféré dans l’espace pour des programmes de l’armée Américaine.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem aut ducimus excepturi velit corporis magni, unde facilis dolorem cum labore voluptas nostrum possimus earum repellat.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tempus purus sed ligula hendrerit, in euismod velit ullamcorper. Morbi ut quam eu urna vestibulum venenatis sit amet a
+            </p>
+            <div class="d-flex justify-content-center">
+                <a class="btn_form" href="">Contactez-nous</a>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <img class="w-100 h-auto" src="{{ asset('img/nadege.jpg') }}" alt="Secrétaire au travaille">
+        </div>
+    </div>
 </section>
+
+{# <section class="container d-flex flex-column justify-content-center my-4">
+    <div class="row">
+        <h2>Qui sommes nous ?</h2>
+        <div class="col-8">
+            <p>
+                M. Capard possède une boutique physique à Nîmes.
+            </p>
+            <p>
+                Il y vend toutes sortes de produits pour animaux, allant des produits bien connus comme les croquettes, les niches ou encore les coussins, en passant par des services 3.0 comme l’envoi de votre animal préféré dans l’espace pour des programmes de l’armée Américaine.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem aut ducimus excepturi velit corporis magni, unde facilis dolorem cum labore voluptas nostrum possimus earum repellat.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tempus purus sed ligula hendrerit, in euismod velit ullamcorper. Morbi ut quam eu urna vestibulum venenatis sit amet a
+            </p>
+            <p>
+                elit. Pellentesque ut massa fermentum, tincidunt purus vitae, dapibus felis. Curabitur euismod tortor sed purus sagittis placerat. Suspendisse sed elit justo. Quisque quis urna
+            </p>
+        </div>
+    </div>
+</section>
+<section class="bg_section d-flex justify-content-center">
+    <div class="row col-10 d-flex p-5">
+        <div class="col me-4">
+            <img class="w-75 h-auto" src="{{ asset('img/m.Capard.jpg') }}" alt="M.Capard">
+            <h3 class="my-2">M.Capard</h3>
+            <p>
+                Fondateur de La Nîmes'alerie, il anticipe sur vos besoins car pour lui, la satisfaction client est primordiale.
+                Toujours de bonne humeur, perfectionniste, pragmatique et passionné, il vous accompagne et vous guide avec des connaissances solide.
+            </p>
+        </div>
+        <div class="col ms-4">
+            <img class="w-75 h-auto" src="{{ asset('img/nadege.jpg') }}" alt="Nadège">
+            <h3 class="my-2">Nadège</h3>
+            <p>
+                Fondateur de La Nîmes'alerie, il anticipe sur vos besoins car pour lui, la satisfaction client est primordiale.
+                Toujours de bonne humeur, perfectionniste, pragmatique et passionné, il vous accompagne et vous guide avec des connaissances solide.
+            </p>
+        </div>
+    </div>
+</section> #}
 
 {% endblock %}
