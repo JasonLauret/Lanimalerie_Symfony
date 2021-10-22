@@ -14,7 +14,7 @@
             </div>
 
             <div class="row">
-                <div class="col-7">
+                <div class="col-12 col-lg-7">
                     {% for item in items %}
                         <div class="row text-center border rounded shadow p-4 mb-3">
                             <div class="col-12 col-md-5 text-center">
@@ -38,15 +38,21 @@
                         </div>
                     {% endfor %}
                 </div>
-                <div class="col-5 d-flex flex-column">
+                <div class="col-12 col-lg-5 d-flex flex-column">
                     <div class="border rounded p-3">
                         <p class="h4">Récapitulatif du panier</p>
                         <hr>
                         {% for item in items %}
                             <div class="d-flex justify-content-between">
-                                <p>{{ item.quantity }}</p>
-                                <p>{{ item.product.name }}</p>
-                                <p>{{ item.product.price * item.quantity }} €</p>
+                                <div class="border-end p-2">
+                                    <p>{{ item.quantity }}</p>
+                                </div>
+                                <div class="p-2">
+                                    <p class="d-flex">{{ item.product.name }}</p>
+                                </div>
+                                <div class="border-start text-end px-3" style="width:60px">
+                                    <p><span>{{ item.product.price * item.quantity }}</span><span>€</span></p>
+                                </div>
                             </div>
                         {% endfor %}
                         <hr>

@@ -2,26 +2,32 @@
 
 {% block body %}
 
-    <section class="container my-5">
-        <div class="row d-flex justify-content-center">
+    <section class="bg_section py-5">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
             {% for product in products %}
-                <div class="card card-product text-center mx-3 g-4 p-0" style="width: 18rem;">
-                    <a class="text-dark" href="{{ path('display_product', {'id':product.id}) }}">
-                        <img class="img-product rounded m-1" src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}" style="max-height:200px; width:auto">
-                        <div class=" p-3">
+            <div class="card card-product d-flex flex-column justify-content-between text-center pb-2 m-2" style="width: 18rem;">
+                <a class="text-dark" href="{{ path('display_product', {'id':product.id}) }}">
+                    <div class="pb-2">
+                        <img class="img-product rounded m-1 w-100 h-auto" src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}">
+                        <div class="card-body">
                             <p class="h4 fs-4 fw-bold">{{ product.name }}</p>
                         </div>
-                        <div class="border-top border-bottom">
-                            <p class="mt-3"><span>A partir de </span><span class="fs-4">{{ product.price }} €</span></p>
-                        </div>
-                        <a class="btn-product" href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
-                    </a>
-                </div>
+                        
+                    </div>
+                    <div class="border-top border-bottom">
+                        <p class="mt-2"><span>A partir de </span><span class="fs-4">{{ product.price }} €</span></p>
+                        <a class="btn-product d-flex justify-content-center" href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
+                    </div>
+                </a>
+            </div>
             {% endfor %}
             <div class="pagination mt-5 d-flex justify-content-center">
                 {{ knp_pagination_render(products) }}
             </div>
         </div>
+        </div>
+        
     </section>
 
 {% endblock body %}

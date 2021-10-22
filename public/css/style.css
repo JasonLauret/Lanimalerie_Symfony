@@ -161,7 +161,7 @@ h2 {
 .div_produit {
     border: solid 1px rgb(174, 142, 0);
     background: rgb(255, 255, 255);
-    border-radius: 2rem;
+    border-radius: 20px;
     box-shadow: 5px 5px 5px rgba(174, 142, 0, 0.37);
     transition: transform 1s;
 }
@@ -432,9 +432,18 @@ a.btn-product:hover {
 
 /*____________Page détail produit___________*/
 
+.descriptionProduct{
+    text-align: center;
+    height: 150px;
+    overflow:auto;
+    text-align: justify;
+    padding: 5px;
+}
+
 .bgSimilarProduct{
     background-color: rgba(230, 189, 5, 0.07);
 }
+
 
 /*____________Page login___________*/
 

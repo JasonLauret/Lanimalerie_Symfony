@@ -22,8 +22,8 @@ class OrderType extends AbstractType
                 array(
                     'class' => Adress::class,
                     'query_builder' => function (EntityRepository $er) use ($options) {
-                        return $er->createQueryBuilder('adr')
-                            ->where('adr.user = :user')
+                        return $er->createQueryBuilder('adresse')
+                            ->where('adresse.user = :user')
                             ->setParameter('user', $options['user']);
                     },
                     "choice_label" => function (Adress $adress) {

@@ -11,9 +11,15 @@
             </div>
             <div class="col-9 mt-4 col-lg-5 mt-lg-0  d-flex flex-column justify-content-between">
                 <div>
-                    <p class="h2">{{ product.name }}</p>
-                    <p class="fs-3">{{ product.price }} €</p>
-                    <p class="descriptionProduct">{{ product.description }}</p>
+                    <div class="bg-white p-2 my-2">
+                        <p class="h3">{{ product.name }}</p>
+                    </div>
+                    <div class="bg-white p-1 my-2">
+                        <p class="fs-4">{{ product.price }} €</p>
+                    </div>
+                    <div class="bg-white p-2 my-2">
+                        <p class="descriptionProduct descriptionProduct">{{ product.description }}</p>
+                    </div>
                 </div>
                 <a class="btn-product rounded text-center" href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
             </div>
@@ -27,13 +33,16 @@
                 {% for similarProduct in similarProducts %}
                     {% if similarProduct.id == product.id %}
                     {% else %}
-                        <div class="col-6 col-lg-3 bgSimilarProduct rounded shadow p-3 mx-4 mt-2">
+                        <div class="col-6 col-lg-3 d-flex flex-column justify-content-between bgSimilarProduct rounded shadow p-3 mx-4 mt-2">
                             <a href="{{ path('display_product', {'id':similarProduct.id}) }}">
                                 <img class="img-fluid rounded" alt="{{ similarProduct.name }}"
                                     src="{{ asset('upload/' ~ similarProduct.picture) }}" alt="{{ similarProduct.name }}"
-                                    style="min-width:60%; max-width:60%;">
+                                    style="min-width:70%; max-width:60%;">
                                 <p class="text-dark mt-3">{{ similarProduct.name }}</p>
                             </a>
+                            <div>
+                                <a class="btn-product rounded" href="{{ path('display_product', {'id':similarProduct.id}) }}">Voir le produit</a>
+                            </div>
                         </div>
                     {% endif %}
                 {% endfor %}

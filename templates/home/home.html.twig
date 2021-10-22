@@ -34,21 +34,29 @@
 
 <!--__________________________________________Nos produit phare_________________________________________-->
 
+    {% if  bestSales|length < 1 %}
+        <div> </div>
+    {% else %}
     <section class="container d-none d-md-block">
         <h2 class="ms-5 mt-5">Nos produits phares</h2>
         <div class="bestProductContainer row p-5 mb-5">
             {% for bestSale in bestSales %}
-            <div class="div_produit col text-center mx-5 py-4">
+            <div class="div_produit col d-flex flex-column justify-content-between text-center mx-5 py-4">
                 <a class="text-dark" href="{{ path('display_product', {'id':bestSale.product.id}) }}">
-                    <img class="w-50" src="{{ asset('upload/' ~ bestSale.product.picture) }}" alt="{{ bestSale.product.name }}">
-                    <h4>{{bestSale.product.name}}</h4>
-                    <p>{{bestSale.product.price}} €</p>
-                    <a class="btn_produit" href="{{ path('display_product', {'id':bestSale.product.id}) }}">Voir le produit</a>
+                    <div>
+                        <img class="w-50" src="{{ asset('upload/' ~ bestSale.product.picture) }}" alt="{{ bestSale.product.name }}">
+                        <h4>{{bestSale.product.name}}</h4>
+                    </div>
+                    <div>
+                        <p>{{bestSale.product.price}} €</p>
+                        <a class="btn_produit" href="{{ path('display_product', {'id':bestSale.product.id}) }}">Voir le produit</a>
+                    </div>
                 </a>
             </div>
             {% endfor %}
         </div>
     </section>
+    {% endif %}
 
 <!--__________________________________Présentation programme spatiaux____________________________________-->
 
@@ -94,7 +102,7 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-6 d-flex justify-content-center justify-content-lg-end pe-4">
-                     <img class="rounded-3 shadow w-75 h-auto" src="{{ asset('img/boutiqueLanimealerie.png') }}">
+                     <img class="rounded-3 shadow w-75 h-auto" src="{{ asset('img/pagePresentation/boutiqueLanimealerie.png') }}">
                 </div>
                 <div class="col-lg-5 d-flex flex-column justify-content-center ms-3 pt-4">
                     <h2>Qui sommes nous:</h2>
