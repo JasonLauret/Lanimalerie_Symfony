@@ -23,7 +23,11 @@
                 <li class="nav-item">
                     <a class="nav_haut me-5 " href="{{ path('home') }}#contact">Contact</a>
                 </li>
-
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav_haut me-5 " href="http://localhost:4200/">Dashboard</a>
+                </li>
+                {% endif %}
             </ul> 
 
             <!--
