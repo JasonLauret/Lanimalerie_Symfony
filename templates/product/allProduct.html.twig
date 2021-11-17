@@ -2,8 +2,13 @@
 
 {% block body %}
 
-    <section class="bg_section py-5">
-        <div class="container">
+    <section class="bg_section">
+        {% for message in app.flashes('ajouter') %}
+            <div class="alert alert-success">
+                <p>{{ message }} <a style="text-decoration: underline;" href="{{ path('cart') }}">Voir mon panier</a></p>
+            </div>
+        {% endfor %}
+        <div class="container py-5">
             <div class="row d-flex justify-content-center">
             {% for product in products %}
             <div class="card card-product d-flex flex-column justify-content-between text-center pb-2 m-2" style="width: 18rem;">

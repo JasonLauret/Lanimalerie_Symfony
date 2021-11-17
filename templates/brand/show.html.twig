@@ -38,7 +38,7 @@
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
                         <a type="button" class="lien" data-bs-dismiss="modal">Ne pas supprimer</a>
-                        {{ include('brand/_delete_form.html.twig') }}
+                        <a class="lien" href="{{ path('brand_delete', {'id':brand.id}) }}">Oui, supprimer</a>
                     </div>
                 </div>
             </div>

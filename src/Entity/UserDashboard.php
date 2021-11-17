@@ -7,9 +7,9 @@ use App\Repository\UserDashboardRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=UserDashboardRepository::class)
  */
-#[ApiResource]
 class UserDashboard
 {
     /**
@@ -30,9 +30,9 @@ class UserDashboard
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @@ORM\Column(type="json")
      */
-    private $role;
+    private $role = ["ROLE_ADMIN"];
 
     public function getId(): ?int
     {
@@ -63,9 +63,16 @@ class UserDashboard
         return $this;
     }
 
-    public function getRole(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        return $this->role;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
     public function setRole(?string $role): self

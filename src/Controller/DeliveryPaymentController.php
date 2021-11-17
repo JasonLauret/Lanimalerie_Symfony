@@ -69,15 +69,7 @@ class DeliveryPaymentController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-
-    // #[Route('/cancel_order', name: 'cancel_order')]
-    // public function cancelOrder(CartService $cartService) {
-
-    //     $cartService->removeAll();
-        
-    //     return $this->redirectToRoute("home");
-    // }
-
+    
     #[Route('/validated', name: 'order_validated')]
     public function orderValidated(): Response {
 

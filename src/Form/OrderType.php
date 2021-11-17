@@ -32,7 +32,7 @@ class OrderType extends AbstractType
                                     $adress->getCity().", ".
                                     $adress->getCountry();
                     },
-                    'label' => 'Livraison',
+                    'label' => 'Livraison à l\'adresse suivante:',
                     'required' => true,
                     'expanded' => false,
                     'multiple' => false,
@@ -47,7 +47,8 @@ class OrderType extends AbstractType
                     'Paypal' => 'Paypal'
                 ],
                 'expanded' => false,
-                'multiple' => false
+                'multiple' => false,
+                'label' => 'Paiement:'
             ])
             ->add('valider', SubmitType::class)
         ;

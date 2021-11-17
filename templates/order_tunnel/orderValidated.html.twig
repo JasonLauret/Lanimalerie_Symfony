@@ -10,13 +10,13 @@
             <div class="col-12 col-md-8 col-lg-5 border border-dark p-4 rounded">
                 <p class="h2">Merci {{ app.user.firstName }} !</p>
                 <h2>Votre commande a bien été validée !</h2>
-                <p class="mt-4">Vous pouvez générer un bon de commande dans le récapitulatif de vos commandes.</p>
+                <p class="mt-4 text-center">Vous pouvez générer un bon de commande dans le récapitulatif de vos commandes.</p>
                 <div class="d-lg-flex justify-content-between">
                     <div class="mb-3">
-                        <a class="lien" href="{{ path('home') }}">Revenir à la page d'accueil</a>
+                        <a class="btn_form" href="{{ path('home') }}">Revenir à la page d'accueil</a>
                     </div>
                     <div>
-                        <a class="lien" href="{{ path('all_user_order', {'id': app.user.id}) }}">Récapitulatif de mes commandes</a>
+                        <a class="btn_form" href="{{ path('all_user_order', {'id': app.user.id}) }}">Récapitulatif de mes commandes</a>
                     </div>
                 </div>
             </div>

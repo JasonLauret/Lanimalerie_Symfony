@@ -114,16 +114,13 @@ class CategoryController extends AbstractController
      * @Route("/admin/deleteCategory/{id}", name="delete_category")
      */
     public function deleteCategory($id): Response {
-
         $entityManager = $this->getDoctrine()->getManager();
         $category = $entityManager
                     ->getRepository(Category::class)
                     ->find($id);
-        
         if(!$category){
             return $this->render('category/error.html.twig',['error' => 'La categorie n\'existe pas'] );
         }
-
         $entityManager->remove($category);
         $entityManager->flush();
 

@@ -4,7 +4,6 @@ namespace App\Service\Cart;
 
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\Routing\Annotation\Route;
 
 class CartService {
 

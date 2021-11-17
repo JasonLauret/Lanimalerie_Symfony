@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use Knp\Component\Pager\PaginatorInterface;
+
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
-use ContainerPndtUT7\PaginatorInterface_82dac15;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +26,7 @@ class ProductController extends AbstractController
      * @return array // Retourne un tableau contenant tous les produits par rapport à sa sous-categorie.
      */
     #[Route('/category/{id}', name: 'all_product')]
-    public function product(ProductRepository $productRepository, $id, PaginatorInterface $paginator, Request $request)
+    public function allProduct(ProductRepository $productRepository, $id, PaginatorInterface $paginator, Request $request)
     {
         $productByCategory = $productRepository->getProductByCategory($id);
         
@@ -37,17 +37,6 @@ class ProductController extends AbstractController
         ]);
     }
 
-    //Bon
-    // #[Route('/category/{id}', name: 'all_product')]
-    // public function product(ProductRepository $productRepository, $id)
-    // {
-    //     $product = $productRepository->getProductByCategory($id);
-
-    //     return $this->render('product/allProduct.html.twig', [
-    //         'products' => $product,
-    //     ]);
-    // }
-
     /**
      * allProductAdmin
      * 
@@ -56,11 +45,13 @@ class ProductController extends AbstractController
      */
     #[Route('/admin/product', name: 'all_productAdmin')]
     
-    public function allProductAdmin()
+    public function allProductAdmin(PaginatorInterface $paginator, Request $request)
     {
         $product = $this->getDoctrine()
                     ->getRepository(Product::class)
                     ->findAll();
+
+        $product = $paginator->paginate($product, $request->query->getInt('page', 1), 8);
 
         return $this->render('product/allProductAdmin.html.twig', [
             'products' => $product,
@@ -108,26 +99,6 @@ class ProductController extends AbstractController
             'similarProducts' => $idCourant
         ]);
     }
-
-
-    //Bon
-    // #[Route('/display/product/{id}', name: 'display_product')]
-    // public function displayProduct($id)
-    // {
-    //     $product = $this->getDoctrine()
-    //                 ->getRepository(Product::class)
-    //                 ->find($id);
-
-    //     if (!$product){
-    //         //throw $this->createNotFoundException("Le produit demandée n'existe pas");
-    //         return $this->render('product/error.html.twig', ['product' => $product,]);
-    //     }
-
-    //     return $this->render('product/displayProduct.html.twig', [
-    //         'product' => $product,
-    //     ]);
-    // }
-
 
     /**
      * addProduct
@@ -222,10 +193,10 @@ class ProductController extends AbstractController
      * 
      * Cette function supprime un produit
      * @param  int $id // Prend l'id de l'URL, et l'ajoute en paramètre de la fonction find().
-     * @return Response
+     * @return Vue
      */
     #[Route('/admin/deleteProduct/{id}', name: 'delete_product')]
-    public function deleteProduct($id): Response {
+    public function deleteProduct($id) {
 
         $entityManager = $this->getDoctrine()->getManager();
         $product = $entityManager

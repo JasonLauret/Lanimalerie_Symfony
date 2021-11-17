@@ -27,7 +27,10 @@ class SecurityController extends AbstractController
         // Dernier nom d'utilisateur saisi par l'utilisateur
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('security/login.html.twig', [
+            'last_username' => $lastUsername, 
+            'error' => $error
+        ]);
     }
 
 
@@ -50,7 +53,7 @@ class SecurityController extends AbstractController
             $user = $userRepository->findOneByEmail($data['email']);
             // Si il n'y pas d'utilisateur avec cette email on renvoie une erreur et on redirige vers la page de login
             if(!$user){
-                $this->addFlash('danger', 'Cette e-mail n\'éxiste pas');
+                $this->addFlash('danger', 'Cette e-mail n\'éxiste pas.');
                 $this->redirectToRoute('app_login');
             }else {
                 $this->addFlash('messageValide', 'Vous allez bientot recevoir un mail avec les instructions pour réinitialiser votre mot de passe.

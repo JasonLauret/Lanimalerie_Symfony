@@ -34,31 +34,7 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }*/
-    
-    // Barre de recherche
-    // public function searchProduct($filter){
-    //     $objectArray = $this->createQueryBuilder('p')
-    //     ->join('p.brand', 'm')
-    //     ->join('p.sub_category', 'sb');
-        
-    //     if(!is_null($filter['searchText'])){
-    //         $objectArray->where('p.name LIKE :name');
-    //         $objectArray->setParameter(':name', '%'.$filter['searchText'].'%');
-    //     }
 
-    //     if(!is_null($filter['brand'])){
-    //         $objectArray->andWhere('m = :brand')
-    //         ->setParameter('brand', $filter['brand']);
-    //     }
-
-    //     if(!is_null($filter['subCategory'])){
-    //         $objectArray->andWhere('sb = :subCategory')
-    //         ->setParameter('subCategory', $filter['subCategory']);
-    //     }
-
-    //     return $objectArray->getQuery()->getResult();
-    // }
-    
     // Afficher le produit par ropport à sa catégorie parent
     public function getProductByCategory($value)
     {
@@ -83,8 +59,30 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    // Barre de recherche
+    // public function searchProduct($filter){
+    //     $objectArray = $this->createQueryBuilder('p')
+    //     ->join('p.brand', 'm')
+    //     ->join('p.sub_category', 'sb');
+        
+    //     if(!is_null($filter['searchText'])){
+    //         $objectArray->where('p.name LIKE :name');
+    //         $objectArray->setParameter(':name', '%'.$filter['searchText'].'%');
+    //     }
 
-    // affiche tous les produits ou l'id_sousCategory de produit soit égale a l'id de la sous-category
+    //     if(!is_null($filter['brand'])){
+    //         $objectArray->andWhere('m = :brand')
+    //         ->setParameter('brand', $filter['brand']);
+    //     }
+
+    //     if(!is_null($filter['subCategory'])){
+    //         $objectArray->andWhere('sb = :subCategory')
+    //         ->setParameter('subCategory', $filter['subCategory']);
+    //     }
+
+    //     return $objectArray->getQuery()->getResult();
+    // }
+    
 
     /*
     public function findOneBySomeField($value): ?Product
