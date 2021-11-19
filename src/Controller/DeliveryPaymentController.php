@@ -89,26 +89,4 @@ class DeliveryPaymentController extends AbstractController
         $this->requestStack = $requestStack;
     }
 
-
-//------------------------------------
-
-    // #[Route('/deliveryPayment', name: 'delivery_payment')]
-    // public function addPaymentMethod(Request $request): Response {
-
-    //     $order = new Order();
-    //     $form = $this->createForm(OrderType::class, $order, ['user'=>$this->getUser()]);
-    //     $form->handleRequest($request);
-        
-    //     if ($form->isSubmitted() && $form->isValid()){
-    //         $entityManager = $this->getDoctrine()->getManager();
-    //         $entityManager->persist($order);
-    //         $entityManager->flush();
-
-    //         return $this->redirectToRoute("new_order");
-    //     }
-        
-    //     return $this->render('order_tunnel/deliveryPayment.html.twig', [
-    //         'form' => $form->createView()
-    //     ]);
-    // }
 }

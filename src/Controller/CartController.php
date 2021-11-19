@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Statistical;
 use App\Repository\ProductRepository;
 use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,8 +11,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class CartController extends AbstractController
 {
     #[Route('/cart', name: 'cart')]
-    public function index(CartService $cartService)
-    {
+    public function index(CartService $cartService){
+
         $panierWithData = $cartService->getFullCart();
         $total = $cartService->getTotal();
         $nbItem = count($panierWithData);
@@ -23,9 +24,10 @@ class CartController extends AbstractController
         ]);
     }
 
-    //Ajouter un article au panier
+    //Ajouter un produit au panier
     #[Route('/cart/{id}', name: 'add_cart')]
     public function add($id, CartService $cartService, ProductRepository $productRepository){
+
         $cartService->add($id);
         $idSubCategory = $productRepository->findOneBy(['id'=>$id])->getSubCategory()->getId();
         $this->addFlash('ajouter', 'Un produit à été ajouté au panier.');
@@ -33,24 +35,33 @@ class CartController extends AbstractController
         return $this->redirectToRoute('all_product', ['id'=> $idSubCategory]);
     }
 
-    // Ajouter un article un par un dans le panier
+    // Ajouter un produit un par un dans le panier
     #[Route('/addCart/{id}', name: 'add_inCart')]
     public function addCart($id, CartService $cartService){
+        
         $cartService->addCart($id);
 
         return $this->redirectToRoute("cart");
     }
 
-    //Supprimer le panier
+    // Supprime le panier (lors du clic "Abandon de commande" ou "Supprimer le panier") et incrémente de 1 le compteur de panier abandonner
     #[Route('/cancel_order', name: 'cancel_order')]
     public function cancelOrder(CartService $cartService) {
-
+        // remove commande
         $cartService->removeAll();
-        
+
+        // incrémentation du compteur du nombre d'abandon de commande
+        $em = $this->getDoctrine()->getManager();
+        $stat = $em->getRepository(Statistical::class)->find(1);
+        $count = $stat->getAbandonedCart();
+        $stat->setAbandonedCart(++$count);
+        $em->persist($stat);
+        $em->flush();
+
         return $this->redirectToRoute("home");
     }
     
-    //Supprimer completement un article
+    // Supprimer un produit dans sa totalité (lors du clic sur la poubelle)
     #[Route('/cart/remove/{id}', name: 'remove_cart')]
     public function removeCart($id, CartService $cartService){
         
@@ -59,7 +70,7 @@ class CartController extends AbstractController
         return $this->redirectToRoute("cart");
     }
 
-    //Supprimer un article un par un dans le panier
+    // Supprime un produit (lors du clic sur le signe moin(-))
     #[Route('/cart/removeOne/{id}', name: 'removeOne_cart')]
     public function removeOneCart($id, CartService $cartService){
         

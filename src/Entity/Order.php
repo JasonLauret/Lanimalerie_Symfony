@@ -52,7 +52,6 @@ class Order
      * @ORM\Column(type="float")
      */
     private $total;
-
     
 
     public function __construct()

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Statistical;
 use App\Form\ContactType;
 use App\Repository\OrderProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,6 +16,14 @@ class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
     public function home(Request $request, MailerInterface $mailer, OrderProductRepository $orderProductRepository): Response {
+
+        // Incrémentation du compteur du nombre de visite
+        $em = $this->getDoctrine()->getManager();
+        $stat = $em->getRepository(Statistical::class)->find(1);
+        $count = $stat->getNbOfVisits();
+        $stat->setNbOfVisits(++$count);
+        $em->persist($stat);
+        $em->flush();
 
         $bestSale = $orderProductRepository->getBestSales();
 
