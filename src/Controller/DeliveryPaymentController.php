@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Entity\OrderProduct;
-use App\Entity\Statistical;
 use App\Form\OrderType;
 use App\Repository\ProductRepository;
 use App\Service\Cart\CartService;
@@ -19,14 +18,6 @@ class DeliveryPaymentController extends AbstractController
 {
     #[Route('/deliveryPayment', name: 'delivery_payment')]
     public function deliveryPayment(Request $request, ProductRepository $productRepository, EntityManagerInterface $entityManager, CartService $cartService): Response {
-
-        // incrémentation du compteur du nombre de panier
-        $em = $this->getDoctrine()->getManager();
-        $stat = $em->getRepository(Statistical::class)->find(1);
-        $count = $stat->getNbOfCartCreated();
-        $stat->setNbOfCartCreated(++$count);
-        $em->persist($stat);
-        $em->flush();
 
         $order = new Order();
         $form = $this->createForm(OrderType::class, $order, ['user'=>$this->getUser()]);

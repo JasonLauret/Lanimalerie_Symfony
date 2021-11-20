@@ -10,11 +10,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
-    /**
-     * index
-     * Cette function affiche tous les produit stocker dans le panier
-     * @return Object
-     */
     #[Route('/cart', name: 'cart')]
     public function index(CartService $cartService){
 
