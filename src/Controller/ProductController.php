@@ -44,7 +44,6 @@ class ProductController extends AbstractController
      * @return array // Retourne un tableau contenant tous les produits de la table product.
      */
     #[Route('/admin/product', name: 'all_productAdmin')]
-    
     public function allProductAdmin(PaginatorInterface $paginator, Request $request)
     {
         $product = $this->getDoctrine()

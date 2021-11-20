@@ -29,6 +29,11 @@ class Statistical
      */
     private $nbOfVisits;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nbOfCartCreated;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +59,18 @@ class Statistical
     public function setNbOfVisits(?int $nbOfVisits): self
     {
         $this->nbOfVisits = $nbOfVisits;
+
+        return $this;
+    }
+
+    public function getNbOfCartCreated(): ?int
+    {
+        return $this->nbOfCartCreated;
+    }
+
+    public function setNbOfCartCreated(?int $nbOfCartCreated): self
+    {
+        $this->nbOfCartCreated = $nbOfCartCreated;
 
         return $this;
     }
