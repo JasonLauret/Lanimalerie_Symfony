@@ -2,32 +2,32 @@
 
 {% block body %}
 
-    <section class="container my-5">
-        <div class="row bgSimilarProduct rounded p-5 d-flex justify-content-center" style="min-heigt:100px">
-            <div class="col-12 d-flex justify-content-center col-md-6">
-                <img class="img-fluid rounded-start" alt="{{ product.name }}"
-                    src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}"
-                    style="min-width:60%; max-width:70%;">
-            </div>
-            <div class="col-9 mt-4 col-lg-5 mt-lg-0  d-flex flex-column justify-content-between">
-                <div>
-                    <div class="bg-white p-2 my-2">
-                        <p class="h3">{{ product.name }}</p>
-                    </div>
-                    <div class="bg-white p-1 my-2">
-                        <p class="fs-4">{{ product.price }} €</p>
-                    </div>
-                    <div class="bg-white p-2 my-2">
-                        <p class="descriptionProduct descriptionProduct">{{ product.description }}</p>
-                    </div>
+    <section class="bg_section py-5">
+        <div class="container bgSimilarProduct shadow rounded">
+            <div class="row rounded p-5 justify-content-center mb-5" style="min-heigt:100px">
+                <div class="col-12 d-flex justify-content-center col-md-6">
+                    <img class="img-fluid rounded-start" alt="{{ product.name }}"
+                        src="{{ asset('upload/' ~ product.picture) }}" alt="{{ product.name }}"
+                        style="min-width:60%; max-width:70%;">
                 </div>
-                <a class="btn-product rounded text-center" href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
+                <div class="col-9 mt-4 col-lg-5 mt-lg-0">
+                    <div>
+                        <div class="p-2 my-2">
+                            <p class="h3">{{ product.name }}</p>
+                        </div>
+                        <div class="p-1 my-2">
+                            <p class="fs-4">{{ product.price }} €</p>
+                        </div>
+                        <div class="p-2 my-2">
+                            <p class="descriptionProduct descriptionProduct">{{ product.description }}</p>
+                        </div>
+                    </div>
+                    <a class="btn-product rounded text-center" href="{{ path('add_cart', {'id': product.id}) }}"><i class="pe-2 bi bi-basket2"></i>Ajouter au panier</a>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section class="">
-        <div class="container border-top p-2 my-2">
+        <div class="container border-top p-2 py-4">
             <p class="h3 text-center mb-2">Vous aimerez aussi</p>
             <div class="row justify-content-center">
                 {% for similarProduct in similarProducts %}
@@ -49,5 +49,4 @@
             </div>
         </div>
     </section>
-    
 {% endblock %}
