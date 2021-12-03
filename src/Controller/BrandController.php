@@ -8,7 +8,6 @@ use App\Repository\BrandRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -34,15 +33,16 @@ class BrandController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Transfomer le nom de l'image
             //1. Je récupère le contenu de mon champ d'upload qui a été envoyé
             $logoFile = $form->get('logo')->getData();
             //2. Si mon champ d'upload n'est pas vide : je vais faire traitement de mon fichier 
             if($logoFile) {
                 //3. Je récupère le nom du fichier uploadé (JUSTE le nom du fichier)
                 $originalFilename = pathinfo($logoFile->getClientOriginalName(), PATHINFO_FILENAME);
-                //4. Je convertis le nom de mon fichier en Slug (nom de fichier sans espace, sans accent = utilisable dans une URL)
+                //4. Je convertis le nom de mon fichier en Slug (nom de fichier sans espace, sans accent)
                 $safeFilename = $slugger->slug($originalFilename);
-                //5. Création d'un nouveau de fichier à partir du slug + un identifiant unique (evite les problemes d'upload de fichiers ayant des noms identiques) + extension du fichier d'origine
+                //5. Création d'un nouveau nom de fichier à partir du slug + un identifiant unique (evite les problemes d'upload de fichiers ayant des noms identiques) + extension du fichier d'origine
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$logoFile->guessExtension();
                 try{
                     //6.Copie du fichier uploadé qui est temporairement stocké quelque part dans sur le serveur avec renommage en utilisant le nouveau nom
@@ -69,8 +69,12 @@ class BrandController extends AbstractController
 
     
     #[Route('/brand/{id}', name: 'brand_show')]
-    public function show(Brand $brand): Response
+    public function show($id)
     {
+        $brand = $this->getDoctrine()
+                    ->getRepository(Brand::class)
+                    ->find($id);
+                    
         return $this->render('brand/show.html.twig', [
             'brand' => $brand,
         ]);
@@ -83,6 +87,7 @@ class BrandController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Transfomer le nom de l'image
             $logoFile = $form->get('logo')->getData();
             if($logoFile) {
                 $originalFilename = pathinfo($logoFile->getClientOriginalName(), PATHINFO_FILENAME);

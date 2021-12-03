@@ -15,12 +15,16 @@
     </div>
     
     <div class="border border-dark m-5 p-5">
-        <div>
-            <div>
-                <img class="w-25" src="{{ asset('img/logo/logo-chatChien_3.jpg') }}" alt="Logo entreprise">
-                <p class="mt-2">La Nîmes'alerie</p>
-                <p><span>30000</span> <span>Nîmes</span></p>
-                <p>Rue de Nîmes</p>
+        <div class="row">
+            <div class="col-4 border border-dark mb-3">
+                <img class="w-100" src="{{ asset('img/logo/logoLanimalerie.png') }}" alt="Logo entreprise">
+                <div class="mx-4">
+                    <p class="mt-2">La Nîmes'alerie</p>
+                    <p><span>30000</span> <span>Nîmes</span></p>
+                    <p>148 Rue Jean Lauret</p>
+                    <p>Centre Commercial Carré Sud</p>
+                </div>
+                
             </div>
         </div>
         <div class="row border border-dark p-5">
@@ -72,7 +76,7 @@
                                     <td>{{ order.product.id }}</td>
                                     <td>{{ order.product.name }}</td>
                                     <td>{{ order.quantity }}</td>
-                                    <td>{{ order.product.price }}</td>
+                                    <td>{{ order.product.price }} €</td>
                                 </tr>
                             {% endfor %}
                         </tbody>

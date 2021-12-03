@@ -42,7 +42,9 @@ class CategoryController extends AbstractController
             return $this->render('category/error.html.twig', ['category' => $category,]);
         }
 
-        return $this->render('category/dislplayCategory.html.twig', ['category' => $category,]);
+        return $this->render('category/dislplayCategory.html.twig', [
+            'category' => $category,
+        ]);
     }
 
     /**
